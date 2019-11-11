@@ -1,0 +1,1 @@
+# ngr-metadata-generator-2.0
