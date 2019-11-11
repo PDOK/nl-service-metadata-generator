@@ -1,0 +1,76 @@
+<gmd:citation>
+    <gmd:CI_Citation>
+        <gmd:title>
+            <!-- https://geonovum.github.io/Metadata-ISO19119/#titel-van-de-bron -->
+            <!-- Dit element moet overeen komen met element WMS_Capabilities/Service/Title in het Capabilities bestand-->
+            <gco:CharacterString>{{service_title}}</gco:CharacterString>
+        </gmd:title>
+        <gmd:date>
+            <gmd:CI_Date>
+                <gmd:date>
+                    <!-- https://geonovum.github.io/Metadata-ISO19119/#x5-2-2-datum-van-de-bron -->
+                    <!-- Datum waarop de service is aangemaakt, format JJJJ-MM-DD -->
+                    <gco:Date>{{service_creation_date}}</gco:Date>
+                </gmd:date>
+                <gmd:dateType>
+                    <!-- https://geonovum.github.io/Metadata-ISO19119/#datum-type-van-de-bron -->
+                    <gmd:CI_DateTypeCode
+                        codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                        codeListValue="creation"/>
+                </gmd:dateType>
+            </gmd:CI_Date>
+        </gmd:date>
+        <gmd:date>
+            <gmd:CI_Date>
+                <gmd:date>
+                    <!-- https://geonovum.github.io/Metadata-ISO19119/#x5-2-2-datum-van-de-bron -->
+                    <!-- Datum waarop de service is aangemaakt, format JJJJ-MM-DD -->
+                    <gco:Date>{{service_revision_date}}</gco:Date>
+                </gmd:date>
+                <gmd:dateType>
+                    <!-- https://geonovum.github.io/Metadata-ISO19119/#datum-type-van-de-bron -->
+                    <gmd:CI_DateTypeCode
+                        codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                        codeListValue="revision"/>
+                </gmd:dateType>
+            </gmd:CI_Date>
+        </gmd:date>
+    </gmd:CI_Citation>
+</gmd:citation>
+<gmd:abstract>
+    <!-- https://geonovum.github.io/Metadata-ISO19119/#samenvatting -->
+    <!-- Dit element moet overeenkomen met het element WMS_Capabilities/Service/Abstract in het Capabilities bestand-->
+    <gco:CharacterString>{{service_abstract}}</gco:CharacterString>
+</gmd:abstract>
+<gmd:pointOfContact>
+    <gmd:CI_ResponsibleParty>
+        <!-- De organisatie die verantwoordelijk is voor de service -->
+        {{> contact}}
+        <gmd:role>
+            <!-- https://geonovum.github.io/Metadata-ISO19119/#verantwoordelijke-organisatie-bron:-rol -->
+            <gmd:CI_RoleCode
+                codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode"
+                codeListValue="author"/>
+        </gmd:role>
+    </gmd:CI_ResponsibleParty>
+</gmd:pointOfContact>
+<gmd:descriptiveKeywords>
+    <!-- De descriptive keywords komen logischerwijs overeen met de elementen onder WMS_Capabilities/Services/KeywordList-->
+    <!-- en de elementen WMS_Capabilities/Capability/inspire_vs:ExtendedCapabilities/inspire_common:MandatoryKeyword en  -->
+    <!-- WMS_Capabilities/Capability/inspire_vs:ExtendedCapabilities/inspire_common:Keyword uit het Capabilities bestand -->
+    <gmd:MD_Keywords>
+        <!-- https://geonovum.github.io/Metadata-ISO19119/#trefwoord -->
+        <!-- Voor INSPIRE Minimaal 1 van de verplichte keywords uit metadata IR Deel 4 -->
+        <!-- inconsistency in spec NL profiel vs INSPIRE, voor NL profiel moet anchor element text waarde <spatial_dataservice_category_label> hebben
+             maar voor inpsire moet deze de waarde <spatial_dataservice_category> hebben, zie ook https://github.com/inspire-eu-validation/community/issues/84
+         -->
+    <gmd:keyword>
+        <gmx:Anchor xlink:href="{{spatial_dataservice_category_uri}}">{{spatial_dataservice_category}}</gmx:Anchor>
+    </gmd:keyword>
+    {{#keywords}}
+        <gmd:keyword>
+            <gco:CharacterString>{{.}}</gco:CharacterString>
+        </gmd:keyword>
+    {{/keywords}}
+    </gmd:MD_Keywords>
+</gmd:descriptiveKeywords>

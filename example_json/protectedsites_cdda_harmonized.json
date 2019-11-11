@@ -1,0 +1,28 @@
+{
+    "md_identifier": "7165bb1f-fea6-4f28-b1d2-a2a92a11ea2f",
+    "inspire": "harmonized",
+    "service_title": "Beschermde gebieden - CDDA (INSPIRE geharmoniseerd)",
+    "service_creation_date": "2018-08-16",
+    "service_owner": "RCE",
+    "service_version": "v1_0",
+    "service_abstract": "INSPIRE view service CDDA. In deze dataset is de zogeheten common database of designated areas (CDDA) weergegeven. Deze database is onderdeel van de jaarlijkse rapportage vanuit Nederland aan de EEA. De CDDA bestaat uit de Natura2000 gebieden, de Nationale parken en het Natuur Netwerk Nederland.",
+    "keywords":[
+        "Natuur en milieu",
+        "Landbouw en veeteelt",
+        "Grenzen",
+        "Locatie"
+    ],
+    "inspire_theme_uri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ps",
+    "service_gebruiksbeperkingen": "Geen beperkingen",
+    "boundingbox":
+    {
+        "minx": "3.206252918228434",
+        "maxx": "7.245258336784366",
+        "miny": "50.73360719554353",
+        "maxy": "53.58297893748843"
+    },
+    "service_capabilities_url_wfs": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wfs?request=GetCapabilities&service=WFS&version=2.0.0",
+    "service_capabilities_url_wms": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wms?request=GetCapabilities&service=WMS&version=1.3.0",
+    "service_capabilities_url_atom": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wms?request=GetCapabilities&service=WMS&version=1.3.0",
+    "dataset_md_identifier": "3387ef8a-9237-453a-aa4e-585d1e193550"
+}

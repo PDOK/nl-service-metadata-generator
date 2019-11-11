@@ -1,0 +1,243 @@
+{
+    "inspire_themes": {
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/au": "Administratieve eenheden",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ad": "Adressen",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ac": "Atmosferische omstandigheden",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ps": "Beschermde gebieden",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/br": "Biogeografische gebieden",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/so": "Bodem",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/lc": "Bodemgebruik",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/er": "Energiebronnen",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/af": "Faciliteiten voor landbouw en aquacultuur",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/pf": "Faciliteiten voor productie en industrie",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/nz": "Gebieden met natuurrisico's",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/am": "Gebiedsbeheer, gebieden waar beperkingen gelden, gereguleerde gebieden en rapportage-eenheden",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/bu": "Gebouwen",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/gg": "Geografisch rastersysteem",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/gn": "Geografische namen",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ge": "Geologie",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/hb": "Habitats en biotopen",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/el": "Hoogte",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/hy": "Hydrografie",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/cp": "Kadastrale percelen",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/lu": "Landgebruik",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/hh": "Menselijke gezondheid en veiligheid",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/mf": "Meteorologische geografische kenmerken",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ef": "Milieubewakingsvoorzieningen",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/mr": "Minerale bronnen",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/us": "Nutsdiensten en overheidsdiensten",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/of": "Oceanografische geografische kenmerken",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/oi": "Orthobeeldvorming",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/pd": "Spreiding van de bevolking — demografie",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/sd": "Spreiding van soorten",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/su": "Statistische eenheden",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/rs": "Systemen voor verwijzing door middel van coördinaten",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/tn": "Vervoersnetwerken",
+      "https://www.eionet.europa.eu/gemet/nl/inspire-theme/sr": "Zeegebieden"
+    },
+    "codelist_protocol": {
+      "CSW": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/cat",
+        "service_protocol": "OGC:CSW",
+        "service_protocol_name": "Web Catalog service",
+        "spatial_dataservice_category": "infoCatalogueService",
+        "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoCatalogueService",
+        "spatial_dataservice_category_label": "Catalogusdienst"
+      },
+      "WMS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/wms",
+        "service_protocol": "OGC:WMS",
+        "service_protocol_name": "Web Map service",
+        "spatial_dataservice_category": "infoMapAccessService",
+        "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoMapAccessService",
+        "spatial_dataservice_category_label": "Dienst kaarttoegang"
+      },
+      "WMTS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/wmts",
+        "service_protocol": "OGC:WMTS",
+        "service_protocol_name": "Web Map Tile Service",
+        "spatial_dataservice_category": "infoMapAccessService",
+        "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoMapAccessService",
+        "spatial_dataservice_category_label": "Dienst kaarttoegang"
+      },
+      "WFS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/wfs",
+        "service_protocol": "OGC:WFS",
+        "service_protocol_name": "Web Feature Service",
+        "spatial_dataservice_category": "infoFeatureAccessService",
+        "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoFeatureAccessService",
+        "spatial_dataservice_category_label": "Dienst objecttoegang"
+      },
+      "WCS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/wcs",
+        "service_protocol": "OGC:WCS",
+        "service_protocol_name": "Web Coverage Service",
+        "spatial_dataservice_category": "infoCoverageAccessService",
+        "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoCoverageAccessService",
+        "spatial_dataservice_category_label": "Dienst rastergegevenstoegang"
+      },
+      "SOS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/sos",
+        "service_protocol": "OGC:SOS",
+        "service_protocol_name": "Sensor Observation Service",
+        "spatial_dataservice_category": "infoSensorDescriptionService",
+        "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoSensorDescriptionService",
+        "spatial_dataservice_category_label": "Dienst sensorbeschrijving"
+      },
+      "ATOM": {
+        "service_protocol_url": "",
+        "service_protocol": "INSPIRE Atom",
+        "service_protocol_name": "Atom Service Feed",
+        "spatial_dataservice_category": "infoFeatureAccessService",
+        "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoFeatureAccessService",
+        "spatial_dataservice_category_label": "Dienst objecttoegang"
+      },
+      "WCTS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/",
+        "service_protocol": "OGC:WCTS",
+        "service_protocol_name": "Web Coordinate Transformation Service"
+      },
+      "WPS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/wps",
+        "service_protocol": "OGC:WPS",
+        "service_protocol_name": "Web Processing Service"
+      },
+      "WFS-G": {
+        "service_protocol_url": "",
+        "service_protocol": "OGC:WFS-G",
+        "service_protocol_name": "Gazetteer service"
+      },
+      "SPS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/sps",
+        "service_protocol": "OGC:SPS",
+        "service_protocol_name": "Sensor Planning Service"
+      },
+      "SAS": {
+        "service_protocol_url": "http://www.ogcnetwork.net/SAS",
+        "service_protocol": "OGC:SAS",
+        "service_protocol_name": "Sensor Alert Service"
+      },
+      "WNS": {
+        "service_protocol_url": "",
+        "service_protocol": "OGC:WNS",
+        "service_protocol_name": "Web Notification Service"
+      },
+      "ODS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#ODS",
+        "service_protocol": "OGC:ODS",
+        "service_protocol_name": "OpenLS Directory Service"
+      },
+      "OGS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#OGS",
+        "service_protocol": "OGC:OGS",
+        "service_protocol_name": "OpenLS Gateway Service"
+      },
+      "OUS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#OUS",
+        "service_protocol": "OGC:OUS",
+        "service_protocol_name": "OpenLS Utility Service"
+      },
+      "OPS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#OPS",
+        "service_protocol": "OGC:OPS",
+        "service_protocol_name": "OpenLS Presentation Service"
+      },
+      "ORS": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#ORS",
+        "service_protocol": "OGC:ORS",
+        "service_protocol_name": "OpenLS Route Service"
+      },
+      "SensorThings": {
+        "service_protocol_url": "http://www.opengeospatial.org/standards/sensorthings",
+        "service_protocol": "OGC:SensorThings",
+        "service_protocol_name": "SensorThings API"
+      },
+      "SPARQL": {
+        "service_protocol_url": "https://www.w3.org/TR/rdf-sparql-query/",
+        "service_protocol": "W3C:SPARQL",
+        "service_protocol_name": "SPARQL Query Language for RDF"
+      },
+      "OData": {
+        "service_protocol_url": "https://www.oasis-open.org/committees/odata",
+        "service_protocol": "OASIS:OData",
+        "service_protocol_name": "Open data protocol"
+      },
+      "OAS": {
+        "service_protocol_url": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md",
+        "service_protocol": "OAS",
+        "service_protocol_name": "Open API Specification"
+      },
+      "landingpage": {
+        "service_protocol_url": "",
+        "service_protocol": "landingpage",
+        "service_protocol_name": "Een webpagina die toegang geeft tot de dataset of overige informatie bevat"
+      },
+      "application": {
+        "service_protocol_url": "",
+        "service_protocol": "application",
+        "service_protocol_name": "Een (web) applicatie die rechtstreeks toegang geeft tot de dataset"
+      },
+      "dataset": {
+        "service_protocol_url": "",
+        "service_protocol": "dataset",
+        "service_protocol_name": "Referentie naar een locale dataset locatie"
+      },
+      "UKST": {
+        "service_protocol_url": "",
+        "service_protocol": "UKST",
+        "service_protocol_name": "Unknown Service Type"
+      }
+    },
+    "codelist_inspire_service_types": [
+      {
+        "protocols": [
+          "OGC:CSW"
+        ],
+        "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/discovery",
+        "inspire_servicetype": "discovery",
+        "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-discovery-services-0",
+        "inspire_technicalguidance_date": "2011-11-07"
+      },
+      {
+        "protocols": [
+          "OGC:WMS",
+          "OGC:WMTS"
+        ],
+        "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/view",
+        "inspire_servicetype": "view",
+        "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-view-services-1",
+        "inspire_technicalguidance_date": "2013-04-04"
+      },
+      {
+        "protocols": [
+          "OGC:WFS",
+          "OGC:WCS",
+          "OGC:SOS",
+          "INSPIRE Atom"
+        ],
+        "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/download",
+        "inspire_servicetype": "download",
+        "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-download-services",
+        "inspire_technicalguidance_date": "2013-08-09"
+      },
+      {
+        "protocols": [
+          "OGC:WCTS"
+        ],
+        "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/transformation",
+        "inspire_servicetype": "transformation",
+        "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-inspire-schema-transformation-network-service",
+        "inspire_technicalguidance_date": "2010-12-15"
+      },
+      {
+        "protocols": [
+          "other"
+        ],
+        "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/other",
+        "inspire_servicetype": "other",
+        "inspire_technicalguidance": "",
+        "inspire_technicalguidance_date": ""
+      }
+    ]
+  }
+  
