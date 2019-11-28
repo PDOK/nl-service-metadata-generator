@@ -1,6 +1,6 @@
 {
     "md_identifier": "0bb7e0e1-c8c0-4fc0-b499-0a9ab2449b08",
-    "inspire": "none",
+    "inspire": false,
     "service_title": "Mosselzaadinvanginstallaties",
     "service_creation_date": "2019-09-26",
     "service_owner": "CBS",
@@ -18,8 +18,8 @@
         "miny": "50.73360719554353",
         "maxy": "53.58297893748843"
     },
-    "service_capabilities_url_wms": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wms?request=GetCapabilities&service=WMS&version=1.3.0",
-    "service_capabilities_url_wfs": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wfs?request=GetCapabilities&service=WFS&version=2.0.0",
-    "service_capabilities_url_atom": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wfs?request=GetCapabilities&service=WFS&version=1.3.0",
+    "service_capabilities_url_wms": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wms?request=GetCapabilities&service=WMS",
+    "service_capabilities_url_wfs": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wfs?request=GetCapabilities&service=WFS",
+    "service_capabilities_url_atom": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wfs?request=GetCapabilities&service=WFS",
     "dataset_md_identifier": "a04afee4-47d5-45b7-b7a0-a6f86106af11"
 }

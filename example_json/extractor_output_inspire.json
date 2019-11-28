@@ -1,0 +1,57 @@
+{
+    "inspire": true,
+    "inspire_theme_uri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/tn",
+    "ogc_service_type": "WFS",
+    "service_capabilities_url_wfs": "https://geodata.nationaalgeoregister.nl/vin/wfs?request=GetCapabilities",
+    "md_standardname": "ISO 19119",
+    "md_standardversion": "Nederlands metadata profiel op ISO 19119 voor services 2.0",
+    "md_identifier": "b4ae5b2c-f557-4a30-bbf2-c2681a544f32",
+    "datestamp": "2019-11-27",
+    "service_title": "Vaarweg Informatie Nederland (VIN) WFS",
+    "service_abstract": "Geografische bestanden met bevaarbaarheidsinformatie binnen Nederland. Vaarweg of deel van de vaarweg of haven, waaraan een bepaalde bevaarbaarheidsklasse is toegekend. (Classificatie van vaarwegen aan de hand van de internationale klasse indeling 1992.)",
+    "service_publication_date": null,
+    "service_revision_date": "2017-09-01",
+    "service_creation_date": "2011-03-02",
+    "keywords": [
+      "Hydrografie",
+      "infoFeatureAccessService"
+    ],
+    "service_gebruiksbeperkingen": "Gebruik versie 1.0.0, https://geodata.nationaalgeoregister.nl/vin/wfs?version=1.0.0&request=GetCapabilitiesMaximum aantal te downloaden objecten is 15.000",
+    "service_licentie": {
+      "url": "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+      "description": "Geen beperkingen"
+    },
+    "bbox": {
+      "minx": "3.206252918228434",
+      "maxx": "7.245258336784366",
+      "maxy": "53.58297893748843",
+      "miny": "50.73360719554353"
+    },
+    "service_type": "download",
+    "dataset_md_identifier": "831f7bd7-c2ae-4336-bd2f-47ab20d7cdb7",
+    "dataset_source_identifier": "2cfb54f9-a807-49d1-b010-615171e4c8b2",
+    "service_contact": {
+      "organisationname": "Beheer PDOK",
+      "email": "beheerPDOK@kadaster.nl",
+      "url": "https://geodata.nationaalgeoregister.nl/vin/wfs?",
+      "role": "pointOfContact"
+    },
+    "md_contact": {
+      "organisationname": "Beheer PDOK",
+      "email": "beheerPDOK@kadaster.nl",
+      "url": null,
+      "role": "pointOfContact"
+    },
+    "thumbnails": [
+      {
+        "file": "https://geodata.nationaalgeoregister.nl/vin/ows?LAYERS=bevaarbaarheid&TRANSPARENT=true&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG%3A28992&BBOX=-42621.76,303655.36,446379.2,686856.64&WIDTH=284&HEIGHT=223",
+        "description": "thumbnail",
+        "filetype": "png"
+      },
+      {
+        "file": null,
+        "description": "large_thumbnail",
+        "filetype": "png"
+      }
+    ]
+  }

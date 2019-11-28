@@ -1,23 +1,33 @@
 #!/usr/bin/env python3
-
+from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 import glob
 import os
 import json
 from datetime import datetime
 import click
 from lxml import etree
-import pystache
+from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 
 SERVICE_TEMPLATES = {
-    "harmonized":"templates/iso19119_nl_profile_2.0_template_inspire_harmonized.mustache",
-    "none":"templates/iso19119_nl_profile_2.0_regular.mustache",
+    "inspire":"iso19119_nl_profile_2.0_template_inspire_harmonized.xml",
+    "noninspire":"iso19119_nl_profile_2.0_regular.xml",
 }
-
 CODELIST_JSON_FILE = "json/codelists.json"
+
+SERVICE_TYPES =  ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM']
+SERVICE_TYPES_CLI = ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM', 'IN_JSON']
+
+def clean_service_cap_url(url, service_type):
+    if service_type == "ATOM":
+        return url
+    url_parts = list(urlparse(url))
+    query = {'request':'GetCapabilities','service':service_type.upper()}
+    url_parts[4] = urlencode(query)
+    return urlunparse(url_parts)
 
 def get_inspire_theme_label(data_json):
     inspire_mode = data_json["inspire"]
-    if inspire_mode != "none":
+    if inspire_mode:
         with open(CODELIST_JSON_FILE, 'r') as json_file:
             codelists_json = json.loads(json_file.read())
             inspire_themes_codelist = codelists_json['inspire_themes']
@@ -46,11 +56,11 @@ def get_service_protocol_values(service_type):
         return inspire_servicetypes_codelist[service_type]
 
 def get_service_template(data_json):
-    inspire_mode = data_json["inspire"]
-    if inspire_mode not in SERVICE_TEMPLATES:
-        keys_string = ", ".join(SERVICE_TEMPLATES.keys())
-        raise Exception(f"inspire mode {inspire_mode} not supported. Supported values: {keys_string}")
-    result = SERVICE_TEMPLATES[inspire_mode]
+    inspire = data_json["inspire"]
+    if inspire:
+        result = SERVICE_TEMPLATES["inspire"]
+    else:
+        result = SERVICE_TEMPLATES["noninspire"]
     return result
 
 def get_service_url(data_json, service_type):
@@ -60,47 +70,50 @@ def get_service_url(data_json, service_type):
     key = f"service_capabilities_url_{service_type_string}"
     if not key in data_json:
         raise Exception(f"key {key} missing in values-json input")
-    return data_json[key]
+    url = data_json[key]
+    url = clean_service_cap_url(url, service_type)
+    return url
 
 def add_dynamic_fields(data_json, service_type):
     md_date_stamp = datetime.today().strftime('%Y-%m-%d')
     title = data_json["service_title"]
-    data_json["service_title"] = f"{title} {service_type}"
+    if not title.lower().endswith(service_type.lower()):
+        data_json["service_title"] = f"{title} {service_type}"
     data_json["md_date_stamp"] = md_date_stamp
-    data_json["service_revision_date"] = md_date_stamp
+
+    if not "service_revision_date" in data_json or not data_json["service_revision_date"]:
+        data_json["service_revision_date"] = md_date_stamp
     data_json["service_type"] = service_type
     protocol_fields = get_service_protocol_values(service_type)
     data_json.update(protocol_fields)
     service_protocol = data_json["service_protocol"]
-    inspire_fields = get_inspire_fields_by_service_protocol(service_protocol)
-    data_json.update(inspire_fields)
     service_capabilities_url = get_service_url(data_json, service_type)
     data_json["service_capabilities_url"] = service_capabilities_url
+
+    # some inspire related fields are also mandatory "vanilla" NL profiel
+    inspire_fields = get_inspire_fields_by_service_protocol(service_protocol)
+    data_json.update(inspire_fields)
     inspire_theme_label = get_inspire_theme_label(data_json)
     if inspire_theme_label:
         data_json["inspire_theme_label"] = inspire_theme_label
-    # print(json.dumps(data_json))
     return data_json
 
 def render_template(template_path, data_json, partials_path=""):
-    result = ""
-    with open(template_path, 'r') as template_file:
-        template_string = template_file.read()
-    partials = {}
-    if partials_path:
-        for partial_file in glob.glob(os.path.join(partials_path, "*.mustache")):
-            basename = os.path.splitext(os.path.basename(partial_file))[0]
-            with open(partial_file, "r") as partial_template:
-                p_string = partial_template.read()
-            partials[basename] = p_string
-    renderer = pystache.Renderer(partials=partials)
-    result = renderer.render(template_string, data_json)
+    env = Environment(loader=FileSystemLoader('templates'),
+        autoescape=select_autoescape(['xml']))
+    template = env.get_template(template_path)    
+    result = template.render(data_json)
     return result
 
 def get_md_identifier(json_path):
      with open(json_path, 'r') as json_file:
         config_json = json.loads(json_file.read())
         return config_json["md_identifier"]
+
+def get_ogc_service_type(json_path):
+    with open(json_path, 'r') as json_file:
+        config_json = json.loads(json_file.read())
+        return config_json["ogc_service_type"]
 
 def generate_service_metadata(json_path, service_type):
     with open(json_path, 'r') as json_file:
@@ -147,14 +160,21 @@ def validate_service_metadata(xml_string):
 def cli():
     pass
 
+
+
 @cli.command(name="gen-md")
 @click.argument('values-json-path', type=click.Path(exists=True))
-@click.argument('service-type', type=click.Choice(\
-    ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM'], case_sensitive=False))
+@click.argument('service-type', type=click.Choice(SERVICE_TYPES_CLI, case_sensitive=False))
 @click.option('--output-dir', type=click.Path(exists=False), help="")
 def generate_service_metadata_command(values_json_path, service_type, output_dir=""):
     """Generate metadata record.
     """
+    if service_type == 'IN_JSON':
+        ogc_service_type = get_ogc_service_type(values_json_path)
+        if ogc_service_type not in SERVICE_TYPES:
+            raise ValueError(f"invalid ogc_service_type in values-json {ogc_service_type}")
+        service_type = ogc_service_type
+
     md_record = generate_service_metadata(values_json_path, service_type)
     md_identifier = get_md_identifier(values_json_path)
     if output_dir:

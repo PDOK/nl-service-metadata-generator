@@ -45,7 +45,7 @@
 <gmd:pointOfContact>
     <gmd:CI_ResponsibleParty>
         <!-- De organisatie die verantwoordelijk is voor de service -->
-        {{> contact}}
+        {% include "partials/contact.xml" %}
         <gmd:role>
             <!-- https://geonovum.github.io/Metadata-ISO19119/#verantwoordelijke-organisatie-bron:-rol -->
             <gmd:CI_RoleCode
@@ -54,6 +54,23 @@
         </gmd:role>
     </gmd:CI_ResponsibleParty>
 </gmd:pointOfContact>
+{% for thumbnail in thumbnails -%}
+{% if thumbnail['file'] is not sameas None -%}
+<gmd:graphicOverview>
+    <gmd:MD_BrowseGraphic>
+        <gmd:fileName>
+            <gco:CharacterString>{{ thumbnail['file'] }}</gco:CharacterString>
+        </gmd:fileName>
+        <gmd:fileDescription>
+            <gco:CharacterString>{{ thumbnail['description'] }}</gco:CharacterString>
+        </gmd:fileDescription>
+        <gmd:fileType>
+            <gco:CharacterString>{{ thumbnail['filetype'] }}</gco:CharacterString>
+        </gmd:fileType>
+    </gmd:MD_BrowseGraphic>
+</gmd:graphicOverview>
+{%- endif %}
+{%- endfor %}
 <gmd:descriptiveKeywords>
     <!-- De descriptive keywords komen logischerwijs overeen met de elementen onder WMS_Capabilities/Services/KeywordList-->
     <!-- en de elementen WMS_Capabilities/Capability/inspire_vs:ExtendedCapabilities/inspire_common:MandatoryKeyword en  -->
@@ -62,15 +79,14 @@
         <!-- https://geonovum.github.io/Metadata-ISO19119/#trefwoord -->
         <!-- Voor INSPIRE Minimaal 1 van de verplichte keywords uit metadata IR Deel 4 -->
         <!-- inconsistency in spec NL profiel vs INSPIRE, voor NL profiel moet anchor element text waarde <spatial_dataservice_category_label> hebben
-             maar voor inpsire moet deze de waarde <spatial_dataservice_category> hebben, zie ook https://github.com/inspire-eu-validation/community/issues/84
-         -->
+             maar voor inpsire moet deze de waarde <spatial_dataservice_category> hebben, zie ook https://github.com/inspire-eu-validation/community/issues/84 -->
     <gmd:keyword>
         <gmx:Anchor xlink:href="{{spatial_dataservice_category_uri}}">{{spatial_dataservice_category}}</gmx:Anchor>
     </gmd:keyword>
-    {{#keywords}}
-        <gmd:keyword>
-            <gco:CharacterString>{{.}}</gco:CharacterString>
-        </gmd:keyword>
-    {{/keywords}}
+    {% for keyword in keywords -%}
+    <gmd:keyword>
+        <gco:CharacterString>{{ keyword }}</gco:CharacterString>
+    </gmd:keyword>
+    {%- endfor %}
     </gmd:MD_Keywords>
 </gmd:descriptiveKeywords>
