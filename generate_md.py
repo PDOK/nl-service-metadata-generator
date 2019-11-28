@@ -14,8 +14,8 @@ SERVICE_TEMPLATES = {
 }
 CODELIST_JSON_FILE = "json/codelists.json"
 
-SERVICE_TYPES =  ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM']
-SERVICE_TYPES_CLI = ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM', 'IN_JSON']
+SERVICE_TYPES =  ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM', 'TMS']
+SERVICE_TYPES_CLI = ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM', 'TMS', 'IN_JSON']
 
 def clean_service_cap_url(url, service_type):
     if service_type == "ATOM":
