@@ -11,23 +11,23 @@
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	xsi:schemaLocation="http://www.isotc211.org/2005/gmd
 	http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd">
-	{{> common}}
+	{% include "partials/common.xml" %}
 	<gmd:identificationInfo>
 		<srv:SV_ServiceIdentification>
-			{{> common_serviceidentification}}
-			{{> inspire_thesaurus_keywords}}
-			{{> resource_constraints}}
-			{{> inspire_resource_constraints}}
-			{{> service_type}}
-			{{> boundingbox}}
-			{{> coupling}}
+			{% include "partials/common_serviceidentification.xml" %}
+			{% include "partials/inspire_thesaurus_keywords.xml" %}
+			{% include "partials/resource_constraints.xml" %}
+			{% include "partials/inspire_resource_constraints.xml" %}
+			{% include "partials/service_type.xml" %}
+			{% include "partials/boundingbox.xml" %}
+			{% include "partials/coupling.xml" %}
 		</srv:SV_ServiceIdentification>
 	</gmd:identificationInfo>
-	{{> distributioninfo}}
+	{% include "partials/distributioninfo.xml" %}
 	<gmd:dataQualityInfo>
 		<gmd:DQ_DataQuality>
-			{{> quality_level}}
-  			{{> inspire_conformance}}
+			{% include "partials/quality_level.xml" %}
+  			{% include "partials/inspire_conformance.xml" %}
 		</gmd:DQ_DataQuality>
 	</gmd:dataQualityInfo>
 </gmd:MD_Metadata>

@@ -92,6 +92,14 @@
         "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoFeatureAccessService",
         "spatial_dataservice_category_label": "Dienst objecttoegang"
       },
+      "TMS": {
+        "service_protocol_url": "",
+        "service_protocol": "UKST",
+        "service_protocol_name": "",
+        "spatial_dataservice_category": "infoMapAccessService",
+        "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoMapAccessService",
+        "spatial_dataservice_category_label": "Dienst kaarttoegang"
+      },
       "WCTS": {
         "service_protocol_url": "http://www.opengeospatial.org/standards/",
         "service_protocol": "OGC:WCTS",

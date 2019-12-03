@@ -1,0 +1,56 @@
+{
+    "inspire": false,
+    "ogc_service_type": "ATOM",
+    "service_capabilities_url_atom": "https://geodata.nationaalgeoregister.nl/brogmw/atom/brogmw.xml",
+    "md_standardname": "ISO 19119",
+    "md_standardversion": "Nederlands metadata profiel op ISO 19119 voor services 1.2",
+    "md_identifier": "c57221e1-ea53-4c7f-855e-b9ca0cd874b1",
+    "datestamp": "2019-11-26",
+    "service_title": "BRO - Grondwatermonitoringput (GMW) ATOM",
+    "service_abstract": "Een grondwatermonitoringput is een werk dat in een geboord gat is gerealiseerd om gedurende langere tijd veranderingen in het grondwater in een specifiek deel van de ondergrond te kunnen registreren. Gewoonlijk bestaat een put uit een samenstel van monitoringsbuizen die aan het oppervlak door een constructie worden beschermd. Een grondwatermonitoringput is in de Basisregistratie ondergrond altijd een punt in een grondwatermonitoringnet",
+    "service_publication_date": null,
+    "service_revision_date": "2019-11-26",
+    "service_creation_date": "2018-06-25",
+    "keywords": [
+      "Basisregistratie ondergrond",
+      "Bro",
+      "Grondwater monitoring Grondwatermonitoring",
+      "Grondwater monitoring put",
+      "Grondwatermonitoringput",
+      "Grondwater monitioring well",
+      "gmw"
+    ],
+    "service_gebruiksbeperkingen": "Geen beperkingen",
+    "service_licentie": {
+      "description": "Geen beperkingen",
+      "url": "http://creativecommons.org/publicdomain/zero/1.0/deed.nl"
+    },
+    "bbox": {
+      "minx": "3.206252918228434",
+      "maxx": "7.245258336784366",
+      "maxy": "53.58297893748843",
+      "miny": "50.73360719554353"
+    },
+    "service_type": "download",
+    "dataset_md_identifier": "ef68de57-c449-462b-b441-89e9f5222d33",
+    "dataset_source_identifier": "bd8657fc-47b9-4291-b5f6-9fc624eadf3f",
+    "service_contact": {
+      "organisationname": "Beheer PDOK",
+      "email": "beheerPDOK@kadaster.nl",
+      "url": "https://geodata.nationaalgeoregister.nl/brogmw/atom/",
+      "role": "pointOfContact"
+    },
+    "md_contact": {
+      "organisationname": "Beheer PDOK",
+      "email": "beheerPDOK@kadaster.nl",
+      "url": null,
+      "role": "pointOfContact"
+    },
+    "thumbnails": [
+      {
+        "file": "https://www.nationaalgeoregister.nl:443/geonetwork/srv/api/records/937159b9-0dcd-4683-98ec-c262cf309846/attachments/gmw_id=1956239.png",
+        "description": "thumbnail",
+        "filetype": "png"
+      }
+    ]
+  }

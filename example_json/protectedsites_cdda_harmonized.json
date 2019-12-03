@@ -1,6 +1,6 @@
 {
     "md_identifier": "7165bb1f-fea6-4f28-b1d2-a2a92a11ea2f",
-    "inspire": "harmonized",
+    "inspire": true,
     "service_title": "Beschermde gebieden - CDDA (INSPIRE geharmoniseerd)",
     "service_creation_date": "2018-08-16",
     "service_owner": "RCE",
@@ -24,5 +24,17 @@
     "service_capabilities_url_wfs": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wfs?request=GetCapabilities&service=WFS&version=2.0.0",
     "service_capabilities_url_wms": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wms?request=GetCapabilities&service=WMS&version=1.3.0",
     "service_capabilities_url_atom": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wms?request=GetCapabilities&service=WMS&version=1.3.0",
-    "dataset_md_identifier": "3387ef8a-9237-453a-aa4e-585d1e193550"
+    "dataset_md_identifier": "3387ef8a-9237-453a-aa4e-585d1e193550",
+    "thumbnails": [
+        {
+          "file": "https://geodata.nationaalgeoregister.nl/vin/ows?LAYERS=bevaarbaarheid&TRANSPARENT=true&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG%3A28992&BBOX=-42621.76,303655.36,446379.2,686856.64&WIDTH=284&HEIGHT=223",
+          "description": "thumbnail",
+          "filetype": "png"
+        },
+        {
+            "file": null,
+            "description": "large_thumbnail",
+            "filetype": "png"
+          }
+    ]
 }

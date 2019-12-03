@@ -6,18 +6,18 @@ CLI applicatie genereert metadata en voert schema validatie uit. Applicatie voer
 
 ## Gebruik
 
-Installeer eerst de dependencies (getest op Ubuntu in Bash shell):
+Installeer ngr-metadata-generator als pip package (uitvoeren vanuit root van repository):
 
 ```
-pip3 install -r requirements.txt
+pip3 install .
 ```
 
-Voor help:
+Nu moet het cli command `generate-metadata`/`gen-md` beschikbaar zijn het `PATH`:
 
 ```
-./generate_md.py --help
-Usage: generate_md.py [OPTIONS] VALUES_JSON_PATH
-                      [CSW|WMS|WMTS|WFS|WCS|SOS|ATOM]
+generate-metadata --help
+Usage: generate-metadata [OPTIONS] VALUES_JSON_PATH
+                         [CSW|WMS|WMTS|WFS|WCS|SOS|ATOM]
 
   Generate metadata record.
 
@@ -29,5 +29,5 @@ Options:
 Bijvoorbeeld (uitvoeren in root directory van dit repository):
 
 ```
-mkdir output && ./generate_md.py example_json/protectedsites_cdda_harmonized.json WMS --output-dir output/
+gen-md example_json/protectedsites_cdda_harmonized.json WMS --output-dir output/
 ```
