@@ -10,8 +10,8 @@ from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoad
 import pkg_resources
 
 SERVICE_TEMPLATES = {
-    "inspire":"data/iso19119_nl_profile_2.0_template_inspire_harmonized.xml",
-    "noninspire":"data/iso19119_nl_profile_2.0_regular.xml",
+    "inspire":"iso19119_nl_profile_2.0_template_inspire_harmonized.xml",
+    "noninspire":"iso19119_nl_profile_2.0_regular.xml",
 }
 CODELIST_JSON_FILE = "data/json/codelists.json"
 
@@ -65,7 +65,7 @@ def get_service_template(data_json):
         result = SERVICE_TEMPLATES["inspire"]
     else:
         result = SERVICE_TEMPLATES["noninspire"]
-    return pkg_resources.resource_filename(__name__, result)
+    return result
 
 def get_service_url(data_json, service_type):
     # for now do not generate urls dynamically but use fallback 
@@ -103,7 +103,7 @@ def add_dynamic_fields(data_json, service_type):
     return data_json
 
 def render_template(template_path, data_json):
-    env = Environment(loader=FileSystemLoader(''),
+    env = Environment( loader=PackageLoader('metadata_generator', 'data/templates'),
         autoescape=select_autoescape(['xml']))
     template = env.get_template(template_path)
     result = template.render(data_json)

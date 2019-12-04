@@ -14,7 +14,7 @@
     ],
     "inspire_theme_uri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ps",
     "service_gebruiksbeperkingen": "Geen beperkingen",
-    "boundingbox":
+    "bbox":
     {
         "minx": "3.206252918228434",
         "maxx": "7.245258336784366",
