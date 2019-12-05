@@ -39,15 +39,14 @@ def get_inspire_theme_label(data_json):
             return inspire_themes_codelist[inspire_theme_uri]
     return ""
 
-def get_inspire_fields_by_service_protocol(service_protocol):
+def get_inspire_fields_by_ogc_service_type(ogc_service_type):
     # "inspire_service_type": "view",
     json_path = pkg_resources.resource_filename(__name__, CODELIST_JSON_FILE)
     with open(json_path, 'r') as json_file:
         codelists_json = json.loads(json_file.read())
         inspire_servicetypes_codelist = codelists_json["codelist_inspire_service_types"]
         for item in inspire_servicetypes_codelist:
-            if service_protocol in item["protocols"]:
-                item.pop("protocols")
+            if ogc_service_type in item["ogc_service_types"]:
                 return item
 
 def get_service_protocol_values(service_type):
@@ -78,24 +77,23 @@ def get_service_url(data_json, service_type):
     url = clean_service_cap_url(url, service_type)
     return url
 
-def add_dynamic_fields(data_json, service_type):
+def add_dynamic_fields(data_json, ogc_service_type):
     md_date_stamp = datetime.today().strftime('%Y-%m-%d')
     title = data_json["service_title"]
-    if not title.lower().endswith(service_type.lower()):
-        data_json["service_title"] = f"{title} {service_type}"
+    if not title.lower().endswith(ogc_service_type.lower()):
+        data_json["service_title"] = f"{title} {ogc_service_type}"
     data_json["md_date_stamp"] = md_date_stamp
 
     if not "service_revision_date" in data_json or not data_json["service_revision_date"]:
         data_json["service_revision_date"] = md_date_stamp
-    data_json["service_type"] = service_type
-    protocol_fields = get_service_protocol_values(service_type)
+    data_json["service_type"] = ogc_service_type
+    protocol_fields = get_service_protocol_values(ogc_service_type)
     data_json.update(protocol_fields)
-    service_protocol = data_json["service_protocol"]
-    service_capabilities_url = get_service_url(data_json, service_type)
+    service_capabilities_url = get_service_url(data_json, ogc_service_type)
     data_json["service_capabilities_url"] = service_capabilities_url
 
     # some inspire related fields are also mandatory "vanilla" NL profiel
-    inspire_fields = get_inspire_fields_by_service_protocol(service_protocol)
+    inspire_fields = get_inspire_fields_by_ogc_service_type(ogc_service_type)
     data_json.update(inspire_fields)
     inspire_theme_label = get_inspire_theme_label(data_json)
     if inspire_theme_label:
@@ -125,10 +123,6 @@ def generate_service_metadata(json_path, service_type):
         service_template = get_service_template(config_json)
         config_json = add_dynamic_fields(config_json, service_type)
         md_record = render_template(service_template, config_json)
-        validation_result = validate_service_metadata(md_record)
-        if validation_result:
-            print(f"metadata-generator error: generated metadata is invalid, validation message: {validation_result}")
-            exit(1)
         parser = etree.XMLParser(remove_comments=True, remove_blank_text=True)
         tree = etree.fromstring(md_record.encode('utf-8'), parser=parser)
         return etree.tostring(tree, pretty_print=True).decode('utf-8')
@@ -180,12 +174,22 @@ def generate_service_metadata_command(values_json_path, service_type, output_dir
         service_type = ogc_service_type
 
     md_record = generate_service_metadata(values_json_path, service_type)
+    validation_result = validate_service_metadata(md_record)
+    
+    if validation_result:
+        print(f"metadata-generator error: generated metadata is invalid, validation message: {validation_result}")
+        
     md_identifier = get_md_identifier(values_json_path)
     if output_dir:
         output_filename = f"{output_dir}/{md_identifier}_{service_type}.xml"
+        if validation_result:
+            output_filename = f"{output_dir}/{md_identifier}_{service_type}.invalid"
+
         with open(output_filename, 'w') as output:
             output.write(md_record)
     else:
+        if validation_result:
+            exit(1)
         print(md_record)
 
 if __name__ == "__main__":

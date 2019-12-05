@@ -32,8 +32,12 @@
       "miny": "50.73360719554353"
     },
     "service_type": "download",
-    "dataset_md_identifier": "ef68de57-c449-462b-b441-89e9f5222d33",
-    "dataset_source_identifier": "bd8657fc-47b9-4291-b5f6-9fc624eadf3f",
+    "linked_datasets": [
+      {
+        "dataset_md_identifier": "ef68de57-c449-462b-b441-89e9f5222d33",
+        "dataset_source_identifier": "bd8657fc-47b9-4291-b5f6-9fc624eadf3f"
+      }
+  ],
     "service_contact": {
       "organisationname": "Beheer PDOK",
       "email": "beheerPDOK@kadaster.nl",

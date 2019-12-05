@@ -21,5 +21,9 @@
     "service_capabilities_url_wms": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wms?request=GetCapabilities&service=WMS",
     "service_capabilities_url_wfs": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wfs?request=GetCapabilities&service=WFS",
     "service_capabilities_url_atom": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wfs?request=GetCapabilities&service=WFS",
-    "dataset_md_identifier": "a04afee4-47d5-45b7-b7a0-a6f86106af11"
+    "linked_datasets": [
+        {
+            "dataset_md_identifier": "a04afee4-47d5-45b7-b7a0-a6f86106af11"
+        }
+    ]
 }

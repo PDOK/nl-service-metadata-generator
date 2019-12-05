@@ -5,6 +5,7 @@
             <!-- Dit element moet overeen komen met element WMS_Capabilities/Service/Title in het Capabilities bestand-->
             <gco:CharacterString>{{service_title}}</gco:CharacterString>
         </gmd:title>
+        {% if service_creation_date -%}
         <gmd:date>
             <gmd:CI_Date>
                 <gmd:date>
@@ -20,6 +21,25 @@
                 </gmd:dateType>
             </gmd:CI_Date>
         </gmd:date>
+        {%- endif %}
+        {% if service_publication_date -%}
+        <gmd:date>
+            <gmd:CI_Date>
+                <gmd:date>
+                    <!-- https://geonovum.github.io/Metadata-ISO19119/#x5-2-2-datum-van-de-bron -->
+                    <!-- Datum waarop de service is aangemaakt, format JJJJ-MM-DD -->
+                    <gco:Date>{{service_publication_date}}</gco:Date>
+                </gmd:date>
+                <gmd:dateType>
+                    <!-- https://geonovum.github.io/Metadata-ISO19119/#datum-type-van-de-bron -->
+                    <gmd:CI_DateTypeCode
+                        codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                        codeListValue="publication"/>
+                </gmd:dateType>
+            </gmd:CI_Date>
+        </gmd:date>
+        {%- endif %}
+        {% if service_revision_date -%}
         <gmd:date>
             <gmd:CI_Date>
                 <gmd:date>
@@ -35,6 +55,7 @@
                 </gmd:dateType>
             </gmd:CI_Date>
         </gmd:date>
+        {%- endif %}
     </gmd:CI_Citation>
 </gmd:citation>
 <gmd:abstract>
