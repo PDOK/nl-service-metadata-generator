@@ -37,7 +37,7 @@
     },
     "codelist_protocol": {
       "CSW": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/cat",
+        "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/csw",
         "service_protocol": "OGC:CSW",
         "service_protocol_name": "Web Catalog service",
         "spatial_dataservice_category": "infoCatalogueService",
@@ -45,7 +45,7 @@
         "spatial_dataservice_category_label": "Catalogusdienst"
       },
       "WMS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/wms",
+        "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wms",
         "service_protocol": "OGC:WMS",
         "service_protocol_name": "Web Map service",
         "spatial_dataservice_category": "infoMapAccessService",
@@ -53,7 +53,7 @@
         "spatial_dataservice_category_label": "Dienst kaarttoegang"
       },
       "WMTS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/wmts",
+        "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wmts",
         "service_protocol": "OGC:WMTS",
         "service_protocol_name": "Web Map Tile Service",
         "spatial_dataservice_category": "infoMapAccessService",
@@ -61,7 +61,7 @@
         "spatial_dataservice_category_label": "Dienst kaarttoegang"
       },
       "WFS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/wfs",
+        "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wfs",
         "service_protocol": "OGC:WFS",
         "service_protocol_name": "Web Feature Service",
         "spatial_dataservice_category": "infoFeatureAccessService",
@@ -69,7 +69,7 @@
         "spatial_dataservice_category_label": "Dienst objecttoegang"
       },
       "WCS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/wcs",
+        "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wcs",
         "service_protocol": "OGC:WCS",
         "service_protocol_name": "Web Coverage Service",
         "spatial_dataservice_category": "infoCoverageAccessService",
@@ -77,7 +77,7 @@
         "spatial_dataservice_category_label": "Dienst rastergegevenstoegang"
       },
       "SOS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/sos",
+        "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/sos",
         "service_protocol": "OGC:SOS",
         "service_protocol_name": "Sensor Observation Service",
         "spatial_dataservice_category": "infoSensorDescriptionService",
@@ -85,7 +85,7 @@
         "spatial_dataservice_category_label": "Dienst sensorbeschrijving"
       },
       "ATOM": {
-        "service_protocol_url": "",
+        "service_protocol_url": "http://tools.ietf.org/html/rfc5023",
         "service_protocol": "INSPIRE Atom",
         "service_protocol_name": "Atom Service Feed",
         "spatial_dataservice_category": "infoFeatureAccessService",
@@ -100,100 +100,15 @@
         "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoMapAccessService",
         "spatial_dataservice_category_label": "Dienst kaarttoegang"
       },
-      "WCTS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/",
-        "service_protocol": "OGC:WCTS",
-        "service_protocol_name": "Web Coordinate Transformation Service"
-      },
       "WPS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/wps",
+        "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wps",
         "service_protocol": "OGC:WPS",
         "service_protocol_name": "Web Processing Service"
-      },
-      "WFS-G": {
-        "service_protocol_url": "",
-        "service_protocol": "OGC:WFS-G",
-        "service_protocol_name": "Gazetteer service"
-      },
-      "SPS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/sps",
-        "service_protocol": "OGC:SPS",
-        "service_protocol_name": "Sensor Planning Service"
-      },
-      "SAS": {
-        "service_protocol_url": "http://www.ogcnetwork.net/SAS",
-        "service_protocol": "OGC:SAS",
-        "service_protocol_name": "Sensor Alert Service"
-      },
-      "WNS": {
-        "service_protocol_url": "",
-        "service_protocol": "OGC:WNS",
-        "service_protocol_name": "Web Notification Service"
-      },
-      "ODS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#ODS",
-        "service_protocol": "OGC:ODS",
-        "service_protocol_name": "OpenLS Directory Service"
-      },
-      "OGS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#OGS",
-        "service_protocol": "OGC:OGS",
-        "service_protocol_name": "OpenLS Gateway Service"
-      },
-      "OUS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#OUS",
-        "service_protocol": "OGC:OUS",
-        "service_protocol_name": "OpenLS Utility Service"
-      },
-      "OPS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#OPS",
-        "service_protocol": "OGC:OPS",
-        "service_protocol_name": "OpenLS Presentation Service"
-      },
-      "ORS": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/ols#ORS",
-        "service_protocol": "OGC:ORS",
-        "service_protocol_name": "OpenLS Route Service"
-      },
-      "SensorThings": {
-        "service_protocol_url": "http://www.opengeospatial.org/standards/sensorthings",
-        "service_protocol": "OGC:SensorThings",
-        "service_protocol_name": "SensorThings API"
-      },
-      "SPARQL": {
-        "service_protocol_url": "https://www.w3.org/TR/rdf-sparql-query/",
-        "service_protocol": "W3C:SPARQL",
-        "service_protocol_name": "SPARQL Query Language for RDF"
-      },
-      "OData": {
-        "service_protocol_url": "https://www.oasis-open.org/committees/odata",
-        "service_protocol": "OASIS:OData",
-        "service_protocol_name": "Open data protocol"
-      },
-      "OAS": {
-        "service_protocol_url": "https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.0.md",
-        "service_protocol": "OAS",
-        "service_protocol_name": "Open API Specification"
       },
       "landingpage": {
         "service_protocol_url": "",
         "service_protocol": "landingpage",
         "service_protocol_name": "Een webpagina die toegang geeft tot de dataset of overige informatie bevat"
-      },
-      "application": {
-        "service_protocol_url": "",
-        "service_protocol": "application",
-        "service_protocol_name": "Een (web) applicatie die rechtstreeks toegang geeft tot de dataset"
-      },
-      "dataset": {
-        "service_protocol_url": "",
-        "service_protocol": "dataset",
-        "service_protocol_name": "Referentie naar een locale dataset locatie"
-      },
-      "UKST": {
-        "service_protocol_url": "",
-        "service_protocol": "UKST",
-        "service_protocol_name": "Unknown Service Type"
       }
     },
     "codelist_inspire_service_types": [
