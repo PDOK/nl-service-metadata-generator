@@ -143,7 +143,7 @@ def validate_service_metadata(xml_string):
     result = validate_xml_form(xml_string)
     if result:
         return result
-    schema_path = pkg_resources.resource_filename(__name__, "data/schema/gmd_gmx.xsd")
+    schema_path = pkg_resources.resource_filename(__name__, "data/schema/schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd")
     with open(schema_path, 'rb') as xml_schema_file:
         schema_doc = etree.XML(xml_schema_file.read(), base_url=schema_path)
         schema = etree.XMLSchema(schema_doc)
