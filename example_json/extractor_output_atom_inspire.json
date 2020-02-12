@@ -2,7 +2,7 @@
     "inspire": true,
     "ogc_service_type": "ATOM",
     "inspire_theme_uri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/au",
-    "service_capabilities_url_atom": "http://test.geodata.nationaalgeoregister.nl/hwh/eenheden/atom/v1_0/AdministrativeUnit.xml",
+    "service_capabilities_url_atom": "http://test.geodata.nationaalgeoregister.nl/hwh/eenheden/atom/v1_0/index.xml",
     "md_standardname": "ISO 19119",
     "md_standardversion": "Nederlands metadata profiel op ISO 19119 voor services 1.2",
     "md_identifier": "9ad3f0c0-9e2c-4d44-a467-b57920aa512f",
@@ -46,12 +46,5 @@
       "email": "beheerPDOK@kadaster.nl",
       "url": null,
       "role": "pointOfContact"
-    },
-    "thumbnails": [
-      {
-        "file": "https://www.nationaalgeoregister.nl:443/geonetwork/srv/api/records/937159b9-0dcd-4683-98ec-c262cf309846/attachments/gmw_id=1956239.png",
-        "description": "thumbnail",
-        "filetype": "png"
-      }
-    ]
+    }
   }
