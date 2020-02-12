@@ -85,7 +85,7 @@
         "spatial_dataservice_category_label": "Dienst sensorbeschrijving"
       },
       "ATOM": {
-        "service_protocol_url": "http://tools.ietf.org/html/rfc5023",
+        "service_protocol_url": "https://tools.ietf.org/html/rfc5023",
         "service_protocol": "INSPIRE Atom",
         "service_protocol_name": "Atom Service Feed",
         "spatial_dataservice_category": "infoFeatureAccessService",
