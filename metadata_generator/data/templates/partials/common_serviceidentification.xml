@@ -101,13 +101,13 @@
         <!-- Voor INSPIRE Minimaal 1 van de verplichte keywords uit metadata IR Deel 4 -->
         <!-- inconsistency in spec NL profiel vs INSPIRE, voor NL profiel moet anchor element text waarde <spatial_dataservice_category_label> hebben
              maar voor inpsire moet deze de waarde <spatial_dataservice_category> hebben, zie ook https://github.com/inspire-eu-validation/community/issues/84 -->
-    <gmd:keyword>
-        <gmx:Anchor xlink:href="{{spatial_dataservice_category_uri}}">{{spatial_dataservice_category}}</gmx:Anchor>
-    </gmd:keyword>
-    {% for keyword in keywords -%}
-    <gmd:keyword>
-        <gco:CharacterString>{{ keyword }}</gco:CharacterString>
-    </gmd:keyword>
-    {%- endfor %}
+        <gmd:keyword>
+            <gmx:Anchor xlink:href="{{spatial_dataservice_category_uri}}">{{spatial_dataservice_category}}</gmx:Anchor>
+        </gmd:keyword>
+        {% for keyword in keywords -%}
+        <gmd:keyword>
+            <gco:CharacterString>{{ keyword }}</gco:CharacterString>
+        </gmd:keyword>
+        {%- endfor %}
     </gmd:MD_Keywords>
 </gmd:descriptiveKeywords>

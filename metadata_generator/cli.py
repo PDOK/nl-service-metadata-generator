@@ -58,6 +58,14 @@ def get_service_protocol_values(service_type):
         inspire_servicetypes_codelist = codelists_json["codelist_protocol"]
         return inspire_servicetypes_codelist[service_type]
 
+def get_spatial_dataservice_categories():
+    json_path = pkg_resources.resource_filename(__name__, CODELIST_JSON_FILE)
+    with open(json_path, 'r') as json_file:
+        codelists_json = json.loads(json_file.read())
+        inspire_servicetypes_codelist = codelists_json["codelist_protocol"]
+        categories = [inspire_servicetypes_codelist[key]["spatial_dataservice_category"] for key in inspire_servicetypes_codelist.keys() if "spatial_dataservice_category" in inspire_servicetypes_codelist[key]]
+        return categories
+
 def get_service_template(data_json):
     inspire = data_json["inspire"]
     if inspire:
@@ -91,8 +99,15 @@ def add_dynamic_fields(data_json, ogc_service_type):
     data_json.update(protocol_fields)
     service_capabilities_url = get_service_url(data_json, ogc_service_type)
     data_json["service_capabilities_url"] = service_capabilities_url
-
-    # some inspire related fields are also mandatory "vanilla" NL profiel
+    # remove keywords that are equal to spatial_dataservice_category_label (
+    # these kw are already taken care of by get_inspire_fields_by_ogc_service_type
+    categories = get_spatial_dataservice_categories()
+    kw_to_delete = [kw for kw in data_json["keywords"] if kw in categories]
+    for kw in kw_to_delete:
+        data_json["keywords"].remove(kw)
+    # enfore lowercase keywords
+    data_json["keywords"] = [kw.lower() for kw in data_json["keywords"]]
+    # some inspire related fields are also mandatory in the "vanilla" NL profiel
     inspire_fields = get_inspire_fields_by_ogc_service_type(ogc_service_type)
     data_json.update(inspire_fields)
     inspire_theme_label = get_inspire_theme_label(data_json)
