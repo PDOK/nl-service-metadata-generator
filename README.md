@@ -17,7 +17,7 @@ Nu moet het cli command `generate-metadata`/`gen-md` beschikbaar zijn het `PATH`
 ```
 generate-metadata --help
 Usage: generate-metadata [OPTIONS] VALUES_JSON_PATH
-                         [CSW|WMS|WMTS|WFS|WCS|SOS|ATOM]
+                         [CSW|WMS|WMTS|WFS|WCS|SOS|ATOM] [PROD|TEST]
 
   Generate metadata record.
 
@@ -29,5 +29,5 @@ Options:
 Bijvoorbeeld (uitvoeren in root directory van dit repository):
 
 ```
-gen-md example_json/protectedsites_cdda_harmonized.json WMS --output-dir output/
+gen-md example_json/protectedsites_cdda_harmonized.json WMS PROD --output-dir output/
 ```

@@ -17,6 +17,7 @@ CODELIST_JSON_FILE = "data/json/codelists.json"
 
 SERVICE_TYPES = ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM', 'TMS']
 SERVICE_TYPES_CLI = ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM', 'TMS', 'IN_JSON']
+NGR_HOST_TYPES = ['PROD', 'TEST']
 
 def clean_service_cap_url(url, service_type):
     if service_type == "ATOM":
@@ -132,9 +133,13 @@ def get_ogc_service_type(json_path):
         config_json = json.loads(json_file.read())
         return config_json["ogc_service_type"]
 
-def generate_service_metadata(json_path, service_type):
+def generate_service_metadata(json_path, service_type, ngr_host):
     with open(json_path, 'r') as json_file:
         config_json = json.loads(json_file.read())
+        if ngr_host == "prod":
+            config_json["ngr_host"] = "https://nationaalgeoregister.nl"
+        if ngr_host == "test":
+            config_json["ngr_host"] = "https://ngr.acceptatie.nationaalgeoregister.nl"
         service_template = get_service_template(config_json)
         config_json = add_dynamic_fields(config_json, service_type)
         md_record = render_template(service_template, config_json)
@@ -178,8 +183,9 @@ def cli():
 @cli.command(name="gen-md")
 @click.argument('values-json-path', type=click.Path(exists=True))
 @click.argument('service-type', type=click.Choice(SERVICE_TYPES_CLI, case_sensitive=False))
+@click.argument('ngr-host', type=click.Choice(NGR_HOST_TYPES, case_sensitive=False))
 @click.option('--output-dir', type=click.Path(exists=False), help="")
-def generate_service_metadata_command(values_json_path, service_type, output_dir=""):
+def generate_service_metadata_command(values_json_path, service_type, ngr_host, output_dir=""):
     """Generate metadata record.
     """
     if service_type == 'IN_JSON':
@@ -188,7 +194,7 @@ def generate_service_metadata_command(values_json_path, service_type, output_dir
             raise ValueError(f"invalid ogc_service_type in values-json {ogc_service_type}")
         service_type = ogc_service_type
 
-    md_record = generate_service_metadata(values_json_path, service_type)
+    md_record = generate_service_metadata(values_json_path, service_type, ngr_host)
     validation_result = validate_service_metadata(md_record)
     
     if validation_result:
