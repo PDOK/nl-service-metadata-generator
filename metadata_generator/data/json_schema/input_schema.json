@@ -1,0 +1,171 @@
+{
+    "type": "object",
+    "definitions": {
+        "date-string":{
+            "type": "string",
+            "pattern": "^([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))$"
+        },
+        "decimal-string":{
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        },
+        "identifier":{
+            "description": "uuid4 identifier",
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "uri":{
+            "type": "string",
+            "format": "uri"
+        },
+        "non-empty-string": {
+            "type": "string",
+            "minLength": 1
+        },
+        "linked_dataset": {
+          "type": "object",
+          "required": [ "dataset_md_identifier"],
+          "properties": {
+            "dataset_md_identifier": {
+                "$ref": "#/definitions/identifier",
+              "description": "Unique identifier of the metadata record of the linked dataset"
+            },
+            "dataset_source_identifier": {
+              "$ref": "#/definitions/identifier",
+              "description": "Source identifier of the linked dataset"
+            }
+          }
+        },
+        "thumbnail": {
+            "type": "object",
+            "required": [ "file", "description", "filetype"],
+            "properties": {
+              "file": {
+                "$ref": "#/definitions/uri",
+                "description": "URL to to image file"
+              },
+              "description": {
+                "type": "string"
+              },
+              "filetype": {
+                "type": "string"
+              }
+            }
+          }
+      },
+    "properties": {
+        "md_identifier": {
+            "$ref": "#/definitions/identifier",
+            "description": "Unique identifier of the service metadata record"
+        },
+        "service_title": {
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "service_abstract": {
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "inspire": {
+            "type": "boolean"
+        },
+        "thumbnails": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/thumbnail" }
+        },
+        "inspire_theme_uri": {
+            "$ref": "#/definitions/uri"
+        },
+        "service_gebruiksbeperkingen": {
+            "$ref": "#/definitions/non-empty-string"
+        },
+        "service_licentie":{
+            "type": "object",
+            "properties": {
+                "description": {
+                    "$ref": "#/definitions/non-empty-string"
+                },
+                "url": {
+                    "$ref": "#/definitions/uri"
+                }
+            }
+        },
+        "bbox": {
+            "type": "object",
+            "properties": {
+                "minx": {
+                    "$ref": "#/definitions/decimal-string"
+                },
+                "maxx": {
+                    "$ref": "#/definitions/decimal-string"
+                },
+                "miny": {
+                    "$ref": "#/definitions/decimal-string"
+                },
+                "maxy": {
+                    "$ref": "#/definitions/decimal-string"
+                }
+            }
+        },
+        "linked_datasets": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/linked_dataset" }
+        },
+        "service_publication_date":{
+            "$ref": "#/definitions/date-string"
+        },
+        "service_creation_date":{
+            "$ref": "#/definitions/date-string"
+        },
+        "service_revision_date":{
+            "$ref": "#/definitions/date-string"
+        },
+        "service_capabilities_url_atom":{
+            "$ref": "#/definitions/uri"
+        },
+        "service_capabilities_url_wfs":{
+            "$ref": "#/definitions/uri"
+        },
+        "service_capabilities_url_wms":{
+            "$ref": "#/definitions/uri"
+        },
+        "service_capabilities_url_wmts":{
+            "$ref": "#/definitions/uri"
+        },
+        "service_capabilities_url_tms":{
+            "$ref": "#/definitions/uri"
+        },
+        "service_capabilities_url_csw":{
+            "$ref": "#/definitions/uri"
+        },
+        "service_capabilities_url_wcs":{
+            "$ref": "#/definitions/uri"
+        },
+        "service_capabilities_url_sos":{
+            "$ref": "#/definitions/uri"
+        }
+    },
+    "anyOf": [
+        {"required": ["service_publication_date"]},
+        {"required": ["service_revision_date"]},
+        {"required": ["service_creation_date"]}
+    ],
+    "anyOf": [
+        {"required": ["service_capabilities_url_atom"]},
+        {"required": ["service_capabilities_url_wfs"]},
+        {"required": ["service_capabilities_url_wms"]},
+        {"required": ["service_capabilities_url_wmts"]},
+        {"required": ["service_capabilities_url_tms"]},
+        {"required": ["service_capabilities_url_csw"]},
+        {"required": ["service_capabilities_url_wcs"]},
+        {"required": ["service_capabilities_url_sos"]}
+    ],
+    "if": {
+        "properties": {
+            "inspire":
+            {"const": true}
+        }
+    },
+    "then": {
+        "required": ["inspire_theme_uri"]
+    },
+    "required": ["linked_datasets", "thumbnails", "bbox", "service_gebruiksbeperkingen", "keywords", "service_abstract", "service_title", "inspire", "md_identifier"]
+}

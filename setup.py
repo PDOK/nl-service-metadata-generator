@@ -28,7 +28,9 @@ setup(
     install_requires=[
         'Jinja2==2.10.3',
         'Click==7.0',
-        'lxml==4.2.1'
+        'lxml==4.2.1',
+        'jsonschema==3.2.0',
+        'rfc3987==1.3.8'
     ],
     entry_points='''
         [console_scripts]

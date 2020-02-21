@@ -7,6 +7,8 @@ from datetime import datetime
 import click
 from lxml import etree
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
+from jsonschema import validate, Draft7Validator, draft7_format_checker
+from jsonschema.exceptions import ValidationError
 import pkg_resources
 
 SERVICE_TEMPLATES = {
@@ -14,6 +16,7 @@ SERVICE_TEMPLATES = {
     "noninspire":"iso19119_nl_profile_2.0_regular.xml",
 }
 CODELIST_JSON_FILE = "data/json/codelists.json"
+JSON_SCHEMA_FILE = "data/json_schema/input_schema.json"
 
 SERVICE_TYPES = ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM', 'TMS']
 SERVICE_TYPES_CLI = ['CSW', 'WMS', 'WMTS', 'WFS', 'WCS', 'SOS', 'ATOM', 'TMS', 'IN_JSON']
@@ -66,6 +69,16 @@ def get_spatial_dataservice_categories():
         inspire_servicetypes_codelist = codelists_json["codelist_protocol"]
         categories = [inspire_servicetypes_codelist[key]["spatial_dataservice_category"] for key in inspire_servicetypes_codelist.keys() if "spatial_dataservice_category" in inspire_servicetypes_codelist[key]]
         return categories
+
+def validate_input_json(json_path):
+    json_schema = pkg_resources.resource_filename(__name__, JSON_SCHEMA_FILE)
+    result = []
+    with open(json_path, 'r') as input_file, open(json_schema, 'r') as schema_file:
+        input_json = json.loads(input_file.read())
+        json_schema = json.loads(schema_file.read())
+        validator = Draft7Validator(json_schema, format_checker=draft7_format_checker)
+        result = validator.iter_errors(input_json)
+    return result
 
 def get_service_template(data_json):
     inspire = data_json["inspire"]
@@ -179,7 +192,6 @@ def cli():
     pass
 
 
-
 @cli.command(name="gen-md")
 @click.argument('values-json-path', type=click.Path(exists=True))
 @click.argument('service-type', type=click.Choice(SERVICE_TYPES_CLI, case_sensitive=True))
@@ -188,24 +200,31 @@ def cli():
 def generate_service_metadata_command(values_json_path, service_type, ngr_host, output_dir=""):
     """Generate metadata record.
     """
+    errors = list(validate_input_json(values_json_path))
+    if errors:
+        print("input json is not valid according to schema:")
+        for error in errors:
+            has_suberror = False
+            for suberror in sorted(error.context, key=lambda e: e.schema_path):
+                print("\t" +  str(list(suberror.schema_path)) + ", " + suberror.message)
+                has_suberror = True
+            if not has_suberror:
+                print(f"\t{error.message}")
+        exit(1)
     if service_type == 'IN_JSON':
         ogc_service_type = get_ogc_service_type(values_json_path)
         if ogc_service_type not in SERVICE_TYPES:
             raise ValueError(f"invalid ogc_service_type in values-json {ogc_service_type}")
         service_type = ogc_service_type
-
     md_record = generate_service_metadata(values_json_path, service_type, ngr_host)
     validation_result = validate_service_metadata(md_record)
-    
     if validation_result:
         print(f"metadata-generator error: generated metadata is invalid, validation message: {validation_result}")
-        
     md_identifier = get_md_identifier(values_json_path)
     if output_dir:
         output_filename = f"{output_dir}/{md_identifier}_{service_type}.xml"
         if validation_result:
             output_filename = f"{output_dir}/{md_identifier}_{service_type}.invalid"
-
         with open(output_filename, 'w') as output:
             output.write(md_record)
     else:
