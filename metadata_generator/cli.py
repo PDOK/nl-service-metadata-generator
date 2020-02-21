@@ -196,8 +196,8 @@ def cli():
 @click.argument('values-json-path', type=click.Path(exists=True))
 @click.argument('service-type', type=click.Choice(SERVICE_TYPES_CLI, case_sensitive=True))
 @click.argument('ngr-host', type=click.Choice(NGR_HOST_TYPES, case_sensitive=True))
-@click.option('--output-dir', type=click.Path(exists=False), help="")
-def generate_service_metadata_command(values_json_path, service_type, ngr_host, output_dir=""):
+@click.argument('output-file', type=click.Path(exists=False, dir_okay=False))
+def generate_service_metadata_command(values_json_path, service_type, ngr_host, output_file):
     """Generate metadata record.
     """
     errors = list(validate_input_json(values_json_path))
@@ -221,16 +221,11 @@ def generate_service_metadata_command(values_json_path, service_type, ngr_host, 
     if validation_result:
         print(f"metadata-generator error: generated metadata is invalid, validation message: {validation_result}")
     md_identifier = get_md_identifier(values_json_path)
-    if output_dir:
-        output_filename = f"{output_dir}/{md_identifier}_{service_type}.xml"
-        if validation_result:
-            output_filename = f"{output_dir}/{md_identifier}_{service_type}.invalid"
-        with open(output_filename, 'w') as output:
-            output.write(md_record)
-    else:
-        if validation_result:
-            exit(1)
-        print(md_record)
+    
+    if validation_result:
+        output_filename = f"{output_file}.invalid"
+    with open(output_file, 'w') as output:
+        output.write(md_record)
 
 if __name__ == "__main__":
     # pylint: disable=no-value-for-parameter
