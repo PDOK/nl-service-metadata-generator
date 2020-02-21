@@ -136,9 +136,9 @@ def get_ogc_service_type(json_path):
 def generate_service_metadata(json_path, service_type, ngr_host):
     with open(json_path, 'r') as json_file:
         config_json = json.loads(json_file.read())
-        if ngr_host == "prod":
+        if ngr_host == "PROD":
             config_json["ngr_host"] = "https://nationaalgeoregister.nl"
-        if ngr_host == "test":
+        if ngr_host == "TEST":
             config_json["ngr_host"] = "https://ngr.acceptatie.nationaalgeoregister.nl"
         service_template = get_service_template(config_json)
         config_json = add_dynamic_fields(config_json, service_type)
@@ -182,8 +182,8 @@ def cli():
 
 @cli.command(name="gen-md")
 @click.argument('values-json-path', type=click.Path(exists=True))
-@click.argument('service-type', type=click.Choice(SERVICE_TYPES_CLI, case_sensitive=False))
-@click.argument('ngr-host', type=click.Choice(NGR_HOST_TYPES, case_sensitive=False))
+@click.argument('service-type', type=click.Choice(SERVICE_TYPES_CLI, case_sensitive=True))
+@click.argument('ngr-host', type=click.Choice(NGR_HOST_TYPES, case_sensitive=True))
 @click.option('--output-dir', type=click.Path(exists=False), help="")
 def generate_service_metadata_command(values_json_path, service_type, ngr_host, output_dir=""):
     """Generate metadata record.
