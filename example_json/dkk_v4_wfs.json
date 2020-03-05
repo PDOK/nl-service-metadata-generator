@@ -1,0 +1,28 @@
+{
+    "md_identifier": "ff9315c8-f25a-4d01-9245-5cf058314ebf",
+    "inspire": false,
+    "service_title": "Kadastrale Kaart v4 WFS",
+    "service_creation_date": "2014-10-16",
+    "service_owner": "PDOK",
+    "service_version": "v4_0",
+    "service_abstract": "Overzicht van de ligging van de kadastrale percelen in Nederland. Fungeert als schakel tussen terrein en registratie, vervult voor externe gebruiker vaak een referentiefunctie, een ondergrond ten opzichte waarvan de gebruiker eigen informatie kan vastleggen en presenteren.",
+    "keywords":[
+        "Kadaster",
+        "Kadastrale percelen"
+    ],
+   
+    "service_gebruiksbeperkingen": "Geen beperkingen",
+    "bbox":
+    {
+        "minx": "3.206252918228434",
+        "maxx": "7.245258336784366",
+        "miny": "50.73360719554353",
+        "maxy": "53.58297893748843"
+    },
+    "service_capabilities_url_wfs": "https://geodata.nationaalgeoregister.nl/kadastralekaart/wfs/v4_0?request=GetCapabilities&service=WFS",
+    "linked_datasets": [
+        {
+            "dataset_md_identifier": "a29917b9-3426-4041-a11b-69bcb2256904"
+        }
+    ]
+}
