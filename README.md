@@ -12,7 +12,13 @@ Installeer ngr-metadata-generator als pip package (uitvoeren vanuit root van rep
 pip3 install .
 ```
 
-Nu moet het cli command `generate-metadata`/`gen-md` beschikbaar zijn het `PATH`:
+Nu moet het cli command `generate-metadata`/`gen-md` beschikbaar zijn in `PATH`. Mocht dit niet het geval zijn, kijk of de binary goed is geïnstalleerd in `$HOME/.local/bin/gen-md` en voeg deze vervolgens toe aan je `PATH`
+
+```
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+Dit is de output van `generate-metadata`/`gen-md`:
 
 ```
 generate-metadata --help
