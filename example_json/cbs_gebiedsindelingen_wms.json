@@ -1,0 +1,61 @@
+{
+  "md_identifier": "488c1e6d-363e-4476-b2ff-17756ac9b35f",
+  "inspire": true,
+  "service_title": "CBS Gebiedsindelingen WMS",
+  "service_creation_date": "2021-01-12",
+  "service_owner": "PDOK",
+  "service_abstract": "Het bestand CBS gebiedsindelingen geeft de gebiedsindelingen die het CBS hanteert. De indelingen zijn gegeven van 1995 t/m het meest recente jaar in gegeneraliseerde vorm. Het meest recente jaar bevat in de eerste helft van dat jaar voorlopige grenzen en nog geen wijken en buurten voor dat jaar. De volgende gebiedsindelingen kunnen voorkomen: Gemeente, Landsdeel, Provincie, Buurt, COROP-gebied, GGD-regio, NUTS3, NUTS1, NUTS2, Wijk, Grootstedelijke aglomeratie, Stadsgewest, COROP-plusgebied, COROP-subgebied, Landbouwgebied, Landbouwgroep, RPA-gebied, Toeristengroep, Toeristengebied, Arrondissementsgebied, Brandweerregio, Kamer van Koophandelregio, Politieregio, Regionale Eenheid, Veiligheidsregio, Zorgkantoorregio, Arbeidsmarktregio en Jeugdregio. In de metadata zijn alleen de lagen van het laatste jaar opgenomen.",
+  "keywords": [
+    "statistische eenheden",
+    "gebiedsindeling",
+    "Gemeente",
+    "Landsdeel",
+    "Provincie",
+    "Buurt",
+    "COROP-gebied",
+    "GGD-regio",
+    "NUTS3",
+    "NUTS1",
+    "NUTS2",
+    "Wijk",
+    "Grootstedelijke aglomeratie",
+    "Stadsgewest",
+    "COROP-plusgebied",
+    "COROP-subgebied",
+    "Landbouwgebied",
+    "Landbouwgroep",
+    "RPA-gebied",
+    "Toeristengroep",
+    "Toeristengebied",
+    "Arrondissementsgebied",
+    "Brandweerregio",
+    "Kamer van Koophandelregio",
+    "Politieregio",
+    "Regionale Eenheid",
+    "Veiligheidsregio",
+    "Zorgkantoorregio",
+    "Arbeidsmarktregio",
+    "Jeugdregio"
+  ],
+  "inspire_theme_uri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/su",
+  "service_gebruiksbeperkingen": "Het bestand vrij is om te gebruiken en te downloaden. Bronvermelding CBS verplicht.",
+  "bbox": {
+    "minx": "3.206252918228434",
+    "maxx": "7.245258336784366",
+    "miny": "50.73360719554353",
+    "maxy": "53.58297893748843"
+  },
+  "service_capabilities_url_wms": "https://geodata.nationaalgeoregister.nl/cbsgebiedsindelingen/wms?request=GetCapabilities&service=wms",
+  "linked_datasets": [
+    {
+      "dataset_md_identifier": "effe1ab0-073d-437c-af13-df5c5e07d6cd"
+    }
+  ],
+  "thumbnails": [
+    {
+      "file": "https://geodata.nationaalgeoregister.nl/cbsgebiedsindelingen/wms?LAYERS=cbs_brandweerregio_2010_gegeneraliseerd&FORMAT=image%2Fpng&TRANSPARENT=TRUE&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&SRS=EPSG%3A28992&BBOX=33394.88,295483.84,304990.4,681910.72&WIDTH=631&HEIGHT=898",
+      "description": "thumbnail",
+      "filetype": "png"
+    }
+  ]
+}
