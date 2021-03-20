@@ -26,7 +26,7 @@ setup(
     include_package_data=True,
     setup_requires=['wheel'],
     install_requires=[
-        'Jinja2==2.10.3',
+        'Jinja2==2.11.3',
         'Click==7.0',
         'lxml==4.2.1'
     ],
