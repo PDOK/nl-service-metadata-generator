@@ -4,6 +4,31 @@ CLI applicatie om service metadata records te genereren die voldoen aan het [Ned
 
 CLI applicatie genereert metadata en voert schema validatie uit. Applicatie voert *geen* schematron validatie uit (validatie op *Nederlands profiel op ISO 19119 voor services versie 2.0.0*). 
 
+## Benodigdheden (Ubuntu 20 LTS)
+
+Installeer python3
+
+```
+sudo snap install python3
+```
+
+Installeer de python3 package installer (pip3)
+
+```
+sudo apt install python3-pip
+```
+
+Installeer libxml-dev
+
+```
+sudo apt install libxml2-dev
+```
+
+Installeer libxslt-dev
+```
+sudo apt install libxslt-dev
+```
+
 ## Gebruik
 
 Installeer ngr-metadata-generator als pip package (uitvoeren vanuit root van repository):
