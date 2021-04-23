@@ -35,5 +35,5 @@ Options:
 Bijvoorbeeld (uitvoeren in root directory van dit repository):
 
 ```bash
-gen-md example_json/protectedsites_cdda_harmonized.json WMS PROD --output-dir output/
+gen-md example_json/inspire.json WMS PROD --output-dir output/
 ```
