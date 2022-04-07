@@ -11,6 +11,10 @@ Installeer python3
 ```
 sudo snap install python3
 ```
+or
+```
+sudo apt install python3
+```
 
 Installeer de python3 package installer (pip3)
 
@@ -48,7 +52,7 @@ Dit is de output van `generate-metadata`/`gen-md`:
 ```bash
 generate-metadata --help
 Usage: generate-metadata [OPTIONS] VALUES_JSON_PATH
-                         [CSW|WMS|WMTS|WFS|WCS|SOS|ATOM] [PROD|TEST]
+                         [CSW|WMS|WMTS|WFS|WCS|SOS|ATOM|TMS|IN_JSON] [PROD|TEST]
 
   Generate metadata record.
 
@@ -60,5 +64,6 @@ Options:
 Bijvoorbeeld (uitvoeren in root directory van dit repository):
 
 ```bash
+mkdir output
 gen-md example_json/inspire.json WMS PROD --output-dir output/
 ```
