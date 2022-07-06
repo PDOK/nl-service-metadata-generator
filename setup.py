@@ -28,7 +28,7 @@ setup(
     install_requires=[
         'Jinja2==2.11.3',
         'Click==7.0',
-        'lxml==4.6.5',
+        'lxml==4.9.1',
         'markupsafe==2.0.1'
     ],
     entry_points='''
