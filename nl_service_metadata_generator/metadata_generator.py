@@ -16,6 +16,7 @@ from nl_service_metadata_generator.constants import (
 from nl_service_metadata_generator.util import (
     camel_to_snake,
     format_xml,
+    get_service_md_identifier,
     get_service_url,
     render_template,
     replace_keys,
@@ -40,6 +41,10 @@ def add_dynamic_fields(data_json, ogc_service_type):
     data_json.update(protocol_fields)
     service_access_point = get_service_url(data_json, ogc_service_type)
     data_json["service_access_point"] = service_access_point
+
+    service_md_identifier = get_service_md_identifier(data_json, ogc_service_type)
+    data_json["md_identifier"] = service_md_identifier
+
     # remove keywords that are equal to spatial_dataservice_category_label (
     # these kw are already taken care of by get_inspire_fields_by_ogc_service_type
     categories = get_spatial_dataservice_categories()

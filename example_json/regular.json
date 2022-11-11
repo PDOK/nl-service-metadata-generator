@@ -1,5 +1,6 @@
 {
-  "mdIdentifier": "0bb7e0e1-c8c0-4fc0-b499-0a9ab2449b08",
+  "mdIdentifierWfs": "e9ba7d7f-6cd1-4271-bce4-56432924b338",
+  "mdIdentifierWms": "c78a99eb-9ba3-4307-a21b-2a64ad5da039",
   "serviceTitle": "Mosselzaadinvanginstallaties",
   "serviceCreationDate": "2019-09-26",
   "serviceAbstract": "Dit betreft een bestandsopname van het areaal mossel en oesterbanken op de droogvallende platen in de Waddenzee. Dit geschiedt jaarlijks. De opdrachtgever is de Directie Dierlijke Agroketens en Dierenwelzijn / Cluster Duurzame Visserijketens. De bestandsopname zelf wordt uitgevoerd door IMARES.",
@@ -14,7 +15,6 @@
   },
   "serviceAccessPointWms": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wms?request=GetCapabilities&service=WMS",
   "serviceAccessPointWfs": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wfs?request=GetCapabilities&service=WFS",
-  "serviceAccessPointAtom": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wfs?request=GetCapabilities&service=WFS",
   "linkedDatasets": [
     {
       "datasetMdIdentifier": "a04afee4-47d5-45b7-b7a0-a6f86106af11"

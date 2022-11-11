@@ -57,6 +57,16 @@ def validate_input_json(contact_config, json_schema_path):
         return validate(instance=contact_config, schema=json.load(contact_json_schema))
 
 
+def get_service_md_identifier(data_json, service_type):
+    service_type_string = service_type.lower().replace(" ", "_")
+    key = f"md_identifier_{service_type_string}"
+    if not key in data_json:
+        camel_key = snake_to_camel(key)
+        raise ValueError(f"key {camel_key} missing in metadata config file")
+    md_identifier = data_json[key]
+    return md_identifier
+
+
 def get_service_url(data_json, service_type):
     service_type_string = service_type.lower().replace(" ", "_")
     key = f"service_access_point_{service_type_string}"

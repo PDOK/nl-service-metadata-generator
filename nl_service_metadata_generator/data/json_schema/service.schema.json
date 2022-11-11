@@ -5,12 +5,7 @@
   "description": "Service object to generate ISO19119 service metadata record",
   "type": "object",
   "additionalProperties": false,
-
   "properties": {
-    "mdIdentifier": {
-      "type": "string",
-      "format": "uuid"
-    },
     "serviceTitle": {
       "type": "string"
     },
@@ -128,23 +123,54 @@
       "description": "Resolvable url that points to service access point",
       "type": "string",
       "format": "uri"
+    },
+    "mdIdentifierWfs": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "mdIdentifierAtom": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "mdIdentifierWcs": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "mdIdentifierWmts": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "mdIdentifierWms": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "mdIdentifierSos": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "mdIdentifierCsw": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "mdIdentifierOaf": {
+      "type": "string",
+      "format": "uuid"
     }
   },
   "required": [
-    "mdIdentifier",
     "serviceTitle",
     "serviceAbstract",
     "serviceCreationDate",
     "keywords"
   ],
   "anyOf": [
-    { "required": ["serviceAccessPointWfs"] },
-    { "required": ["serviceAccessPointAtom"] },
-    { "required": ["serviceAccessPointWmts"] },
-    { "required": ["serviceAccessPointWcs"] },
-    { "required": ["serviceAccessPointWms"] },
-    { "required": ["serviceAccessPointSos"] },
-    { "required": ["serviceAccessPointCsw"] },
-    { "required": ["serviceAccessPointOaf"] }
+    { "required": ["serviceAccessPointWfs", "mdIdentifierWfs"] },
+    { "required": ["serviceAccessPointAtom", "mdIdentifierAtom"] },
+    { "required": ["serviceAccessPointWmts", "mdIdentifierWmts"] },
+    { "required": ["serviceAccessPointWcs", "mdIdentifierWcs"] },
+    { "required": ["serviceAccessPointWms", "mdIdentifierWms"] },
+    { "required": ["serviceAccessPointSos", "mdIdentifierSos"] },
+    { "required": ["serviceAccessPointCsw", "mdIdentifierCsw"] },
+    { "required": ["serviceAccessPointOaf", "mdIdentifierOaf"] }
   ]
 }
