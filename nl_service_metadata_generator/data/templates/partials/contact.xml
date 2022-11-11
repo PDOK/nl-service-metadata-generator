@@ -1,19 +1,19 @@
 <gmd:organisationName>
-    <gmx:Anchor xlink:href="http://standaarden.overheid.nl/owms/terms/pdok">Beheer PDOK</gmx:Anchor>
+    <gmx:Anchor xlink:href="{{contact_organisation_uri}}">{{contact_organisation_name}}</gmx:Anchor>
 </gmd:organisationName>
 <gmd:contactInfo>
     <gmd:CI_Contact>
         <gmd:address>
             <gmd:CI_Address>
                 <gmd:electronicMailAddress>
-                    <gco:CharacterString>beheerpdok@kadaster.nl</gco:CharacterString>
+                    <gco:CharacterString>{{contact_email}}</gco:CharacterString>
                 </gmd:electronicMailAddress>
             </gmd:CI_Address>
         </gmd:address>
         <gmd:onlineResource>
             <gmd:CI_OnlineResource>
                 <gmd:linkage>
-                    <gmd:URL>https://www.pdok.nl/contact</gmd:URL>
+                    <gmd:URL>{{contact_url}}</gmd:URL>
                 </gmd:linkage>
             </gmd:CI_OnlineResource>
         </gmd:onlineResource>

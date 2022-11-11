@@ -1,44 +1,35 @@
 {
-    "md_identifier": "7165bb1f-fea6-4f28-b1d2-a2a92a11ea2f",
-    "inspire": true,
-    "service_title": "Beschermde gebieden - CDDA (INSPIRE geharmoniseerd)",
-    "service_creation_date": "2018-08-16",
-    "service_owner": "RCE",
-    "service_version": "v1_0",
-    "service_abstract": "INSPIRE view service CDDA. In deze dataset is de zogeheten common database of designated areas (CDDA) weergegeven. Deze database is onderdeel van de jaarlijkse rapportage vanuit Nederland aan de EEA. De CDDA bestaat uit de Natura2000 gebieden, de Nationale parken en het Natuur Netwerk Nederland.",
-    "keywords":[
-        "Natuur en milieu",
-        "Landbouw en veeteelt",
-        "Grenzen",
-        "Locatie"
-    ],
-    "inspire_theme_uri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ps",
-    "service_gebruiksbeperkingen": "Geen beperkingen",
-    "bbox":
+  "mdIdentifier": "7165bb1f-fea6-4f28-b1d2-a2a92a11ea2f",
+  "serviceTitle": "Beschermde gebieden - CDDA (INSPIRE geharmoniseerd)",
+  "serviceCreationDate": "2018-08-16",
+  "serviceAbstract": "INSPIRE view service CDDA. In deze dataset is de zogeheten common database of designated areas (CDDA) weergegeven. Deze database is onderdeel van de jaarlijkse rapportage vanuit Nederland aan de EEA. De CDDA bestaat uit de Natura2000 gebieden, de Nationale parken en het Natuur Netwerk Nederland.",
+  "keywords": [
+    "Natuur en milieu",
+    "Landbouw en veeteelt",
+    "Grenzen",
+    "Locatie"
+  ],
+  "inspireThemeUri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ps",
+  "serviceUseLimitation": "Geen beperkingen",
+  "boundingBox": {
+    "minX": 3.206252918228434,
+    "maxX": 7.245258336784366,
+    "minY": 50.73360719554353,
+    "maxY": 53.58297893748843
+  },
+  "serviceAccessPointWfs": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wfs?request=GetCapabilities&service=WFS&version=2.0.0",
+  "serviceAccessPointWms": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wms?request=GetCapabilities&service=WMS&version=1.3.0",
+  "serviceAccessPointAtom": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wms?request=GetCapabilities&service=WMS&version=1.3.0",
+  "linkedDatasets": [
     {
-        "minx": "3.206252918228434",
-        "maxx": "7.245258336784366",
-        "miny": "50.73360719554353",
-        "maxy": "53.58297893748843"
-    },
-    "service_capabilities_url_wfs": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wfs?request=GetCapabilities&service=WFS&version=2.0.0",
-    "service_capabilities_url_wms": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wms?request=GetCapabilities&service=WMS&version=1.3.0",
-    "service_capabilities_url_atom": "https://geodata.nationaalgeoregister.nl/inspire/ps-cdda/wms?request=GetCapabilities&service=WMS&version=1.3.0",
-    "linked_datasets": [
-        {
-            "dataset_md_identifier": "3387ef8a-9237-453a-aa4e-585d1e193550"
-        }
-    ],
-    "thumbnails": [
-        {
-          "file": "https://geodata.nationaalgeoregister.nl/vin/ows?LAYERS=bevaarbaarheid&TRANSPARENT=true&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG%3A28992&BBOX=-42621.76,303655.36,446379.2,686856.64&WIDTH=284&HEIGHT=223",
-          "description": "thumbnail",
-          "filetype": "png"
-        },
-        {
-            "file": null,
-            "description": "large_thumbnail",
-            "filetype": "png"
-          }
-    ]
+      "datasetMdIdentifier": "3387ef8a-9237-453a-aa4e-585d1e193550"
+    }
+  ],
+  "thumbnails": [
+    {
+      "file": "https://geodata.nationaalgeoregister.nl/vin/ows?LAYERS=bevaarbaarheid&TRANSPARENT=true&FORMAT=image%2Fpng&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&SRS=EPSG%3A28992&BBOX=-42621.76,303655.36,446379.2,686856.64&WIDTH=284&HEIGHT=223",
+      "description": "thumbnail",
+      "filetype": "png"
+    }
+  ]
 }

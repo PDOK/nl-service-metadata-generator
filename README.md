@@ -1,69 +1,39 @@
-# NGR Metadata Generator
+# nl-service-metadata-generator
 
-CLI applicatie om service metadata records te genereren die voldoen aan het [Nederlands profiel op ISO 19119 voor services versie 2.0.0](https://docs.geostandaarden.nl/md/mdprofiel-iso19119/).
+CLI applicatie om service metadata records te genereren die voldoen aan het [Nederlands profiel op ISO 19119 voor services versie 2.1.0](https://docs.geostandaarden.nl/md/mdprofiel-iso19119/).
 
-CLI applicatie genereert metadata en voert schema validatie uit. Applicatie voert *geen* schematron validatie uit (validatie op *Nederlands profiel op ISO 19119 voor services versie 2.0.0*).
+CLI applicatie genereert metadata en voert schema validatie uit. Applicatie voert *geen* schematron validatie uit (validatie op *Nederlands profiel op ISO 19119 voor services versie 2.1.0*).
 
-## Benodigdheden (Ubuntu 20 LTS)
+## Installation
 
-Installeer python3
-
-```
-sudo snap install python3
-```
-or
-```
-sudo apt install python3
-```
-
-Installeer de python3 package installer (pip3)
-
-```
-sudo apt install python3-pip
-```
-
-Installeer libxml-dev
-
-```
-sudo apt install libxml2-dev
-```
-
-Installeer libxslt-dev
-```
-sudo apt install libxslt-dev
-```
-
-## Gebruik
-
-Installeer ngr-metadata-generator als pip package (uitvoeren vanuit root van repository):
+Installeer `nl-service-metadata-generator` als pip package (uitvoeren vanuit root van repository):
 
 ```pip3
 pip3 install .
 ```
 
-Nu moet het cli command `generate-metadata`/`gen-md` beschikbaar zijn in `PATH`. Mocht dit niet het geval zijn, kijk of de binary goed is geïnstalleerd in `$HOME/.local/bin/gen-md` en voeg deze vervolgens toe aan je `PATH`
+Nu moet het cli command `nl-service-metadata-generator` beschikbaar zijn in `PATH`.
+
+## Usage
 
 ```bash
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-Dit is de output van `generate-metadata`/`gen-md`:
-
-```bash
-generate-metadata --help
-Usage: generate-metadata [OPTIONS] VALUES_JSON_PATH
-                         [CSW|WMS|WMTS|WFS|WCS|SOS|ATOM|TMS|IN_JSON] [PROD|TEST]
-
-  Generate metadata record.
+Usage: nl-service-metadata-generator [OPTIONS]
+                                     {csw|wms|wmts|wfs|wcs|sos|atom|tms|oaf}
+                                     {network|other|none} CONTACT_CONFIG_FILE
+                                     METADATA_CONFIG_FILE OUTPUT_FILE
 
 Options:
-  --output-dir PATH
-  --help             Show this message and exit.
+  --csw-endpoint TEXT             References to dataset metadata records will
+                                  use this CSW endpoint (default val: https://
+                                  nationaalgeoregister.nl/geonetwork/srv/dut/c
+                                  sw)
+  --sds-type [invocable|interoperable|harmonised]
+                                  only applies when inspire-type='other'
+  --help                          Show this message and exit.
 ```
 
 Bijvoorbeeld (uitvoeren in root directory van dit repository):
 
 ```bash
-mkdir output
-gen-md example_json/inspire.json WMS PROD --output-dir output/
+nl-service-metadata-generator atom network example_json/contact.json example_json/inspire.json atom.xml
 ```

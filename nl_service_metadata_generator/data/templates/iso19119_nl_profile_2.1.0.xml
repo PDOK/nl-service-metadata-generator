@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gmd:MD_Metadata
-	xmlns:srv="http://www.isotc211.org/2005/srv" 
+<gmd:MD_Metadata xmlns:srv="http://www.isotc211.org/2005/srv"
 	xmlns:gml="http://www.opengis.net/gml"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" 
+	xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
 	xmlns:gmd="http://www.isotc211.org/2005/gmd"
 	xmlns:gmx="http://www.isotc211.org/2005/gmx"
-	xmlns:gts="http://www.isotc211.org/2005/gts" 
+	xmlns:gts="http://www.isotc211.org/2005/gts"
 	xmlns:gco="http://www.isotc211.org/2005/gco"
-	xmlns:xlink="http://www.w3.org/1999/xlink"
-	xsi:schemaLocation="http://www.isotc211.org/2005/gmd
+	xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.isotc211.org/2005/gmd
 	http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd">
 	{% include "partials/common.xml" %}
 	<gmd:identificationInfo>
 		<srv:SV_ServiceIdentification>
-			{% include "partials/common_serviceidentification.xml" %}
+			{% include "partials/common_serviceidentification.xml" %}			
+			{% if inspire_type != "none" -%}
 			{% include "partials/inspire_thesaurus_keywords.xml" %}
+			{% endif %}
 			{% include "partials/resource_constraints.xml" %}
+			{% if inspire_type != "none" -%}
 			{% include "partials/inspire_resource_constraints.xml" %}
+			{% endif %}
 			{% include "partials/service_type.xml" %}
 			{% include "partials/boundingbox.xml" %}
 			{% include "partials/coupling.xml" %}
@@ -27,7 +29,14 @@
 	<gmd:dataQualityInfo>
 		<gmd:DQ_DataQuality>
 			{% include "partials/quality_level.xml" %}
+
+			{% if inspire_type == "network" -%}
   			{% include "partials/inspire_conformance.xml" %}
+			{% endif %}
+			
+			{% if inspire_type == "other" -%}
+			{% include "partials/inspire_conformance_sds.xml" %}
+			{% endif %}
 		</gmd:DQ_DataQuality>
 	</gmd:dataQualityInfo>
 </gmd:MD_Metadata>

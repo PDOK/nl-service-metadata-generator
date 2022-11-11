@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pdok.nl/ngr-metadata-generator-2/service.schema.json",
+  "title": "Service",
+  "description": "Service object to generate ISO19119 service metadata record",
+  "type": "object",
+  "additionalProperties": false,
+
+  "properties": {
+    "mdIdentifier": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "serviceTitle": {
+      "type": "string"
+    },
+    "serviceAbstract": {
+      "type": "string"
+    },
+    "serviceCreationDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "inspireThemeUri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "serviceUseLimitation": {
+      "type": "string"
+    },
+    "boundingBox": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minX": {
+          "type": "number"
+        },
+        "minY": {
+          "type": "number"
+        },
+        "maxX": {
+          "type": "number"
+        },
+        "maxY": {
+          "type": "number"
+        }
+      },
+      "required": ["minX", "minY", "maxX", "maxY"]
+    },
+    "linkedDatasets": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "datasetMdIdentifier": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": ["datasetMdIdentifier"]
+      }
+    },
+    "thumbnails": {
+      "type": "array",
+      "minItems": 0,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "filetype": {
+            "type": "string"
+          }
+        },
+        "required": ["file", "description", "filetype"]
+      }
+    },
+    "serviceAccessPointWfs": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    },
+    "serviceAccessPointAtom": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    },
+    "serviceAccessPointWmts": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    },
+    "serviceAccessPointWcs": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    },
+    "serviceAccessPointWms": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    },
+    "serviceAccessPointSos": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    },
+    "serviceAccessPointCsw": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    },
+    "serviceAccessPointOaf": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": [
+    "mdIdentifier",
+    "serviceTitle",
+    "serviceAbstract",
+    "serviceCreationDate",
+    "keywords"
+  ],
+  "anyOf": [
+    { "required": ["serviceAccessPointWfs"] },
+    { "required": ["serviceAccessPointAtom"] },
+    { "required": ["serviceAccessPointWmts"] },
+    { "required": ["serviceAccessPointWcs"] },
+    { "required": ["serviceAccessPointWms"] },
+    { "required": ["serviceAccessPointSos"] },
+    { "required": ["serviceAccessPointCsw"] },
+    { "required": ["serviceAccessPointOaf"] }
+  ]
+}

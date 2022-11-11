@@ -1,9 +1,7 @@
 <srv:couplingType>
-    <!-- https://geonovum.github.io/Metadata-ISO19119/#koppel-type -->
+    <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#koppel-type -->
     <!-- Vaste waarde "tight" voor een View of download service-->
-    <srv:SV_CouplingType
-        codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#SV_CouplingType"
-        codeListValue="tight"/>
+    <srv:SV_CouplingType codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#SV_CouplingType" codeListValue="tight"/>
 </srv:couplingType>
 <srv:containsOperations>
     <!-- Beschrijft minimaal 1 operatie van de service, voor de hand ligt GetCapabilities  -->
@@ -12,34 +10,32 @@
     <!-- voor services document zou je kunnen volstaan met alleen de beschrijving van GetCapabilities -->
     <srv:SV_OperationMetadata>
         <srv:operationName>
-            <!-- https://geonovum.github.io/Metadata-ISO19119/#operatie-naam -->
+            <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#operatie-naam -->
             <!-- Name van de operatie, bv GetCapabilities -->
             <gco:CharacterString>GetCapabilities</gco:CharacterString>
         </srv:operationName>
         <srv:DCP>
-            <!-- https://geonovum.github.io/Metadata-ISO19119/#DCP -->
-            <srv:DCPList
-                codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#DCPList"
-                codeListValue="WebServices"/>
+            <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#DCP -->
+            <srv:DCPList codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#DCPList" codeListValue="WebServices"/>
         </srv:DCP>
         <srv:connectPoint>
-            <!-- https://geonovum.github.io/Metadata-ISO19119/#connectie-url -->
+            <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#connectie-url -->
             <!-- het accessPoint van de service, waarin de operaties en endpoints zijn opgenomen. -->
             <!-- Bij OGC services is dat de URL naar het capabilities document-->
             <gmd:CI_OnlineResource>
                 <gmd:linkage>
-                    <gmd:URL>{{service_capabilities_url}}</gmd:URL>
+                    <gmd:URL>{{service_access_point}}</gmd:URL>
                 </gmd:linkage>
             </gmd:CI_OnlineResource>
         </srv:connectPoint>
         <!-- Conditioneel (INSPIRE)-->
-        <!-- https://geonovum.github.io/Metadata-ISO19119/#parameter-naam -->
-        <!-- https://geonovum.github.io/Metadata-ISO19119/#parameter-optionaliteit -->
-        <!-- https://geonovum.github.io/Metadata-ISO19119/#parameter-herhaalbaarheid -->
+        <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#parameter-naam -->
+        <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#parameter-optionaliteit -->
+        <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#parameter-herhaalbaarheid -->
     </srv:SV_OperationMetadata>
 </srv:containsOperations>
-<!-- https://geonovum.github.io/Metadata-ISO19119/#gekoppelde-bron -->
+<!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#gekoppelde-bron -->
 <!-- Het attribuut xlink:href moet een URI bevatten naar het MD_DataIdentification deel in de XML van het metadata record van de dataset-->
 {% for dataset in linked_datasets -%}
-<srv:operatesOn uuidref="{{dataset.dataset_md_identifier}}" xlink:href="{{ngr_host}}/geonetwork/srv/dut/csw?service=CSW&amp;request=GetRecordById&amp;version=2.0.2&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full&amp;id={{dataset.dataset_md_identifier}}#MD_DataIdentification"/>
+<srv:operatesOn uuidref="{{dataset.dataset_md_identifier}}" xlink:href="{{csw_endpoint}}?service=CSW&amp;request=GetRecordById&amp;version=2.0.2&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full&amp;id={{dataset.dataset_md_identifier}}#MD_DataIdentification"/>
 {%- endfor %}
