@@ -28,7 +28,8 @@ def add_dynamic_fields(data_json, ogc_service_type):
     md_date_stamp = datetime.today().strftime("%Y-%m-%d")
     title = data_json["service_title"]
     if not title.lower().endswith(ogc_service_type.lower()):
-        data_json["service_title"] = f"{title} {ogc_service_type}"
+        ogc_service_type_upper = ogc_service_type.upper()
+        data_json["service_title"] = f"{title} {ogc_service_type_upper}"
     data_json["md_date_stamp"] = md_date_stamp
 
     if (
