@@ -6,12 +6,12 @@ from nl_service_metadata_generator.codelist_lookup import (
     get_inspire_theme_label,
     get_sds_categories,
     get_service_protocol_values,
-    get_spatial_dataservice_categories,
+    get_spatial_dataservice_categories
 )
 from nl_service_metadata_generator.constants import (
     JSON_SCHEMA_CONTACT,
     JSON_SCHEMA_SERVICE,
-    SERVICE_TEMPLATE,
+    SERVICE_TEMPLATE
 )
 from nl_service_metadata_generator.util import (
     camel_to_snake,
@@ -20,7 +20,7 @@ from nl_service_metadata_generator.util import (
     get_service_url,
     render_template,
     replace_keys,
-    validate_input_json,
+    validate_input_json
 )
 
 

@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
 import os
-import click
 from pathlib import Path
-from nl_service_metadata_generator.constants import DEFAULT_CSW_ENDPOINT
 
-from nl_service_metadata_generator.enums import InspireType, SdsType, ServiceType
-from nl_service_metadata_generator.metadata_generator import (
-    generate_service_metadata,
+import click
+
+from nl_service_metadata_generator.constants import DEFAULT_CSW_ENDPOINT
+from nl_service_metadata_generator.enums import (
+    InspireType,
+    SchemaType,
+    SdsType,
+    ServiceType,
 )
-from nl_service_metadata_generator.util import validate_service_metadata
+from nl_service_metadata_generator.metadata_generator import generate_service_metadata
+from nl_service_metadata_generator.util import print_schema, validate_service_metadata
 
 
 @click.group()
@@ -16,7 +20,13 @@ def cli():
     pass
 
 
-@cli.command(name="gen-md")
+@cli.command(name="inspect-schema")
+@click.argument("schema-type", type=click.Choice(SchemaType, case_sensitive=True))
+def inspect_schema_command(schema_type):
+    print_schema(schema_type)
+
+
+@cli.command(name="generate")
 @click.argument("service-type", type=click.Choice(ServiceType, case_sensitive=True))
 @click.argument("inspire-type", type=click.Choice(InspireType, case_sensitive=True))
 @click.argument("contact-config-file", type=click.Path(exists=True))
@@ -34,7 +44,7 @@ def cli():
     default=SdsType.INVOCABLE,
     help="only applies when inspire-type='other'",
 )
-def generate_service_metadata_command(
+def generate_command(
     service_type: ServiceType,
     inspire_type: InspireType,
     contact_config_file,
@@ -78,4 +88,4 @@ def generate_service_metadata_command(
 
 if __name__ == "__main__":
     # pylint: disable=no-value-for-parameter
-    generate_service_metadata_command()
+    cli()

@@ -6,6 +6,11 @@ class NgrEnv(str, enum.Enum):
     ACC = "acc"
 
 
+class SchemaType(str, enum.Enum):
+    SERVICE = "service"
+    CONTACT = "contact"
+
+
 class ServiceType(str, enum.Enum):
     CSW = "csw"
     WMS = "wms"
@@ -27,4 +32,5 @@ class InspireType(str, enum.Enum):
 class SdsType(str, enum.Enum):
     INVOCABLE = "invocable"
     INTEROPERABLE = "interoperable"
-    HARMONISED = "harmonised"
+    # TODO: add support for sds harmonized services
+    # HARMONISED = "harmonised"

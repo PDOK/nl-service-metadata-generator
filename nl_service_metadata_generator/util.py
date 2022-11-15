@@ -7,9 +7,12 @@ from jsonschema import validate
 from lxml import etree
 
 from nl_service_metadata_generator.constants import (
+    JSON_SCHEMA_CONTACT,
+    JSON_SCHEMA_SERVICE,
     SERVICE_METADATA_SCHEMA,
     TEMPLATES_DIR,
 )
+from nl_service_metadata_generator.enums import SchemaType
 
 
 def render_template(template_path, data_json):
@@ -46,6 +49,20 @@ def replace_keys(dictionary: dict, fun) -> dict:
         else:
             empty[fun(k)] = v
     return empty
+
+
+def print_schema(schema_type: SchemaType):
+    if schema_type == SchemaType.CONTACT:
+        json_schema_path = JSON_SCHEMA_CONTACT
+    elif schema_type == SchemaType.SERVICE:
+        json_schema_path = JSON_SCHEMA_SERVICE
+    json_schema_path = pkg_resources.resource_filename(
+        __name__,
+        json_schema_path,
+    )
+    with open(json_schema_path, "r") as f:
+        parsed = json.load(f)
+        print(json.dumps(parsed, indent=4))
 
 
 def validate_input_json(contact_config, json_schema_path):
