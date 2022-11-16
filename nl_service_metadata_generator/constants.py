@@ -4,6 +4,11 @@ SERVICE_METADATA_SCHEMA = (
     "data/schema/schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd"
 )
 JSON_SCHEMA_SERVICE = "data/json_schema/service.schema.json"
-JSON_SCHEMA_CONTACT = "data/json_schema/contact.schema.json"
+JSON_SCHEMA_CONSTANTS = "data/json_schema/constants.schema.json"
 TEMPLATES_DIR = "data/templates"
 DEFAULT_CSW_ENDPOINT = "https://nationaalgeoregister.nl/geonetwork/srv/dut/csw"
+QUALITY_SERVICE_CONFORMANCE = {
+    "qosPerformance": 1,
+    "qosAvailability": 99,
+    "qosCapacity": 10,
+}

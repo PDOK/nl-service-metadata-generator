@@ -31,7 +31,7 @@ Nu moet het cli command `nl-service-metadata-generator` beschikbaar zijn in `PAT
 ```bash
 Usage: nl-service-metadata-generator generate 
            [OPTIONS] {csw|wms|wmts|wfs|wcs|sos|atom|tms|oaf}
-           {network|other|none} CONTACT_CONFIG_FILE METADATA_CONFIG_FILE
+           {network|other|none} CONSTANTS_CONFIG_FILE METADATA_CONFIG_FILE
            OUTPUT_FILE
 
 Options:
@@ -50,7 +50,7 @@ Bijvoorbeeld (uitvoeren in root directory van dit repository):
 nl-service-metadata-generator atom network example_json/contact.json example_json/inspire.json atom.xml
 ```
 
-JSON schema voor de `CONTACT_CONFIG_FILE`  en `METADATA_CONFIG_FILE` kunnen worden opgevraagd middels het `inspect-schema` command, zie `nl-service-metadata-generator inspect-schema --help` voor help.
+JSON schema voor de `CONSTANTS_CONFIG_FILE`  en `METADATA_CONFIG_FILE` kunnen worden opgevraagd middels het `show-schema` command, zie `nl-service-metadata-generator show-schema --help` voor help.
 
 ## Development
 

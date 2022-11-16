@@ -10,7 +10,7 @@
             <gmd:DQ_QuantitativeResult>
                 <gmd:valueUnit xlink:href="urn:ogc:def:uom:OGC::percent"/>
                 <gmd:value>
-                    <gco:Record>80</gco:Record>
+                    <gco:Record>{{qos_availability}}</gco:Record>
                 </gmd:value>
             </gmd:DQ_QuantitativeResult>
         </gmd:result>
@@ -28,7 +28,7 @@
             <gmd:DQ_QuantitativeResult>
                 <gmd:valueUnit xlink:href=" http://www.opengis.net/def/uom/SI/second"/>
                 <gmd:value>
-                    <gco:Record>2</gco:Record>
+                    <gco:Record>{{qos_performance}}</gco:Record>
                 </gmd:value>
             </gmd:DQ_QuantitativeResult>
         </gmd:result>
@@ -46,7 +46,7 @@
             <gmd:DQ_QuantitativeResult>
                 <gmd:valueUnit xlink:href="http://www.opengis.net/def/uom/OGC/1.0/unity"/>
                 <gmd:value>
-                    <gco:Record>2</gco:Record>
+                    <gco:Record>{{qos_capacity}}</gco:Record>
                 </gmd:value>
             </gmd:DQ_QuantitativeResult>
         </gmd:result>

@@ -6,12 +6,13 @@ from nl_service_metadata_generator.codelist_lookup import (
     get_inspire_theme_label,
     get_sds_categories,
     get_service_protocol_values,
-    get_spatial_dataservice_categories
+    get_spatial_dataservice_categories,
 )
 from nl_service_metadata_generator.constants import (
-    JSON_SCHEMA_CONTACT,
+    JSON_SCHEMA_CONSTANTS,
     JSON_SCHEMA_SERVICE,
-    SERVICE_TEMPLATE
+    QUALITY_SERVICE_CONFORMANCE,
+    SERVICE_TEMPLATE,
 )
 from nl_service_metadata_generator.util import (
     camel_to_snake,
@@ -20,7 +21,7 @@ from nl_service_metadata_generator.util import (
     get_service_url,
     render_template,
     replace_keys,
-    validate_input_json
+    validate_input_json,
 )
 
 
@@ -72,7 +73,7 @@ def add_dynamic_fields(data_json, ogc_service_type):
 
 
 def generate_service_metadata(
-    contact_config_file,
+    constants_config_file,
     metadata_config_file,
     service_type,
     inspire_type,
@@ -80,24 +81,26 @@ def generate_service_metadata(
     csw_endpoint,
 ):
     with open(metadata_config_file, "r") as md_config_file, open(
-        contact_config_file, "r"
-    ) as contact_config_file:
+        constants_config_file, "r"
+    ) as constants_config_file:
         md_config = json.loads(md_config_file.read())
-        contact_config = json.loads(contact_config_file.read())
+        constants_config = json.loads(constants_config_file.read())
 
-        validate_input_json(contact_config, JSON_SCHEMA_CONTACT)
+        base_config = QUALITY_SERVICE_CONFORMANCE
+        validate_input_json(constants_config, JSON_SCHEMA_CONSTANTS)
         validate_input_json(md_config, JSON_SCHEMA_SERVICE)
+        base_config.update(constants_config)
 
-        contact_config = replace_keys(contact_config, camel_to_snake)
-        md_config = replace_keys(md_config, camel_to_snake)
-        md_config.update(contact_config)
+        base_config_snake = replace_keys(base_config, camel_to_snake)
+        md_config_snake = replace_keys(md_config, camel_to_snake)
+        md_config_snake.update(base_config_snake)
 
         # add variables supplied by args
-        md_config["inspire_type"] = inspire_type
-        md_config["sds_category"] = sds_type
-        md_config["csw_endpoint"] = csw_endpoint
+        md_config_snake["inspire_type"] = inspire_type
+        md_config_snake["sds_category"] = sds_type
+        md_config_snake["csw_endpoint"] = csw_endpoint
 
         # add dynamic fields from lookup table
-        md_config = add_dynamic_fields(md_config, service_type)
-        md_record = render_template(SERVICE_TEMPLATE, md_config)
+        md_config_snake = add_dynamic_fields(md_config_snake, service_type)
+        md_record = render_template(SERVICE_TEMPLATE, md_config_snake)
         return format_xml(md_record)

@@ -2,5 +2,8 @@
   "contactOrganisationName": "Beheer PDOK",
   "contactOrganisationUri": "http://standaarden.overheid.nl/owms/terms/pdok",
   "contactEmail": "beheerpdok@kadaster.nl",
-  "contactUrl": "https://www.pdok.nl/contact"
+  "contactUrl": "https://www.pdok.nl/contact",
+  "qosAvailability": 99.999,
+  "qosPerformance": 1,
+  "qosCapacity": 100
 }

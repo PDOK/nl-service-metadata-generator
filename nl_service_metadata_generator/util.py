@@ -7,7 +7,7 @@ from jsonschema import validate
 from lxml import etree
 
 from nl_service_metadata_generator.constants import (
-    JSON_SCHEMA_CONTACT,
+    JSON_SCHEMA_CONSTANTS,
     JSON_SCHEMA_SERVICE,
     SERVICE_METADATA_SCHEMA,
     TEMPLATES_DIR,
@@ -52,8 +52,8 @@ def replace_keys(dictionary: dict, fun) -> dict:
 
 
 def print_schema(schema_type: SchemaType):
-    if schema_type == SchemaType.CONTACT:
-        json_schema_path = JSON_SCHEMA_CONTACT
+    if schema_type == SchemaType.CONSTANTS:
+        json_schema_path = JSON_SCHEMA_CONSTANTS
     elif schema_type == SchemaType.SERVICE:
         json_schema_path = JSON_SCHEMA_SERVICE
     json_schema_path = pkg_resources.resource_filename(

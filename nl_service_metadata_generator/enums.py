@@ -8,7 +8,7 @@ class NgrEnv(str, enum.Enum):
 
 class SchemaType(str, enum.Enum):
     SERVICE = "service"
-    CONTACT = "contact"
+    CONSTANTS = "constants"
 
 
 class ServiceType(str, enum.Enum):
