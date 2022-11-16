@@ -22,7 +22,7 @@ requires-python = ">=3.10.6"
 dev = ["black", "autoflake", "isort"]
 
 [project.scripts]
-nl-service-metadata-generator = "nl_service_metadata_generator.cli:generate_service_metadata_command"
+nl-service-metadata-generator = "nl_service_metadata_generator.cli:cli"
 
 [tool.setuptools]
 include-package-data = true

@@ -61,7 +61,7 @@
         </gmd:result>
     </gmd:DQ_DomainConsistency>
 </gmd:report>
-{% include "partials/inspire_conformance_technical_spec.xml" %}
+{% include "partials/inspire_conformance_technical_spec_sds.xml" %}
 
 {% if sds_category != "invocable" -%}
 {% include "partials/inspire_quality_service_conformance.xml" %}

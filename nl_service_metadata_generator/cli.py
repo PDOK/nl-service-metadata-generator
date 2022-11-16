@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import os
 from pathlib import Path
+import sys
 
 import click
 
@@ -63,14 +64,18 @@ def generate_command(
 
     See `show-schema` command for help on config files.
     """
-    md_record = generate_service_metadata(
-        constants_config_file,
-        service_config_file,
-        service_type,
-        inspire_type,
-        sds_type,
-        csw_endpoint,
-    )
+    try:
+        md_record = generate_service_metadata(
+            constants_config_file,
+            service_config_file,
+            service_type,
+            inspire_type,
+            sds_type,
+            csw_endpoint,
+        )
+    except ValueError as e:
+        print(f"ERROR: {e}")
+        sys.exit(1)
     validation_result = validate_service_metadata(md_record)
 
     if validation_result:

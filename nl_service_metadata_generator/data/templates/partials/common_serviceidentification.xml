@@ -63,7 +63,7 @@
         {% include "partials/contact.xml" %}
         <gmd:role>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#verantwoordelijke-organisatie-bron:-rol -->
-            <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="author"/>
+            <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="custodian"/>
         </gmd:role>
     </gmd:CI_ResponsibleParty>
 </gmd:pointOfContact>

@@ -1,4 +1,26 @@
 {
+  "reference_systems": {
+    "EPSG:28992": {
+      "uri": "http://www.opengis.net/def/crs/EPSG/0/28992",
+      "name": "Amersfoort / RD New"
+    },
+    "EPSG:3035": {
+      "name": "ETRS89-extended / LAEA Europe",
+      "uri": "http://www.opengis.net/def/crs/EPSG/0/3035"
+    },
+    "EPSG:3034":{
+      "name": "ETRS89-extended / LCC Europe",
+      "uri": "http://www.opengis.net/def/crs/EPSG/0/3034"
+    },
+    "EPSG:2213":{
+      "name": "ETRS89 / TM 30 NE",
+      "uri": "http://www.opengis.net/def/crs/EPSG/0/2213"
+    },
+    "EPSG:4258":{
+      "name": "ETRS89",
+      "uri": "http://www.opengis.net/def/crs/EPSG/0/4258"
+    }
+  },
   "inspire_themes": {
     "https://www.eionet.europa.eu/gemet/nl/inspire-theme/au": "Administratieve eenheden",
     "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ad": "Adressen",
@@ -39,6 +61,8 @@
     "csw": {
       "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/csw",
       "service_protocol": "OGC:CSW",
+      "protocol_release_date": "2007-02-23",
+      "protocol_version": "2.0.2",
       "service_protocol_name": "Web Catalog service",
       "spatial_dataservice_category": "infoCatalogueService",
       "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoCatalogueService",
@@ -47,7 +71,9 @@
     "wms": {
       "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wms",
       "service_protocol": "OGC:WMS",
-      "service_protocol_name": "Web Map service",
+      "protocol_release_date": "2006-03-15",
+      "protocol_version": "1.3.0",
+      "service_protocol_name": "Web Map Service",
       "spatial_dataservice_category": "infoMapAccessService",
       "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoMapAccessService",
       "spatial_dataservice_category_label": "Dienst kaarttoegang"
@@ -55,6 +81,8 @@
     "wmts": {
       "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wmts",
       "service_protocol": "OGC:WMTS",
+      "protocol_release_date": " 2010-04-06",
+      "protocol_version": "1.0.0",
       "service_protocol_name": "Web Map Tile Service",
       "spatial_dataservice_category": "infoMapAccessService",
       "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoMapAccessService",
@@ -63,6 +91,8 @@
     "wfs": {
       "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wfs",
       "service_protocol": "OGC:WFS",
+      "protocol_release_date": "2010-11-02",
+      "protocol_version": "2.0",
       "service_protocol_name": "Web Feature Service",
       "spatial_dataservice_category": "infoFeatureAccessService",
       "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoFeatureAccessService",
@@ -71,6 +101,8 @@
     "wcs": {
       "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wcs",
       "service_protocol": "OGC:WCS",
+      "protocol_release_date": "2018-08-16",
+      "protocol_version": "2.1",
       "service_protocol_name": "Web Coverage Service",
       "spatial_dataservice_category": "infoCoverageAccessService",
       "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoCoverageAccessService",
@@ -79,6 +111,7 @@
     "oaf": {
       "service_protocol_url": "http://www.opengis.net/def/interface/ogcapi-features",
       "service_protocol": "OGC:API features",
+      "protocol_release_date": "2022-05-11",
       "service_protocol_name": "OGC API features",
       "spatial_dataservice_category": "infoFeatureAccessService",
       "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoFeatureAccessService",
@@ -86,6 +119,8 @@
     },
     "sos": {
       "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/sos",
+      "protocol_release_date": "2012-04-20",
+      "protocol_version": "2.0",
       "service_protocol": "OGC:SOS",
       "service_protocol_name": "Sensor Observation Service",
       "spatial_dataservice_category": "infoSensorDescriptionService",
@@ -94,29 +129,19 @@
     },
     "atom": {
       "service_protocol_url": "https://tools.ietf.org/html/rfc4287",
+      "protocol_release_date": "2005-12-01",
       "service_protocol": "INSPIRE Atom",
-      "service_protocol_name": "Atom Service Feed",
+      "service_protocol_name": "The Atom Syndication Format",
       "spatial_dataservice_category": "infoFeatureAccessService",
       "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoFeatureAccessService",
       "spatial_dataservice_category_label": "Dienst objecttoegang"
     },
-    "tms": {
-      "service_protocol_url": "",
-      "service_protocol": "UKST",
-      "service_protocol_name": "",
-      "spatial_dataservice_category": "infoMapAccessService",
-      "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoMapAccessService",
-      "spatial_dataservice_category_label": "Dienst kaarttoegang"
-    },
     "wps": {
       "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/wps",
       "service_protocol": "OGC:WPS",
+      "protocol_release_date": "2015-03-05",
+      "protocol_version": "2.0",
       "service_protocol_name": "Web Processing Service"
-    },
-    "landingpage": {
-      "service_protocol_url": "",
-      "service_protocol": "landingpage",
-      "service_protocol_name": "Een webpagina die toegang geeft tot de dataset of overige informatie bevat"
     }
   },
   "codelist_inspire_service_types": [
@@ -142,7 +167,7 @@
       "inspire_technicalguidance_date": "2013-08-09"
     },
     {
-      "ogc_service_types": ["wcts"],
+      "ogc_service_types": ["wps"],
       "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/transformation",
       "inspire_servicetype": "transformation",
       "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-inspire-schema-transformation-network-service",
