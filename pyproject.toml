@@ -13,8 +13,8 @@ readme = { file = "./README.md", content-type = "text/markdown" }
 dependencies = [
     "Click ~= 8.1",
     "Jinja2 ~= 3.1",
-    "lxml ~= 4.6",
-    "jsonschema ~= 4.12"
+    "lxml ~= 4.9",
+    "jsonschema ~= 4.17"
 ]
 requires-python = ">=3.10.6"
 
