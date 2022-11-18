@@ -8,10 +8,10 @@
   "inspireThemeUri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/af",
   "serviceUseLimitation": "Geen beperkingen",
   "boundingBox": {
-    "minX": 3.206252918228434,
-    "maxX": 7.245258336784366,
-    "minY": 50.73360719554353,
-    "maxY": 53.58297893748843
+    "minX": 3.2062529,
+    "maxX": 7.2452583,
+    "minY": 50.733607,
+    "maxY": 53.582979
   },
   "serviceAccessPointWms": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wms?request=GetCapabilities&service=WMS",
   "serviceAccessPointWfs": "https://geodata.nationaalgeoregister.nl/mosselzaadinvanginstallaties/wfs?request=GetCapabilities&service=WFS",

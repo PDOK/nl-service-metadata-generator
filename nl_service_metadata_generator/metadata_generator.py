@@ -44,6 +44,8 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     protocol_fields = get_service_protocol_values(ogc_service_type)
     data_json.update(protocol_fields)
     
+    data_json["keywords"] = [x.lower() for x in data_json["keywords"]]
+    
     if is_sds_interoperable:
         if not "coordinate_reference_system" in data_json:
             raise ValueError("coordinateReferenceSystem field required in metadata config file when generating SDS Interoperable service metadata record")
