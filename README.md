@@ -1,69 +1,87 @@
-# NGR Metadata Generator
+# nl-service-metadata-generator
 
-CLI applicatie om service metadata records te genereren die voldoen aan het [Nederlands profiel op ISO 19119 voor services versie 2.0.0](https://docs.geostandaarden.nl/md/mdprofiel-iso19119/).
+CLI applicatie om service metadata records te genereren die voldoen aan het [Nederlands profiel op ISO 19119 voor services versie 2.1.0](https://docs.geostandaarden.nl/md/mdprofiel-iso19119/).
 
-CLI applicatie genereert metadata en voert schema validatie uit. Applicatie voert *geen* schematron validatie uit (validatie op *Nederlands profiel op ISO 19119 voor services versie 2.0.0*).
+CLI applicatie genereert metadata en voert schema validatie uit. Applicatie voert *geen* schematron validatie uit (validatie op *Nederlands profiel op ISO 19119 voor services versie 2.1.0*).
 
-## Benodigdheden (Ubuntu 20 LTS)
+## Service Types
 
-Installeer python3
+De nl-service-metadata-generator ondersteunt de volgende service types:
 
-```
-sudo snap install python3
-```
-or
-```
-sudo apt install python3
-```
+- geen INSPIRE service
+- INSPIRE network service
+- INSPIRE other service
+  - Spatial Data Service (SDS) - invocable
+  - SDS - interoperable
 
-Installeer de python3 package installer (pip3)
+> N.B. SDS harmonized wordt dus niet ondersteund door de nl-service-metadata-generator
 
-```
-sudo apt install python3-pip
-```
+## Installation
 
-Installeer libxml-dev
-
-```
-sudo apt install libxml2-dev
-```
-
-Installeer libxslt-dev
-```
-sudo apt install libxslt-dev
-```
-
-## Gebruik
-
-Installeer ngr-metadata-generator als pip package (uitvoeren vanuit root van repository):
+Installeer `nl-service-metadata-generator` als pip package (uitvoeren vanuit root van repository):
 
 ```pip3
 pip3 install .
 ```
 
-Nu moet het cli command `generate-metadata`/`gen-md` beschikbaar zijn in `PATH`. Mocht dit niet het geval zijn, kijk of de binary goed is geïnstalleerd in `$HOME/.local/bin/gen-md` en voeg deze vervolgens toe aan je `PATH`
+Nu moet het cli command `nl-service-metadata-generator` beschikbaar zijn in `PATH`.
+
+## Usage
 
 ```bash
-export PATH="$HOME/.local/bin:$PATH"
-```
-
-Dit is de output van `generate-metadata`/`gen-md`:
-
-```bash
-generate-metadata --help
-Usage: generate-metadata [OPTIONS] VALUES_JSON_PATH
-                         [CSW|WMS|WMTS|WFS|WCS|SOS|ATOM|TMS|IN_JSON] [PROD|TEST]
-
-  Generate metadata record.
+Usage: nl-service-metadata-generator generate 
+           [OPTIONS] {csw|wms|wmts|wfs|wcs|sos|atom|tms|oaf}
+           {network|other|none} CONSTANTS_CONFIG_FILE METADATA_CONFIG_FILE
+           OUTPUT_FILE
 
 Options:
-  --output-dir PATH
-  --help             Show this message and exit.
+  --csw-endpoint TEXT             References to dataset metadata records will
+                                  use this CSW endpoint (default val: https://
+                                  nationaalgeoregister.nl/geonetwork/srv/dut/c
+                                  sw)
+  --sds-type [invocable|interoperable]
+                                  only applies when inspire-type='other'
+  --help                          Show this message and exit.
 ```
 
 Bijvoorbeeld (uitvoeren in root directory van dit repository):
 
 ```bash
-mkdir output
-gen-md example_json/inspire.json WMS PROD --output-dir output/
+nl-service-metadata-generator atom network example_json/contact.json example_json/inspire.json atom.xml
+```
+
+JSON schema voor de `CONSTANTS_CONFIG_FILE`  en `METADATA_CONFIG_FILE` kunnen worden opgevraagd middels het `show-schema` command, zie `nl-service-metadata-generator show-schema --help` voor help.
+
+## Development
+
+Voor het formatteren van code installeer [`black`](https://pypi.org/project/black/) en draai vanuit de root van het repo:
+
+```sh
+black .
+```
+
+Verwijderen van ongebruikte imports met [`autoflake`](https://pypi.org/project/autoflake/):
+
+```sh
+autoflake --remove-all-unused-imports -i -r .
+```
+
+Organiseren en orderen imports met [`isort`](https://pypi.org/project/isort/):
+
+```sh
+isort  -m 3 . 
+```
+
+## Docker
+
+Build docker image with:
+
+```sh
+docker build . -t nl-service-metadata-generator
+```
+
+Then run with (note the `-u root` argument, is required for priviliges for Docker container to write file to mounted volume - for production environments it is not adviceable to run as root user):
+
+```sh
+docker run --user root -v /home/anton/workspace/github.com/PDOK/nl-service-metadata-generator/example_json:/data nl-service-metadata-generator generate atom network /data/constants.json /data/inspire.json /data/atom.xml
 ```

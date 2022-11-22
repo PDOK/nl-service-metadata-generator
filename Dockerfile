@@ -1,17 +1,11 @@
-FROM ubuntu:18.04
-RUN apt-get update && apt-get install -y \
-    locales \
-    python3 \
-    python3-pip \
-    && rm -rf /var/lib/apt/lists/*
+FROM python:3.10.8-slim-bullseye
 
-RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
-    locale-gen
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+COPY . /src
 
-COPY . /ngr-md-generator-src
-RUN pip3 install /ngr-md-generator-src
-ENV PATH="/usr/local/bin"
-ENTRYPOINT [ "generate-metadata" ]
+RUN pip install --upgrade setuptools && \
+    pip install /src
+
+RUN groupadd -r cli-user && useradd -r -s /bin/false -g cli-user cli-user
+USER cli-user
+
+ENTRYPOINT [ "nl-service-metadata-generator" ]
