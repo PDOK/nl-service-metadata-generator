@@ -37,4 +37,8 @@ nl_service_metadata_generator = ["*.json", "*.xml", "*.xsd"]
 
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "wheel"]
+requires = [
+    "setuptools>=45", 
+    "twine==4.0.1",
+    "wheel==0.38.4"
+]
