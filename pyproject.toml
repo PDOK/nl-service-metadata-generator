@@ -16,7 +16,7 @@ dependencies = [
     "lxml ~= 4.9",
     "jsonschema ~= 4.17"
 ]
-requires-python = ">=3.10.6"
+requires-python = ">=3.8.10"
 
 [project.optional-dependencies]
 dev = ["black", "autoflake", "isort"]
@@ -28,9 +28,13 @@ nl-service-metadata-generator = "nl_service_metadata_generator.cli:cli"
 include-package-data = true
 
 [tool.setuptools.packages.find]
+where = ["src"]
 include = ["nl_service_metadata_generator*"]  # package names should match these glob patterns (["*"] by default)
 exclude = []  # exclude packages matching these glob patterns (empty by default)
 
+[tool.setuptools.package-data]
+nl_service_metadata_generator = ["*.json", "*.xml", "*.xsd"]
+
 [build-system]
 build-backend = "setuptools.build_meta"
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "wheel"]
