@@ -1,17 +1,11 @@
-FROM ubuntu:22.04
-RUN apt-get update && \
-    apt-get install -y \
-    python3 \
-    python3-pip \ 
-    python3.10-venv
-
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+FROM python:3.10.8-slim-bullseye
 
 COPY . /src
 
 RUN pip install --upgrade setuptools && \
     pip install /src
+
+RUN groupadd -r cli-user && useradd -r -s /bin/false -g cli-user cli-user
+USER cli-user
 
 ENTRYPOINT [ "nl-service-metadata-generator" ]
