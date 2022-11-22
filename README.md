@@ -71,3 +71,17 @@ Organiseren en orderen imports met [`isort`](https://pypi.org/project/isort/):
 ```sh
 isort  -m 3 . 
 ```
+
+## Docker
+
+Build docker image with:
+
+```sh
+docker build . -t nl-service-metadata-generator
+```
+
+Then run with (note the `-u root` argument, is required for priviliges for Docker container to write file to mounted volume - for production environments it is not adviceable to run as root user):
+
+```sh
+docker run --user root -v /home/anton/workspace/github.com/PDOK/nl-service-metadata-generator/example_json:/data nl-service-metadata-generator generate atom network /data/constants.json /data/inspire.json /data/atom.xml
+```
