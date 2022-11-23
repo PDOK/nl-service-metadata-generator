@@ -53,6 +53,7 @@ def get_spatial_dataservice_categories():
         ]
         return categories
 
+
 def get_coordinate_reference_systems():
     json_path = pkg_resources.resource_filename(__name__, CODELIST_JSON_FILE)
     with open(json_path, "r") as json_file:

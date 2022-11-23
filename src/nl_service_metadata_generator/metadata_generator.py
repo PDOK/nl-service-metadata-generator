@@ -9,10 +9,7 @@ from .codelist_lookup import (
     get_service_protocol_values,
     get_spatial_dataservice_categories,
 )
-from .constants import (
-    QUALITY_SERVICE_CONFORMANCE,
-    SERVICE_TEMPLATE,
-)
+from .constants import QUALITY_SERVICE_CONFORMANCE, SERVICE_TEMPLATE
 from .enums import InspireType, SchemaType, SdsType
 from .util import (
     camel_to_snake,
@@ -46,16 +43,19 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
 
     if is_sds_interoperable:
         if not "coordinate_reference_system" in data_json:
-            raise ValueError("coordinateReferenceSystem field required in metadata config file when generating SDS Interoperable service metadata record")
+            raise ValueError(
+                "coordinateReferenceSystem field required in metadata config file when generating SDS Interoperable service metadata record"
+            )
         ref_systems = get_coordinate_reference_systems()
         ref_system = ref_systems[data_json["coordinate_reference_system"]]
 
         data_json["ref_system_name"] = ref_system["name"]
         data_json["ref_system_uri"] = ref_system["uri"]
 
-
     if "protocol_version" in data_json:
-        data_json["service_protocol_full_name"] = f'{data_json["service_protocol_name"]} - {data_json["protocol_version"]}'
+        data_json[
+            "service_protocol_full_name"
+        ] = f'{data_json["service_protocol_name"]} - {data_json["protocol_version"]}'
     else:
         data_json["service_protocol_full_name"] = data_json["service_protocol_name"]
 
@@ -119,7 +119,11 @@ def generate_service_metadata(
         md_config_snake["csw_endpoint"] = csw_endpoint
 
         # add dynamic fields from lookup table
-        is_sds_interoperable = (inspire_type == InspireType.OTHER and sds_type==SdsType.INTEROPERABLE)
-        md_config_snake = add_dynamic_fields(md_config_snake, service_type, is_sds_interoperable)
+        is_sds_interoperable = (
+            inspire_type == InspireType.OTHER and sds_type == SdsType.INTEROPERABLE
+        )
+        md_config_snake = add_dynamic_fields(
+            md_config_snake, service_type, is_sds_interoperable
+        )
         md_record = render_template(SERVICE_TEMPLATE, md_config_snake)
         return format_xml(md_record)
