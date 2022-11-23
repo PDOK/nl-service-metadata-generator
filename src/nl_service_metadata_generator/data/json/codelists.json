@@ -8,15 +8,15 @@
       "name": "ETRS89-extended / LAEA Europe",
       "uri": "http://www.opengis.net/def/crs/EPSG/0/3035"
     },
-    "EPSG:3034":{
+    "EPSG:3034": {
       "name": "ETRS89-extended / LCC Europe",
       "uri": "http://www.opengis.net/def/crs/EPSG/0/3034"
     },
-    "EPSG:2213":{
+    "EPSG:2213": {
       "name": "ETRS89 / TM 30 NE",
       "uri": "http://www.opengis.net/def/crs/EPSG/0/2213"
     },
-    "EPSG:4258":{
+    "EPSG:4258": {
       "name": "ETRS89",
       "uri": "http://www.opengis.net/def/crs/EPSG/0/4258"
     }

@@ -82,6 +82,7 @@ def generate_command(
         print(
             f"metadata-generator error: generated metadata is invalid, validation message: {validation_result}"
         )
+        sys.exit(1)
     if output_file != "-":
         output_dir = os.path.dirname(output_file)
         Path(output_dir).mkdir(parents=True, exist_ok=True)
