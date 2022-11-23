@@ -1,16 +1,13 @@
 import json
-from pathlib import Path
 import re
+from pathlib import Path
 
 import pkg_resources
 from jinja2 import Environment, PackageLoader, select_autoescape
 from jsonschema import validate
 from lxml import etree
 
-from .constants import (
-    SERVICE_METADATA_SCHEMA,
-    TEMPLATES_DIR,
-)
+from .constants import SERVICE_METADATA_SCHEMA, TEMPLATES_DIR
 from .enums import SchemaType
 
 
@@ -50,7 +47,7 @@ def replace_keys(dictionary: dict, fun) -> dict:
     return empty
 
 
-def print_schema(schema_type: SchemaType):
+def get_schema(schema_type: SchemaType):
     json_schema_path = f"data/json_schema/{schema_type}.schema.json"
     json_schema_path = pkg_resources.resource_filename(
         get_pkg_string(),
@@ -58,20 +55,17 @@ def print_schema(schema_type: SchemaType):
     )
     with open(json_schema_path, "r") as f:
         parsed = json.load(f)
-        print(json.dumps(parsed, indent=4))
+        return parsed
+
 
 def get_pkg_string():
-    module_name = "." + __name__.replace(Path(__file__).name.replace(".py", ""),"")
-    return  __name__.replace(module_name, "")
+    module_name = "." + __name__.replace(Path(__file__).name.replace(".py", ""), "")
+    return __name__.replace(module_name, "")
+
 
 def validate_input_json(contact_config, schema_type: SchemaType):
-    json_schema_path = f"data/json_schema/{schema_type}.schema.json"
-    contact_schema_path = pkg_resources.resource_filename(
-        get_pkg_string(),
-        json_schema_path,
-    )
-    with open(contact_schema_path, "r") as contact_json_schema:
-        return validate(instance=contact_config, schema=json.load(contact_json_schema))
+    json_schema = get_schema(schema_type)
+    return validate(instance=contact_config, schema=json_schema)
 
 
 def get_service_md_identifier(data_json, service_type):

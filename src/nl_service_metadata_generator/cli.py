@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
+import json
+import logging
 import os
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import click
 
 from .constants import DEFAULT_CSW_ENDPOINT
-from .enums import (
-    InspireType,
-    SchemaType,
-    SdsType,
-    ServiceType,
-)
+from .enums import InspireType, SchemaType, SdsType, ServiceType
 from .metadata_generator import generate_service_metadata
-from .util import print_schema, validate_service_metadata
+from .util import get_schema, validate_service_metadata
+
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
 
 
 @click.group()
@@ -27,7 +27,8 @@ def inspect_schema_command(schema_type):
     """
     Show JSON schema for input config files
     """
-    print_schema(schema_type)
+    schema = get_schema(schema_type)
+    print(json.dumps(schema, indent=4))
 
 
 @cli.command(name="generate")
@@ -74,12 +75,12 @@ def generate_command(
             csw_endpoint,
         )
     except ValueError as e:
-        print(f"ERROR: {e}")
+        log.error(f"ERROR: {e}")
         sys.exit(1)
     validation_result = validate_service_metadata(md_record)
 
     if validation_result:
-        print(
+        log.error(
             f"metadata-generator error: generated metadata is invalid, validation message: {validation_result}"
         )
         sys.exit(1)
