@@ -2,7 +2,7 @@
 name = "nl-service-metadata-generator"
 description = "CLI applicatie voor het genereren van service metadata die voldoet aan het Nederlands metadata profiel op ISO 19119 voor services versie 2.1.0 - https://docs.geostandaarden.nl/md/mdprofiel-iso19119/"
 keywords = ["ngr", "pdok", "iso19119", "nl-metadata-profiel", "metadata", "cli" ]
-license = { file = "LICENSE" }
+license = {text = "MIT"}
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
