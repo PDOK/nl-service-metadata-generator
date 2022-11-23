@@ -6,6 +6,8 @@ CLI applicatie om service metadata records te genereren die voldoen aan het [Ned
 
 CLI applicatie genereert metadata en voert schema validatie uit. Applicatie voert _geen_ schematron validatie uit (validatie op _Nederlands profiel op ISO 19119 voor services versie 2.1.0_).
 
+Indien schema validatie faalt op de gegenereerde metadata wordt het metadata bestand weggeschreven naar `${file-destination}.invalid` (dus toevoeging van `.invalid` extensie) en zal de nl-service-metadata-generator de schema validatie foutmelding printen en een returncode van `1` teruggeven.
+
 ## Service Types
 
 De nl-service-metadata-generator ondersteunt de volgende service types:
