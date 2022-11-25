@@ -60,7 +60,7 @@ Options:
 Bijvoorbeeld (uitvoeren in root directory van dit repository):
 
 ```bash
-nl-service-metadata-generator atom network example_json/contact.json example_json/inspire.json atom.xml
+nl-service-metadata-generator atom network example_json/constants.json example_json/inspire.json atom.xml
 ```
 
 JSON schema voor de `CONSTANTS_CONFIG_FILE` en `METADATA_CONFIG_FILE` kunnen worden opgevraagd middels het `show-schema` command, zie `nl-service-metadata-generator show-schema --help` voor help.
