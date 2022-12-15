@@ -89,9 +89,10 @@ def generate_command(
         Path(output_dir).mkdir(parents=True, exist_ok=True)
         if validation_result:
             output_file = f"{output_file}.invalid"
-
         with open(output_file, "w") as output:
             output.write(md_record)
+        if validation_result:
+            exit(1)
     else:
         if validation_result:
             exit(1)
