@@ -1,11 +1,9 @@
 FROM python:3.10.8-slim-bullseye
-
+LABEL maintainer="Anton Bakker <anton.bakker@kadaster.nl>"
 COPY . /src
+
 
 RUN pip install --upgrade setuptools && \
     pip install /src
-
-RUN groupadd -r cli-user && useradd -r -s /bin/false -g cli-user cli-user
-USER cli-user
 
 ENTRYPOINT [ "nl-service-metadata-generator" ]
