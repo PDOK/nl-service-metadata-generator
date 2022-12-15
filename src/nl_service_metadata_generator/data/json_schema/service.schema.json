@@ -173,6 +173,11 @@
       "type": "string",
       "format": "uri"
     },
+    "serviceAccessPointOat": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    },
     "mdIdentifierWfs": {
       "type": "string",
       "format": "uuid"
@@ -204,6 +209,10 @@
     "mdIdentifierOaf": {
       "type": "string",
       "format": "uuid"
+    },
+    "mdIdentifierOat": {
+      "type": "string",
+      "format": "uuid"
     }
   },
   "required": [
@@ -220,6 +229,7 @@
     { "required": ["serviceAccessPointWms", "mdIdentifierWms"] },
     { "required": ["serviceAccessPointSos", "mdIdentifierSos"] },
     { "required": ["serviceAccessPointCsw", "mdIdentifierCsw"] },
-    { "required": ["serviceAccessPointOaf", "mdIdentifierOaf"] }
+    { "required": ["serviceAccessPointOaf", "mdIdentifierOaf"] },
+    { "required": ["serviceAccessPointOat", "mdIdentifierOat"] }
   ]
 }
