@@ -33,10 +33,11 @@ Nu moet het cli command `nl-service-metadata-generator` beschikbaar zijn in `PAT
 ## Usage
 
 ```bash
-Usage: nl-service-metadata-generator generate
-           [OPTIONS] {csw|wms|wmts|wfs|wcs|sos|atom|tms|oaf}
-           {network|other|none} CONSTANTS_CONFIG_FILE SERVICE_CONFIG_FILE
-           OUTPUT_FILE
+Usage: nl-service-metadata-generator generate [OPTIONS] {csw|wms|wmts|wfs|wcs|
+                                              sos|atom|tms|oaf|oat}
+                                              {network|other|none}
+                                              CONSTANTS_CONFIG_FILE
+                                              SERVICE_CONFIG_FILE OUTPUT_FILE
 
   Generate service metadata record based on **Nederlands profiel op ISO 19119
   voor services versie 2.1.0**.

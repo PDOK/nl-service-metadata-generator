@@ -12,7 +12,7 @@
         <srv:operationName>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#operatie-naam -->
             <!-- Name van de operatie, bv GetCapabilities -->
-            <gco:CharacterString>GetCapabilities</gco:CharacterString>
+            <gco:CharacterString>{{service_access_point_operation}}</gco:CharacterString>
         </srv:operationName>
         <srv:DCP>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#DCP -->
