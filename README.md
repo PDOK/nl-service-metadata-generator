@@ -96,5 +96,5 @@ docker build . -t nl-service-metadata-generator
 Dan container starten met (n.b. `-u root` argument, is nodig voor priviliges Docker container om bestanden weg te schrijven in folder mount - niet op deze manier gebruiken voor productie doeleinden):
 
 ```sh
-docker run --user root -v /home/anton/workspace/github.com/PDOK/nl-service-metadata-generator/example_json:/data nl-service-metadata-generator generate atom network /data/constants.json /data/inspire.json /data/atom.xml
+docker run --user root -v $(pwd)/example_json:/data nl-service-metadata-generator generate atom network /data/constants.json /data/inspire.json /data/atom.xml
 ```
