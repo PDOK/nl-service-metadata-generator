@@ -1,6 +1,9 @@
 # nl-service-metadata-generator
 
 [![PyPI version](https://badge.fury.io/py/nl-service-metadata-generator.svg)](https://pypi.org/project/nl-service-metadata-generator/)
+[![GitHub
+release](https://img.shields.io/github/release/PDOK/nl-service-metadata-generator.svg?include_prereleases)](https://github.com/PDOK/nl-service-metadata-generator/releases)
+![Docker Pulls](https://img.shields.io/docker/pulls/pdok/nl-service-metadata-generator)
 
 CLI applicatie om service metadata records te genereren die voldoen aan het [Nederlands profiel op ISO 19119 voor services versie 2.1.0](https://docs.geostandaarden.nl/md/mdprofiel-iso19119/).
 
@@ -88,14 +91,10 @@ isort  -m 3 .
 
 ## Docker
 
-Bouw docker image met:
+Container starten met: 
 
 ```sh
-docker build . -t nl-service-metadata-generator
+docker run --user root -v $(pwd)/example_json:/data pdok/nl-service-metadata-generator generate atom network /data/constants.json /data/inspire.json /data/atom.xml
 ```
 
-Dan container starten met (n.b. `-u root` argument, is nodig voor priviliges Docker container om bestanden weg te schrijven in folder mount - niet op deze manier gebruiken voor productie doeleinden):
-
-```sh
-docker run --user root -v $(pwd)/example_json:/data nl-service-metadata-generator generate atom network /data/constants.json /data/inspire.json /data/atom.xml
-```
+> **n.b.** `-u root` argument, is nodig voor priviliges Docker container om bestanden weg te schrijven in folder mount. Voor productie doeleindes niet aan te raden om docker containers onder de root user te draaien. 
