@@ -3,7 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/nl-service-metadata-generator.svg)](https://pypi.org/project/nl-service-metadata-generator/)
 [![GitHub
 release](https://img.shields.io/github/release/PDOK/nl-service-metadata-generator.svg?include_prereleases)](https://github.com/PDOK/nl-service-metadata-generator/releases)
-![Docker Pulls](https://img.shields.io/docker/pulls/pdok/nl-service-metadata-generator)
+[![Docker Pulls](https://img.shields.io/docker/pulls/pdok/nl-service-metadata-generator)](https://hub.docker.com/repository/docker/pdok/nl-service-metadata-generator)
 
 CLI applicatie om service metadata records te genereren die voldoen aan het [Nederlands profiel op ISO 19119 voor services versie 2.1.0](https://docs.geostandaarden.nl/md/mdprofiel-iso19119/).
 
