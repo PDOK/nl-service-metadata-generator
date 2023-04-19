@@ -77,6 +77,14 @@ def get_service_md_identifier(data_json, service_type):
     md_identifier = data_json[key]
     return md_identifier
 
+def replace_servicetype_var(data_json, service_type, key):
+    if not key in data_json:
+        raise ValueError(f"key {key} missing in metadata config file")
+    value = data_json[key]
+    value = value.replace("$SERVICE_TYPE_UPPER", service_type.upper())
+    value = value.replace("$SERVICE_TYPE_LOWER", service_type.lower())
+    return value
+
 
 def get_service_url(data_json, service_type):
     service_type_string = service_type.lower().replace(" ", "_")
