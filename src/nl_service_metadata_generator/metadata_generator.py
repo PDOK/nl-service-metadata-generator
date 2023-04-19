@@ -15,6 +15,7 @@ from .util import (
     camel_to_snake,
     format_xml,
     get_service_md_identifier,
+    replace_servicetype_var,
     get_service_url,
     render_template,
     replace_keys,
@@ -24,10 +25,7 @@ from .util import (
 
 def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     md_date_stamp = datetime.today().strftime("%Y-%m-%d")
-    title = data_json["service_title"]
-    if not title.lower().endswith(ogc_service_type.lower()):
-        ogc_service_type_upper = ogc_service_type.upper()
-        data_json["service_title"] = f"{title} {ogc_service_type_upper}"
+        
     data_json["md_date_stamp"] = md_date_stamp
 
     if (
@@ -61,6 +59,12 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
 
     service_access_point = get_service_url(data_json, ogc_service_type)
     data_json["service_access_point"] = service_access_point
+
+    service_title = replace_servicetype_var(data_json, ogc_service_type, "service_title")
+    data_json["service_title"] = service_title
+
+    service_abstract = replace_servicetype_var(data_json, ogc_service_type, "service_abstract")
+    data_json["service_abstract"] = service_abstract    
 
     service_md_identifier = get_service_md_identifier(data_json, ogc_service_type)
     data_json["md_identifier"] = service_md_identifier

@@ -69,6 +69,28 @@ nl-service-metadata-generator generate atom network example_json/constants.json 
 
 JSON schema voor de `CONSTANTS_CONFIG_FILE` en `METADATA_CONFIG_FILE` kunnen worden opgevraagd middels het `show-schema` command, zie `nl-service-metadata-generator show-schema --help` voor help.
 
+### Template variabelen
+
+In de velden
+
+- `service_title`
+- `service_abstract`
+
+Kunnen de volgende template variabelen worden opgenomen:
+
+- `$SERVICE_TYPE_UPPER` - wordt vervangen door uppercase service type (korte variant)
+- `$SERVICE_TYPE_LOWER` - wordt vervangen door lowercase service type (korte variant)
+
+Bijvoorbeeld:
+
+```json
+{
+  ...
+  "serviceTitle": "Actueel Hoogtebestand Nederland $SERVICE_TYPE_UPPER"
+  ...
+}
+```
+
 ## Development
 
 Voor het formatteren van code installeer [`black`](https://pypi.org/project/black/) en draai vanuit de root van het repo:
@@ -98,3 +120,4 @@ docker run --user root -v $(pwd)/example_json:/data pdok/nl-service-metadata-gen
 ```
 
 > **n.b.** `-u root` argument, is nodig voor priviliges Docker container om bestanden weg te schrijven in folder mount. Voor productie doeleindes niet aan te raden om docker containers onder de root user te draaien. 
+
