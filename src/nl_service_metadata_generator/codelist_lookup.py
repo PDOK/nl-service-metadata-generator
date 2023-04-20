@@ -5,19 +5,18 @@ import pkg_resources
 from .constants import CODELIST_JSON_FILE
 
 
-def get_inspire_theme_label(data_json):
-    if data_json["inspire_type"] != "none":
-        json_path = pkg_resources.resource_filename(__name__, CODELIST_JSON_FILE)
-        with open(json_path, "r") as json_file:
-            codelists_json = json.loads(json_file.read())
-            inspire_themes_codelist = codelists_json["inspire_themes"]
-            inspire_theme_uri = data_json["inspire_theme_uri"]
-            if inspire_theme_uri not in inspire_themes_codelist:
-                raise Exception(
-                    f"inspire theme uri {inspire_theme_uri} unknown. See https://www.eionet.europa.eu/gemet/nl/inspire-themes/ for supported values."
-                )
-            return inspire_themes_codelist[inspire_theme_uri]
-    return ""
+def get_inspire_theme_label(inspire_theme_uri):
+    json_path = pkg_resources.resource_filename(__name__, CODELIST_JSON_FILE)
+    with open(json_path, "r") as json_file:
+        codelists_json = json.loads(json_file.read())
+        inspire_themes_codelist = codelists_json["inspire_themes"]
+
+        if inspire_theme_uri not in inspire_themes_codelist:
+            raise Exception(
+                f"inspire theme uri {inspire_theme_uri} unknown. See https://www.eionet.europa.eu/gemet/nl/inspire-themes/ for supported values."
+            )
+        return inspire_themes_codelist[inspire_theme_uri]
+
 
 
 def get_inspire_fields_by_ogc_service_type(ogc_service_type):
