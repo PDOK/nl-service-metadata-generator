@@ -88,9 +88,9 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
         )  # by default all other services are invokable services, see discussion here: https://github.com/INSPIRE-MIF/helpdesk/issues/25
         data_json["sds_category_uri"] = sds_values["uri"]
         data_json["sds_category"] = str(data_json["sds_category"].value)
-    inspire_theme_label = get_inspire_theme_label(data_json)
-    if inspire_theme_label:
-        data_json["inspire_theme_label"] = inspire_theme_label
+
+    inspire_themes = [{"uri": uri, "label": get_inspire_theme_label(uri)} for uri in data_json["inspire_theme_uris"]]
+    data_json["inspire_themes"] = inspire_themes
     return data_json
 
 
