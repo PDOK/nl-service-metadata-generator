@@ -22,6 +22,7 @@ class ServiceType(str, enum.Enum):
     TMS = "tms"
     OAF = "oaf"
     OAT = "oat"
+    OAS = "oas"
 
 
 class InspireType(str, enum.Enum):

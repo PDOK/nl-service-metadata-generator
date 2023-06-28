@@ -25,7 +25,7 @@ from .util import (
 
 def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     md_date_stamp = datetime.today().strftime("%Y-%m-%d")
-        
+
     data_json["md_date_stamp"] = md_date_stamp
 
     if (
@@ -64,7 +64,7 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     data_json["service_title"] = service_title
 
     service_abstract = replace_servicetype_var(data_json, ogc_service_type, "service_abstract")
-    data_json["service_abstract"] = service_abstract    
+    data_json["service_abstract"] = service_abstract
 
     service_md_identifier = get_service_md_identifier(data_json, ogc_service_type)
     data_json["md_identifier"] = service_md_identifier
@@ -89,8 +89,9 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
         data_json["sds_category_uri"] = sds_values["uri"]
         data_json["sds_category"] = str(data_json["sds_category"].value)
 
-    inspire_themes = [{"uri": uri, "label": get_inspire_theme_label(uri)} for uri in data_json["inspire_theme_uris"]]
-    data_json["inspire_themes"] = inspire_themes
+    if "inspire_theme_uris" in data_json:
+        inspire_themes = [{"uri": uri, "label": get_inspire_theme_label(uri)} for uri in data_json["inspire_theme_uris"]]
+        data_json["inspire_themes"] = inspire_themes
     return data_json
 
 
