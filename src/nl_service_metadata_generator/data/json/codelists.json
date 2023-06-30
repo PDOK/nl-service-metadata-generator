@@ -133,6 +133,16 @@
       "spatial_dataservice_category_label": "Dienst kaarttoegang",
       "service_access_point_operation": "HTTPGet"
     },
+    "oas": {
+      "service_protocol_url": "https://github.com/OAI/OpenAPI-Specification/",
+      "service_protocol": "OAS",
+      "protocol_release_date": "2017-07-26",
+      "service_protocol_name": "Open API Specification",
+      "spatial_dataservice_category": "infoFeatureAccessService",
+      "spatial_dataservice_category_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceCategory/infoFeatureAccessService",
+      "spatial_dataservice_category_label": "Dienst objecttoegang",
+      "service_access_point_operation": "HTTPGet"
+    },
     "sos": {
       "service_protocol_url": "http://www.opengis.net/def/serviceType/ogc/sos",
       "protocol_release_date": "2012-04-20",
@@ -179,7 +189,7 @@
       "inspire_technicalguidance_date": "2013-04-04"
     },
     {
-      "ogc_service_types": ["wfs", "wcs", "sos", "atom", "oaf"],
+      "ogc_service_types": ["wfs", "wcs", "sos", "atom", "oaf", "oas"],
       "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/download",
       "inspire_servicetype": "download",
       "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-download-services",

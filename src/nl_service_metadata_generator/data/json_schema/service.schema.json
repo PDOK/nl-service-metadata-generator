@@ -117,6 +117,19 @@
         "required": ["datasetMdIdentifier"]
       }
     },
+    "service_license":{
+      "type": "object",
+      "minItems": 0,
+      "properties":{
+        "description": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
     "thumbnails": {
       "type": "array",
       "minItems": 0,
@@ -167,6 +180,11 @@
       "type": "string",
       "format": "uri"
     },
+    "serviceAccessPointOas": {
+      "description": "Resolvable url that points to service access point",
+      "type": "string",
+      "format": "uri"
+    },
     "serviceAccessPointCsw": {
       "description": "Resolvable url that points to service access point",
       "type": "string",
@@ -202,6 +220,10 @@
       "type": "string",
       "format": "uuid"
     },
+    "mdIdentifierOas": {
+      "type": "string",
+      "format": "uuid"
+    },
     "mdIdentifierSos": {
       "type": "string",
       "format": "uuid"
@@ -234,6 +256,7 @@
     { "required": ["serviceAccessPointSos", "mdIdentifierSos"] },
     { "required": ["serviceAccessPointCsw", "mdIdentifierCsw"] },
     { "required": ["serviceAccessPointOaf", "mdIdentifierOaf"] },
-    { "required": ["serviceAccessPointOat", "mdIdentifierOat"] }
+    { "required": ["serviceAccessPointOat", "mdIdentifierOat"] },
+    { "required": ["serviceAccessPointOas", "mdIdentifierOas"] }
   ]
 }
