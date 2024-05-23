@@ -48,7 +48,7 @@ def replace_keys(dictionary: dict, fun) -> dict:
 
 
 def get_schema(schema_type: SchemaType):
-    json_schema_path = f"data/json_schema/{schema_type}.schema.json"
+    json_schema_path = f"data/json_schema/{schema_type.value}.schema.json"
     json_schema_path = pkg_resources.resource_filename(
         get_pkg_string(),
         json_schema_path,
