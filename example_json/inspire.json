@@ -13,7 +13,9 @@
     "Grenzen",
     "Locatie"
   ],
-  "inspireThemeUri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ps",
+  "inspireThemeUris": [
+    "https://www.eionet.europa.eu/gemet/nl/inspire-theme/ps"
+  ],
   "serviceUseLimitation": "Geen beperkingen",
   "boundingBox": {
     "minX": 3.20625292,

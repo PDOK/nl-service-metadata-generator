@@ -5,7 +5,9 @@
   "serviceCreationDate": "2019-09-26",
   "serviceAbstract": "Dit betreft een bestandsopname van het areaal mossel en oesterbanken op de droogvallende platen in de Waddenzee. Dit geschiedt jaarlijks. De opdrachtgever is de Directie Dierlijke Agroketens en Dierenwelzijn / Cluster Duurzame Visserijketens. De bestandsopname zelf wordt uitgevoerd door IMARES.",
   "keywords": ["landbouw"],
-  "inspireThemeUri": "https://www.eionet.europa.eu/gemet/nl/inspire-theme/af",
+  "inspireThemeUris": [
+    "https://www.eionet.europa.eu/gemet/nl/inspire-theme/af"
+   ],
   "serviceUseLimitation": "Geen beperkingen",
   "boundingBox": {
     "minX": 3.2062529,
