@@ -16,7 +16,6 @@
 	{% include "partials/reference_system_sds_interoperable.xml" %}
 	{% endif %}
 
-	
 
 	<gmd:identificationInfo>
 		<srv:SV_ServiceIdentification>
