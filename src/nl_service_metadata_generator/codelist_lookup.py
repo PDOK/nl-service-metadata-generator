@@ -2,7 +2,7 @@ import json
 
 import pkg_resources
 
-from .constants import CODELIST_JSON_FILE
+from nl_service_metadata_generator.constants import CODELIST_JSON_FILE
 
 
 def get_inspire_theme_label(inspire_theme_uri):

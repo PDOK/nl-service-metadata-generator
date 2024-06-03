@@ -7,8 +7,8 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 from jsonschema import validate
 from lxml import etree
 
-from .constants import SERVICE_METADATA_SCHEMA, TEMPLATES_DIR
-from .enums import SchemaType
+from nl_service_metadata_generator.constants import SERVICE_METADATA_SCHEMA, TEMPLATES_DIR
+from nl_service_metadata_generator.enums import SchemaType
 
 
 def render_template(template_path, data_json):
@@ -65,6 +65,7 @@ def get_pkg_string():
 
 def validate_input_json(contact_config, schema_type: SchemaType):
     json_schema = get_schema(schema_type)
+    print('CONTACT', contact_config)
     return validate(instance=contact_config, schema=json_schema)
 
 
@@ -92,8 +93,11 @@ def get_service_url(data_json, service_type):
     if not key in data_json:
         camel_key = snake_to_camel(key)
         raise ValueError(f"key {camel_key} missing in metadata config file")
+    print('hier is ie dan', data_json[key])
     url = data_json[key]
-    return url
+    return 'blub'#url
+
+
 
 
 def validate_xml_form(xml_string):

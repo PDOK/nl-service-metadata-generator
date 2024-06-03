@@ -20,8 +20,8 @@
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^(\\S(?<![_|;:,?!\\[\\]'\"<>\\\\/~+%]))+$",
-        "description": "regex tests if keywords are single words without whitespace and do not contain the characters: ['_','|',';',':',',','?','!','[',']',''',''','<','>','\\','/','~','+','%'], keywords will be converted to lowercase in the metadata"
+        "pattern": "^(.(?<![_|;:,?!\\[\\]'\"<>\\\/~+%]))+$",
+        "description": "regex tests if keywords are single words or formalized sentences without linebreak and do not contain the characters: ['_','|',';',':',',','?','!','[',']',''',''','<','>','\\','/','~','+','%'], keywords will be converted to lowercase in the metadata"
       },
       "uniqueItems": true
     },
