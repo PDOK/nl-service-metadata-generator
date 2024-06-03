@@ -37,8 +37,6 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     protocol_fields = get_service_protocol_values(ogc_service_type)
     data_json.update(protocol_fields)
 
-    # data_json["keywords"] = [x.lower() for x in data_json["keywords"]]
-
     if is_sds_interoperable:
         if not "coordinate_reference_system" in data_json:
             raise ValueError(
@@ -76,7 +74,6 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     for kw in kw_to_delete:
         data_json["keywords"].remove(kw)
     # enfore lowercase keywords
-    # data_json["keywords"] = [kw.lower() for kw in data_json["keywords"]]
     # some inspire related fields are also mandatory in the "vanilla" NL profiel
     inspire_fields = get_inspire_fields_by_ogc_service_type(ogc_service_type)
     data_json.update(inspire_fields)
