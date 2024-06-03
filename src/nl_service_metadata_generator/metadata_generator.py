@@ -9,9 +9,9 @@ from .codelist_lookup import (
     get_service_protocol_values,
     get_spatial_dataservice_categories,
 )
-from .constants import QUALITY_SERVICE_CONFORMANCE, SERVICE_TEMPLATE
-from .enums import InspireType, SchemaType, SdsType
-from .util import (
+from nl_service_metadata_generator.constants import QUALITY_SERVICE_CONFORMANCE, SERVICE_TEMPLATE
+from nl_service_metadata_generator.enums import InspireType, SchemaType, SdsType
+from nl_service_metadata_generator.util import (
     camel_to_snake,
     format_xml,
     get_service_md_identifier,
@@ -36,8 +36,6 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     data_json["service_type"] = ogc_service_type
     protocol_fields = get_service_protocol_values(ogc_service_type)
     data_json.update(protocol_fields)
-
-    data_json["keywords"] = [x.lower() for x in data_json["keywords"]]
 
     if is_sds_interoperable:
         if not "coordinate_reference_system" in data_json:
@@ -75,8 +73,6 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     kw_to_delete = [kw for kw in data_json["keywords"] if kw in categories]
     for kw in kw_to_delete:
         data_json["keywords"].remove(kw)
-    # enfore lowercase keywords
-    data_json["keywords"] = [kw.lower() for kw in data_json["keywords"]]
     # some inspire related fields are also mandatory in the "vanilla" NL profiel
     inspire_fields = get_inspire_fields_by_ogc_service_type(ogc_service_type)
     data_json.update(inspire_fields)
@@ -103,9 +99,8 @@ def generate_service_metadata(
     sds_type,
     csw_endpoint,
 ):
-    with open(metadata_config_file, "r") as md_config_file, open(
-        constants_config_file, "r"
-    ) as constants_config_file:
+    with (open(metadata_config_file, "r") as md_config_file,
+          open(constants_config_file, "r") as constants_config_file):
         md_config = json.loads(md_config_file.read())
         constants_config = json.loads(constants_config_file.read())
 

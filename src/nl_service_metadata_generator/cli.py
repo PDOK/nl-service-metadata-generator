@@ -7,10 +7,10 @@ from pathlib import Path
 
 import click
 
-from .constants import DEFAULT_CSW_ENDPOINT
-from .enums import InspireType, SchemaType, SdsType, ServiceType
-from .metadata_generator import generate_service_metadata
-from .util import get_schema, validate_service_metadata
+from nl_service_metadata_generator.constants import DEFAULT_CSW_ENDPOINT
+from nl_service_metadata_generator.enums import InspireType, SchemaType, SdsType, ServiceType
+from nl_service_metadata_generator.metadata_generator import generate_service_metadata
+from nl_service_metadata_generator.util import get_schema, validate_service_metadata
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
