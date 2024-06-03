@@ -1,10 +1,5 @@
 <gmd:descriptiveKeywords>
     <gmd:MD_Keywords>
-        <!-- Voor INSPIRE Minimaal 1 van de verplichte keywords uit metadata IR Deel 4 -->
-        <!-- inconsistency in spec NL profiel vs INSPIRE, voor NL profiel moet anchor element text waarde <spatial_dataservice_category_label> hebben maar voor inpsire moet deze de waarde <spatial_dataservice_category> hebben, zie ook https://github.com/inspire-eu-validation/community/issues/84 -->
-        <gmd:keyword>
-            <gmx:Anchor xlink:href="{{spatial_dataservice_category_uri}}">{{spatial_dataservice_category}}</gmx:Anchor>
-        </gmd:keyword>
         <!-- Voorbeeld van een keyword afkomstig uit een Thesaurus -->
 {% for theme in inspire_themes  %}
         <gmd:keyword>
@@ -30,7 +25,7 @@
                         </gmd:date>
                         <gmd:dateType>
                             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#thesaurusdatum-type -->
-                            <gmd:CI_DateTypeCode codeList="https://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+                            <gmd:CI_DateTypeCode codeList="https://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publicatie</gmd:CI_DateTypeCode>
                         </gmd:dateType>
                     </gmd:CI_Date>
                 </gmd:date>
