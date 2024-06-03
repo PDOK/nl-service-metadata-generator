@@ -93,12 +93,8 @@ def get_service_url(data_json, service_type):
     if not key in data_json:
         camel_key = snake_to_camel(key)
         raise ValueError(f"key {camel_key} missing in metadata config file")
-    print('hier is ie dan', data_json[key])
     url = data_json[key]
-    return 'blub'#url
-
-
-
+    return url
 
 def validate_xml_form(xml_string):
     result = ""
