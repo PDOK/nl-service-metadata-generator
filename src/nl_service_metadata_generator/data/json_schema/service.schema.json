@@ -20,7 +20,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^(.(?<![_|;:,?!\\[\\]'\"<>\\\/~+%]))+$",
+        "pattern": "^[^\\n\\r\\f_|;:,?!\\[\\]'\\\"<>\\\\\/~\\+%]+$",
         "description": "regex tests if keywords are single words or formalized sentences without linebreak and do not contain the characters: ['_','|',';',':',',','?','!','[',']',''',''','<','>','\\','/','~','+','%'], keywords will be converted to lowercase in the metadata"
       },
       "uniqueItems": true

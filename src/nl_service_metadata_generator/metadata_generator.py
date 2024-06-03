@@ -73,7 +73,6 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     kw_to_delete = [kw for kw in data_json["keywords"] if kw in categories]
     for kw in kw_to_delete:
         data_json["keywords"].remove(kw)
-    # enfore lowercase keywords
     # some inspire related fields are also mandatory in the "vanilla" NL profiel
     inspire_fields = get_inspire_fields_by_ogc_service_type(ogc_service_type)
     data_json.update(inspire_fields)
