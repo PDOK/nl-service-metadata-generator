@@ -65,7 +65,6 @@ def get_pkg_string():
 
 def validate_input_json(contact_config, schema_type: SchemaType):
     json_schema = get_schema(schema_type)
-    print('CONTACT', contact_config)
     return validate(instance=contact_config, schema=json_schema)
 
 
