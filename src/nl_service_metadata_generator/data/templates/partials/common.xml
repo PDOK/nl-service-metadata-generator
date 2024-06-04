@@ -4,7 +4,7 @@
 </gmd:fileIdentifier>
 <gmd:language>
     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#taal-van-de-metadata -->
-    <gmd:LanguageCode codeList="https://www.loc.gov/standards/iso639-2/" codeListValue="dut">Nederlands</gmd:LanguageCode>
+    <gmd:LanguageCode codeList="https://www.loc.gov/standards/iso639-2/" codeListValue="dut">Nederlands; Vlaams</gmd:LanguageCode>
 </gmd:language>
 <gmd:characterSet>
     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19115/#x5-2-8-karakterset-van-de-bron -->
