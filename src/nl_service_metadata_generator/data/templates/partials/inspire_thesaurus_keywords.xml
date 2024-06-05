@@ -15,7 +15,7 @@
             <!-- De GEMET Thesaurus waarin het INSPIRE thema is gedefinieerd -->
             <gmd:CI_Citation>
                 <gmd:title>
-                    <gmx:Anchor xlink:href="https://www.eionet.europa.eu/gemet/nl/inspire-themes/">GEMET - INSPIRE themes, version 1.0</gmx:Anchor>
+                    <gmx:Anchor xlink:href="http://www.eionet.europa.eu/gemet/nl/inspire-themes/">GEMET - INSPIRE themes, version 1.0</gmx:Anchor>
                 </gmd:title>
                 <gmd:date>
                     <gmd:CI_Date>
@@ -25,7 +25,7 @@
                         </gmd:date>
                         <gmd:dateType>
                             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#thesaurusdatum-type -->
-                            <gmd:CI_DateTypeCode codeList="https://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publicatie</gmd:CI_DateTypeCode>
+                            <gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publicatie</gmd:CI_DateTypeCode>
                         </gmd:dateType>
                     </gmd:CI_Date>
                 </gmd:date>

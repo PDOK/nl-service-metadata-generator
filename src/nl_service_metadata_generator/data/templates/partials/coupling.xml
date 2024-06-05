@@ -1,7 +1,7 @@
 <srv:couplingType>
     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#koppel-type -->
     <!-- Vaste waarde "tight" voor een View of download service-->
-    <srv:SV_CouplingType codeList="https://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#SV_CouplingType" codeListValue="tight">tight</srv:SV_CouplingType>
+    <srv:SV_CouplingType codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#SV_CouplingType" codeListValue="tight"/>
 </srv:couplingType>
 <srv:containsOperations>
     <!-- Beschrijft minimaal 1 operatie van de service, voor de hand ligt GetCapabilities  -->
@@ -16,7 +16,7 @@
         </srv:operationName>
         <srv:DCP>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#DCP -->
-            <srv:DCPList codeList="https://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#DCPList" codeListValue="WebServices">WebServices</srv:DCPList>
+            <srv:DCPList codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#DCPList" codeListValue="WebServices">
         </srv:DCP>
         <srv:connectPoint>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#connectie-url -->
@@ -37,5 +37,5 @@
 <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#gekoppelde-bron -->
 <!-- Het attribuut xlink:href moet een URI bevatten naar het MD_DataIdentification deel in de XML van het metadata record van de dataset-->
 {% for dataset in linked_datasets -%}
-<srv:operatesOn uuidref="{{dataset.dataset_md_identifier}}" xlink:href="{{csw_endpoint}}?service=CSW&amp;request=GetRecordById&amp;version=2.0.2&amp;outputSchema=https://www.isotc211.org/2005/gmd&amp;elementSetName=full&amp;id={{dataset.dataset_md_identifier}}#MD_DataIdentification"/>
+<srv:operatesOn uuidref="{{dataset.dataset_md_identifier}}" xlink:href="{{csw_endpoint}}?service=CSW&amp;request=GetRecordById&amp;version=2.0.2&amp;outputSchema=http://www.isotc211.org/2005/gmd&amp;elementSetName=full&amp;id={{dataset.dataset_md_identifier}}#MD_DataIdentification"/>
 {%- endfor %}

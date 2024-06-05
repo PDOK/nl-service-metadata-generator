@@ -5,7 +5,7 @@
             <gmd:MD_RestrictionCode codeListValue="otherRestrictions" codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode">anders</gmd:MD_RestrictionCode>
         </gmd:accessConstraints>
         <gmd:otherConstraints>
-            <gmx:Anchor xlink:href="https://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">Geen beperkingen</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/LimitationsOnPublicAccess/noLimitations">Geen beperkingen</gmx:Anchor>
         </gmd:otherConstraints>
     </gmd:MD_LegalConstraints>
-</gmd:resourceConstraints>  
+</gmd:resourceConstraints>
