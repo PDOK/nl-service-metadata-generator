@@ -15,7 +15,11 @@
                         </gmd:protocol>
                         <gmd:description>
                             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#omschrijving -->
+                            {% if inspire_type != "none" -%}
                             <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/OnLineDescriptionCode/accessPoint">accessPoint</gmx:Anchor>
+                            {% else %}
+                            <gco:CharacterString>accessPoint</gco:CharacterString>
+                            {%- endif %}
                         </gmd:description>
                     </gmd:CI_OnlineResource>
                 </gmd:onLine>

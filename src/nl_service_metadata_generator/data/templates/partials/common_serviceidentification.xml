@@ -15,7 +15,7 @@
                 </gmd:date>
                 <gmd:dateType>
                     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#datum-type-van-de-bron -->
-                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation"/>
+                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation">creatie<gmd:CI_DateTypeCode
                 </gmd:dateType>
             </gmd:CI_Date>
         </gmd:date>
@@ -30,7 +30,7 @@
                 </gmd:date>
                 <gmd:dateType>
                     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#datum-type-van-de-bron -->
-                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication"/>
+                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publicatie</gmd:CI_DateTypeCode>
                 </gmd:dateType>
             </gmd:CI_Date>
         </gmd:date>
@@ -45,7 +45,7 @@
                 </gmd:date>
                 <gmd:dateType>
                     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#datum-type-van-de-bron -->
-                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision"/>
+                    <gmd:CI_DateTypeCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision">revisie</gmd:CI_DateTypeCode>
                 </gmd:dateType>
             </gmd:CI_Date>
         </gmd:date>
@@ -63,7 +63,7 @@
         {% include "partials/contact.xml" %}
         <gmd:role>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#verantwoordelijke-organisatie-bron:-rol -->
-            <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="custodian"/>
+            <gmd:CI_RoleCode codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="custodian">beheerder</gmd:CI_RoleCode>
         </gmd:role>
     </gmd:CI_ResponsibleParty>
 </gmd:pointOfContact>
@@ -90,11 +90,13 @@
     <!-- WMS_Capabilities/Capability/inspire_vs:ExtendedCapabilities/inspire_common:Keyword uit het Capabilities bestand -->
     <gmd:MD_Keywords>
         <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#trefwoord -->
+        {% if inspire_type != "none" -%}
         <!-- Voor INSPIRE Minimaal 1 van de verplichte keywords uit metadata IR Deel 4 -->
         <!-- inconsistency in spec NL profiel vs INSPIRE, voor NL profiel moet anchor element text waarde <spatial_dataservice_category_label> hebben maar voor inpsire moet deze de waarde <spatial_dataservice_category> hebben, zie ook https://github.com/inspire-eu-validation/community/issues/84 -->
         <gmd:keyword>
             <gmx:Anchor xlink:href="{{spatial_dataservice_category_uri}}">{{spatial_dataservice_category}}</gmx:Anchor>
         </gmd:keyword>
+        {%- endif %}
         {% for keyword in keywords -%}
         <gmd:keyword>
             <gco:CharacterString>{{ keyword }}</gco:CharacterString>
