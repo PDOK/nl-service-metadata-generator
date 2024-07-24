@@ -30,7 +30,7 @@
         {%- endif %}
         {% if inspire_type != "none" -%}
         <gmd:otherConstraints>
-            <gmx:Anchor xlink:href="https://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">Geen condities voor toegang en gebruik</gmx:Anchor>
+            <gmx:Anchor xlink:href="http://inspire.ec.europa.eu/metadata-codelist/ConditionsApplyingToAccessAndUse/noConditionsApply">Geen condities voor toegang en gebruik</gmx:Anchor>
         </gmd:otherConstraints>
         {%- endif %}
     </gmd:MD_LegalConstraints>

@@ -1,0 +1,25 @@
+{
+  "mdIdentifierAtom": "0c57cb2a-7a3c-44d7-a49d-7a2f50290b34",
+  "serviceTitle": "Stedelijk Water (Riolering) ATOM",
+  "serviceCreationDate": "2022-05-05",
+  "serviceAbstract": "Systemen voor stedelijk water met kenmerken gericht op beheeractiviteiten. Deze dataset omvat informatie over rioleringsgebieden bestaande uit riool-, transportstelsels bestaande uit putten, (aansluit)leidingen, lozingspunten, pompen en gemalen. Deze service is opgezet conform het GWSW, Gegevens Woordenboek Stedelijk Water, van stichting Rioned. Voor meer informatie over de gebruikte termen, definities en samenhang van de objecten zie https://data.gwsw.nl",
+  "keywords": [
+    "GWSW",
+    "Stedelijk water",
+    "Afvalwaterketen",
+    "Riolering"
+  ],
+  "serviceUseLimitation": "Geen beperkingen",
+  "boundingBox": {
+    "minX": 2.35417303,
+    "maxX": 7.5553525,
+    "minY": 50.71447164,
+    "maxY": 55.66948102
+  },
+  "serviceAccessPointAtom": "https://service.pdok.nl/rioned/beheerstedelijkwater/atom/index.xml",
+  "linkedDatasets": [
+    {
+      "datasetMdIdentifier": "e30528cf-9964-4741-b0f3-5814c8b0ade4"
+    }
+  ]
+}
