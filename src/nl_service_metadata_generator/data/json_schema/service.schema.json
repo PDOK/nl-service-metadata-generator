@@ -16,6 +16,10 @@
       "type": "string",
       "format": "date"
     },
+    "serviceRevisionDate": {
+      "type": "string",
+      "format": "date"
+    },
     "keywords": {
       "type": "array",
       "items": {
