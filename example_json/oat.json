@@ -1,0 +1,28 @@
+{
+  "mdIdentifierOat": "356fc922-f910-4874-b72a-dbb18c1bed3e",
+  "serviceTitle": "BGT OGC API (Vector) Tiles",
+  "serviceCreationDate": "2022-05-23",
+  "serviceRevisionDate": "2024-06-11",
+  "serviceAbstract": "BGT Vector Tiles service op basis van OGC API Tiles koppelvlak. De BGT, Basisregistratie Grootschalige Topografie, wordt de gedetailleerde grootschalige basiskaart (digitale kaart) van heel Nederland, waarin op een eenduidige manier de ligging van alle fysieke objecten zoals gebouwen, wegen, water, spoorlijnen en (landbouw)terreinen is geregistreerd.",
+  "keywords": ["bgt","basisregistratie","gebouwen","spoorlijnen","terreinen","wegen","topografie","water","vector","tiles"],
+  "serviceUseLimitation": "Geen beperkingen",
+  "boundingBox": {
+    "minX": 2.8039,
+    "maxX": 7.7245,
+    "minY": 50.6687,
+    "maxY": 53.5474
+  },
+  "serviceAccessPointOat": "https://api.pdok.nl/lv/bgt/ogc/v1",
+   "linkedDatasets": [
+    {
+      "datasetMdIdentifier": "2cb4769c-b56e-48fa-8685-c48f61b9a319"
+    }
+  ],
+  "thumbnails": [
+    {
+      "file": "https://www.nationaalgeoregister.nl/geonetwork/srv/api/records/356fc922-f910-4874-b72a-dbb18c1bed3e/attachments/bgt_standaardvisualisatie.png",
+      "description": "bgt_standaardvisualisatie.png",
+      "filetype": "png"
+    }
+  ]
+}
