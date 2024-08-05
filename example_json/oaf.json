@@ -1,0 +1,28 @@
+{
+  "mdIdentifierOaf": "ba8b66c9-5b11-4a15-90d6-73335029061d",
+  "serviceTitle": "BGT OGC API Features",
+  "serviceCreationDate": "2024-04-01",
+  "serviceRevisionDate": "2024-05-28",
+  "serviceAbstract": "Via de OGC API Features kun je eenvoudig de BGT bevragen en de data gebruiken in eigen toepassingen. De BGT, Basisregistratie Grootschalige Topografie, wordt de gedetailleerde grootschalige basiskaart (digitale kaart) van heel Nederland, waarin op een eenduidige manier de ligging van alle fysieke objecten zoals gebouwen, wegen, water, spoorlijnen en (landbouw)terreinen is geregistreerd.",
+  "keywords": ["bgt","basisregistratie","gebouwen","spoorlijnen","terreinen","wegen","topografie","water","features"],
+  "serviceUseLimitation": "Geen beperkingen",
+  "boundingBox": {
+    "minX": 3.2062529,
+    "maxX": 7.2452583,
+    "minY": 50.733607,
+    "maxY": 53.582979
+  },
+  "serviceAccessPointOaf": "https://api.pdok.nl/lv/bgt/ogc/v1",
+   "linkedDatasets": [
+    {
+      "datasetMdIdentifier": "2cb4769c-b56e-48fa-8685-c48f61b9a319"
+    }
+  ],
+  "thumbnails": [
+    {
+      "file": "https://www.nationaalgeoregister.nl/geonetwork/srv/api/records/2891cc29-0a79-46d1-8649-287046d621c7/attachments/bgt_achtergrond_large.PNG",
+      "description": "thumbnail",
+      "filetype": "png"
+    }
+  ]
+}

@@ -15,7 +15,7 @@
         <!-- Voor INSPIRE daarnaast een code uit de codelijst ConditionsApplyingToAccessAndUse opnemen in een tweede otherConstraints element binnen hetzelfde MD_LegalConstraints element  -->
         <gmd:accessConstraints>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#x5-2-12-juridische-toegangsrestricties -->
-            <gmd:MD_RestrictionCode codeListValue="otherRestrictions" codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode">anders</gmd:MD_RestrictionCode>
+            <gmd:MD_RestrictionCode codeListValue="otherRestrictions" codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#MD_RestrictionCode">anders</gmd:MD_RestrictionCode>
         </gmd:accessConstraints>
         {% if service_license -%}
         <gmd:otherConstraints>

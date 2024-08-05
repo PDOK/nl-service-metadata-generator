@@ -26,7 +26,7 @@
         </gmd:measureDescription>
         <gmd:result>
             <gmd:DQ_QuantitativeResult>
-                <gmd:valueUnit xlink:href="http://www.opengis.net/def/uom/SI/second"/>
+                <gmd:valueUnit xlink:href="https://www.opengis.net/def/uom/SI/second"/>
                 <gmd:value>
                     <gco:Record xsi:type="xs:double">{{qos_performance}}</gco:Record>
                 </gmd:value>
@@ -44,7 +44,7 @@
         </gmd:measureDescription>
         <gmd:result>
             <gmd:DQ_QuantitativeResult>
-                <gmd:valueUnit xlink:href="http://www.opengis.net/def/uom/OGC/1.0/unity"/>
+                <gmd:valueUnit xlink:href="https://www.opengis.net/def/uom/OGC/1.0/unity"/>
                 <gmd:value>
                     <gco:Record xsi:type="xs:integer">{{qos_capacity}}</gco:Record>
                 </gmd:value>

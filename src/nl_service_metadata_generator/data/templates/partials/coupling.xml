@@ -1,7 +1,7 @@
 <srv:couplingType>
     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#koppel-type -->
     <!-- Vaste waarde "tight" voor een View of download service-->
-    <srv:SV_CouplingType codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#SV_CouplingType" codeListValue="tight"/>
+    <srv:SV_CouplingType codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#SV_CouplingType" codeListValue="tight">tight</srv:SV_CouplingType>
 </srv:couplingType>
 <srv:containsOperations>
     <!-- Beschrijft minimaal 1 operatie van de service, voor de hand ligt GetCapabilities  -->
@@ -16,7 +16,7 @@
         </srv:operationName>
         <srv:DCP>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#DCP -->
-            <srv:DCPList codeList="http://www.isotc211.org/2005/iso19119/resources/Codelist/gmxCodelists.xml#DCPList" codeListValue="WebServices">
+            <srv:DCPList codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#DCPList" codeListValue="WebServices">WebServices</srv:DCPList>
         </srv:DCP>
         <srv:connectPoint>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#connectie-url -->

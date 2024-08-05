@@ -177,28 +177,28 @@
     {
       "ogc_service_types": ["csw"],
       "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/discovery",
-      "servicetype": "discovery",
+      "inspire_servicetype": "discovery",
       "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-discovery-services-0",
       "inspire_technicalguidance_date": "2011-11-07"
     },
     {
       "ogc_service_types": ["wms", "wmts", "tms", "oat"],
       "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/view",
-      "servicetype": "view",
+      "inspire_servicetype": "view",
       "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-view-services-1",
       "inspire_technicalguidance_date": "2013-04-04"
     },
     {
       "ogc_service_types": ["wfs", "wcs", "sos", "atom", "oaf", "oas"],
       "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/download",
-      "servicetype": "download",
+      "inspire_servicetype": "download",
       "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-implementation-inspire-download-services",
       "inspire_technicalguidance_date": "2013-08-09"
     },
     {
       "ogc_service_types": ["wps"],
       "inspire_uri": "http://inspire.ec.europa.eu/metadata-codelist/SpatialDataServiceType/transformation",
-      "servicetype": "transformation",
+      "inspire_servicetype": "transformation",
       "inspire_technicalguidance": "https://inspire.ec.europa.eu/documents/technical-guidance-inspire-schema-transformation-network-service",
       "inspire_technicalguidance_date": "2010-12-15"
     }
