@@ -25,7 +25,7 @@
         {% else %}
         <gmd:otherConstraints>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#overige-beperkingen -->
-            <gmx:Anchor xlink:href="https://creativecommons.org/publicdomain/mark/1.0/deed.nl">Geen beperkingen</gmx:Anchor>
+            <gmx:Anchor xlink:href="https://creativecommons.org/licenses/by/4.0/deed.nl">Naamsvermelding verplicht, organisatienaam</gmx:Anchor>
         </gmd:otherConstraints>
         {%- endif %}
         {% if inspire_type != "none" -%}
