@@ -3,6 +3,7 @@ CODELIST_JSON_FILE = "data/json/codelists.json"
 SERVICE_METADATA_SCHEMA = (
     "data/schema/schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd"
 )
+HVD_CATEGORIES_XML = "data/xml/high-value-dataset-category.rdf"
 TEMPLATES_DIR = "data/templates"
 DEFAULT_CSW_ENDPOINT = "https://nationaalgeoregister.nl/geonetwork/srv/dut/csw"
 QUALITY_SERVICE_CONFORMANCE = {

@@ -22,6 +22,8 @@ from nl_service_metadata_generator.util import (
     validate_input_json,
 )
 
+from .hvd_categories import HVDCategory
+
 
 def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     md_date_stamp = datetime.today().strftime("%Y-%m-%d")
@@ -82,6 +84,14 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     # some inspire related fields are also mandatory in the "vanilla" NL profiel
     inspire_fields = get_inspire_fields_by_ogc_service_type(ogc_service_type)
     data_json.update(inspire_fields)
+
+    if 'hvd_categories' in data_json and len(data_json['hvd_categories']) > 0:
+        # todo HVD keyword toevoegen aan algemene keywords
+
+        data_json['hvd_categories'] = HVDCategory().get_hvd_category_by_id_list(data_json["hvd_categories"])
+
+        # todo HVD partial template opzetten
+        # todo HVD partial toevoegen aan template
 
     if data_json["inspire_type"] == "other":
         data_json["inspire_servicetype"] = "other"
