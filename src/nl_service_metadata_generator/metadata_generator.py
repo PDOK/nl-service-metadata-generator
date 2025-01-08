@@ -86,12 +86,7 @@ def add_dynamic_fields(data_json, ogc_service_type, is_sds_interoperable):
     data_json.update(inspire_fields)
 
     if 'hvd_categories' in data_json and len(data_json['hvd_categories']) > 0:
-        # todo HVD keyword toevoegen aan algemene keywords
-
         data_json['hvd_categories'] = HVDCategory().get_hvd_category_by_id_list(data_json["hvd_categories"])
-
-        # todo HVD partial template opzetten
-        # todo HVD partial toevoegen aan template
 
     if data_json["inspire_type"] == "other":
         data_json["inspire_servicetype"] = "other"

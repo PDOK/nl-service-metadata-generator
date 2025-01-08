@@ -1,0 +1,28 @@
+{
+  "mdIdentifierWms": "4298f057-6d30-4ddc-b38b-a42c1f1396ef",
+  "serviceTitle": "Landelijk Grondgebruik Nederland (LGN)",
+  "serviceCreationDate": "2024-12-12",
+  "serviceAbstract": "LGN is een rasterbestand dat het Nederlands landgebruik met een ruimtelijke resolutie van 5m weergeeft. Het bestand kent tientallen landgebruiksklassen waarbij de belangrijkste landbouwgewassen, bos, water, natuur en stedelijke klassen worden onderscheiden. Elk jaar wordt voor 1 september een LGN-update opgeleverd die het landgebruik van het voorgaande referentiejaar weergeeft. Zo zal voor 1 september 2025 het landgebruiksbestand (LGN2024) voor het referentiejaar 2024 worden opgeleverd. De natuurclassificatie wordt elke drie jaar opnieuw uitgevoerd (in LGN2021, LGN2024, LGN2027, etc).\nDe verschillende versies van LGN kennen niet altijd dezelfde klassen. Een overzicht van wijzigingen tussen versies is in te zien op https://lgn.nl/documentatie/wijzigingen-per-versie.\nAlle LGN-versies vanaf LGN3 zijn in te zien op https://lgn.nl/basiskaart en te downloaden vanaf https://lgn.nl/bestanden. De meest recente versie van LGN wordt op PDOK gepubliceerd als WMS.",
+  "hvdCategories": ["c_25f43866", "c_317b9493", "c_b79e35eb"],
+  "keywords": [
+    "referentie materiaal aardbedekking",
+    "landbouw en veeteelt",
+    "locatie",
+    "natuur en milieu",
+    "planning kadaster",
+    "transport"
+  ],
+  "serviceUseLimitation": "Geen beperkingen",
+  "boundingBox": {
+    "minX": 3.2062529,
+    "maxX": 7.2452583,
+    "minY": 50.733607,
+    "maxY": 53.582979
+  },
+  "serviceAccessPointWms": "https://service.pdok.nl/wenr/lgn/wms/v1_0-preprod?request=GetCapabilities&service=WMS",
+  "linkedDatasets": [
+    {
+      "datasetMdIdentifier": "394044aa-a2f6-45ee-b048-e906109141b8"
+    }
+  ]
+}

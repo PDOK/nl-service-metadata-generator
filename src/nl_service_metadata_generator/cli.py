@@ -20,6 +20,9 @@ log = logging.getLogger(__name__)
 def cli():
     pass
 
+@cli.command(name="hallo")
+def inspect_schema_command():
+    print('yolo')
 
 @cli.command(name="show-schema")
 @click.argument("schema-type", type=click.Choice(SchemaType, case_sensitive=True))

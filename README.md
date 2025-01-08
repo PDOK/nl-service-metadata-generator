@@ -28,7 +28,7 @@ De nl-service-metadata-generator ondersteunt de volgende service types:
 Installeer `nl-service-metadata-generator` als pip package (uitvoeren vanuit root van repository):
 
 ```pip3
-pip3 install .
+pip3 install . # Add -e for development and debugging
 ```
 
 Nu moet het cli command `nl-service-metadata-generator` beschikbaar zijn in `PATH`.
