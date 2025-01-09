@@ -17,7 +17,7 @@ def get_full_nsmap(root):
         "skos": "http://www.w3.org/2004/02/skos/core#",
         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
         "euvoc": "http://publications.europa.eu/ontology/euvoc#",
-        "bla": "http://purl.org/dc/elements/1.1/",
+        "dcmi": "http://purl.org/dc/elements/1.1/",
     }
     nsmap.update({prefix: uri for prefix, uri in required_namespaces.items() if prefix not in nsmap})
     return nsmap
@@ -56,7 +56,7 @@ def init_hvd_category_list():
             "label": pref_label.text.strip(),
             "lang": pref_label.attrib.get("{http://www.w3.org/XML/1998/namespace}lang", "").lower(),
             "order": description.find("euvoc:order", namespaces=nsmap).text,
-            "id": description.find("bla:identifier", namespaces=nsmap).text
+            "id": description.find("dcmi:identifier", namespaces=nsmap).text
         }
         for description in root.findall(".//rdf:Description", namespaces=nsmap)
         for pref_label in description.findall(".//skos:prefLabel", namespaces=nsmap)

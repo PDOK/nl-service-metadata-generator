@@ -19,7 +19,7 @@
     "minY": 50.733607,
     "maxY": 53.582979
   },
-  "serviceAccessPointWms": "https://service.pdok.nl/wenr/lgn/wms/v1_0-preprod?request=GetCapabilities&service=WMS",
+  "serviceAccessPointWms": "https://service.pdok.nl/wenr/lgn/wms/v1_0?request=GetCapabilities&service=WMS",
   "linkedDatasets": [
     {
       "datasetMdIdentifier": "394044aa-a2f6-45ee-b048-e906109141b8"
