@@ -1,6 +1,9 @@
+import os
+import urllib
+
 from lxml import etree
 
-from nl_service_metadata_generator.constants import HVD_CATEGORIES_XML
+from nl_service_metadata_generator.constants import HVD_CATEGORIES_XML_LOCAL, HVD_CATEGORIES_XML_REMOTE
 from nl_service_metadata_generator.util import resolve_resource_path
 
 
@@ -19,27 +22,46 @@ def get_full_nsmap(root):
     nsmap.update({prefix: uri for prefix, uri in required_namespaces.items() if prefix not in nsmap})
     return nsmap
 
+def get_rdf():
+    hvd_rdf_path = resolve_resource_path(HVD_CATEGORIES_XML_LOCAL)
+    hvd_downloaded_path = os.path.join(os.path.dirname(hvd_rdf_path),
+                                       os.path.basename(hvd_rdf_path).split('.')[0] + "_downloaded.rdf")
+
+    if os.path.exists(hvd_downloaded_path):
+        # Use the downloaded version if it exists
+        with open(hvd_downloaded_path, "r", encoding="utf-8") as file:
+            return etree.XML(file.read().encode("utf-8"))
+    else:
+        try:
+            # Attempt to download the remote file
+            with urllib.request.urlopen(HVD_CATEGORIES_XML_REMOTE) as response:
+                xml_content = response.read().decode('utf-8')
+                # Save the downloaded content
+                with open(hvd_downloaded_path, "w", encoding="utf-8") as file:
+                    file.write(xml_content)
+                return etree.XML(xml_content.encode("utf-8"))
+        except urllib.error.URLError:
+            # If download fails, use the local file
+            print("Failed to download remote XML. Using local file.")
+            with open(hvd_rdf_path, "r", encoding="utf-8") as file:
+                return etree.XML(file.read().encode("utf-8"))
 
 def init_hvd_category_list():
 
-    hvd_rdf_path = resolve_resource_path(HVD_CATEGORIES_XML)
-
-    with open(hvd_rdf_path, "r", encoding="utf-8") as file:
-        root = etree.XML(file.read().encode("utf-8"))
-
-        nsmap = get_full_nsmap(root)
-        categories = [
-            {
-                "uri": description.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"),
-                "label": pref_label.text.strip(),
-                "lang": pref_label.attrib.get("{http://www.w3.org/XML/1998/namespace}lang", "").lower(),
-                "order": description.find("euvoc:order", namespaces=nsmap).text,
-                "id": description.find("bla:identifier", namespaces=nsmap).text
-            }
-            for description in root.findall(".//rdf:Description", namespaces=nsmap)
-            for pref_label in description.findall(".//skos:prefLabel", namespaces=nsmap)
-            if pref_label.text and pref_label.attrib.get("{http://www.w3.org/XML/1998/namespace}lang", "").lower() == "nl"
-        ]
+    root = get_rdf()
+    nsmap = get_full_nsmap(root)
+    categories = [
+        {
+            "uri": description.get("{http://www.w3.org/1999/02/22-rdf-syntax-ns#}about"),
+            "label": pref_label.text.strip(),
+            "lang": pref_label.attrib.get("{http://www.w3.org/XML/1998/namespace}lang", "").lower(),
+            "order": description.find("euvoc:order", namespaces=nsmap).text,
+            "id": description.find("bla:identifier", namespaces=nsmap).text
+        }
+        for description in root.findall(".//rdf:Description", namespaces=nsmap)
+        for pref_label in description.findall(".//skos:prefLabel", namespaces=nsmap)
+        if pref_label.text and pref_label.attrib.get("{http://www.w3.org/XML/1998/namespace}lang", "").lower() == "nl"
+    ]
     return categories
 
 
@@ -47,6 +69,7 @@ class HVDCategory:
 
     def __init__(self):
         self.categories = init_hvd_category_list()
+        self.categories.sort(key=lambda x: x['order'])
 
     def get_hvd_category_by_id(self, hvd_id: str):
         for category in self.categories:
