@@ -51,6 +51,13 @@ class TestNLServiceMetadataGeneratorCLI(unittest.TestCase):
 
         print('hellao')
         print(os.getcwd())
+        for root, dirs, files in os.walk(os.getcwd()):
+            level = root.replace(os.getcwd(), '').count(os.sep)
+            indent = ' ' * 4 * (level)
+            print(f'{indent}{os.path.basename(root)}/')
+            subindent = ' ' * 4 * (level + 1)
+            for f in files:
+                print(f'{subindent}{f}')
 
         self.assertCLIOutput(result, test_path)
 
