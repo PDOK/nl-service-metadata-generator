@@ -15,7 +15,10 @@
                 </gmd:date>
                 <gmd:dateType>
                     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#datum-type-van-de-bron -->
-                    <gmd:CI_DateTypeCode codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation">creatie</gmd:CI_DateTypeCode>
+                    <gmd:CI_DateTypeCode
+                            codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                            codeListValue="creation">creatie
+                    </gmd:CI_DateTypeCode>
                 </gmd:dateType>
             </gmd:CI_Date>
         </gmd:date>
@@ -30,7 +33,10 @@
                 </gmd:date>
                 <gmd:dateType>
                     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#datum-type-van-de-bron -->
-                    <gmd:CI_DateTypeCode codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication">publicatie</gmd:CI_DateTypeCode>
+                    <gmd:CI_DateTypeCode
+                            codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                            codeListValue="publication">publicatie
+                    </gmd:CI_DateTypeCode>
                 </gmd:dateType>
             </gmd:CI_Date>
         </gmd:date>
@@ -45,7 +51,10 @@
                 </gmd:date>
                 <gmd:dateType>
                     <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#datum-type-van-de-bron -->
-                    <gmd:CI_DateTypeCode codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode" codeListValue="revision">revisie</gmd:CI_DateTypeCode>
+                    <gmd:CI_DateTypeCode
+                            codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                            codeListValue="revision">revisie
+                    </gmd:CI_DateTypeCode>
                 </gmd:dateType>
             </gmd:CI_Date>
         </gmd:date>
@@ -63,12 +72,14 @@
         {% include "partials/contact.xml" %}
         <gmd:role>
             <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#verantwoordelijke-organisatie-bron:-rol -->
-            <gmd:CI_RoleCode codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode" codeListValue="custodian">beheerder</gmd:CI_RoleCode>
+            <gmd:CI_RoleCode codeList="https://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_RoleCode"
+                             codeListValue="custodian">beheerder
+            </gmd:CI_RoleCode>
         </gmd:role>
     </gmd:CI_ResponsibleParty>
 </gmd:pointOfContact>
-{% for thumbnail in thumbnails -%}
-{% if thumbnail['file'] is not sameas None -%}
+        {% for thumbnail in thumbnails -%}
+        {% if thumbnail['file'] is not sameas None -%}
 <gmd:graphicOverview>
     <gmd:MD_BrowseGraphic>
         <gmd:fileName>
@@ -82,8 +93,8 @@
         </gmd:fileType>
     </gmd:MD_BrowseGraphic>
 </gmd:graphicOverview>
-{%- endif %}
-{%- endfor %}
+        {%- endif %}
+        {%- endfor %}
 <gmd:descriptiveKeywords>
     <!-- De descriptive keywords komen logischerwijs overeen met de elementen onder WMS_Capabilities/Services/KeywordList-->
     <!-- en de elementen WMS_Capabilities/Capability/inspire_vs:ExtendedCapabilities/inspire_common:MandatoryKeyword en  -->
@@ -92,7 +103,7 @@
         <!-- https://docs.geostandaarden.nl/md/mdprofiel-iso19119/#trefwoord -->
         {% if inspire_type != "none" -%}
         <!-- Voor INSPIRE Minimaal 1 van de verplichte keywords uit metadata IR Deel 4 -->
-        <!-- inconsistency in spec NL profiel vs INSPIRE, voor NL profiel moet anchor element text waarde <spatial_dataservice_category_label> hebben maar voor inpsire moet deze de waarde <spatial_dataservice_category> hebben, zie ook https://github.com/inspire-eu-validation/community/issues/84 -->
+        <!-- inconsistency in spec NL profiel vs INSPIRE, voor NL profiel moet anchor element text waarde <spatial_dataservice_category_label> hebben maar voor inspire moet deze de waarde <spatial_dataservice_category> hebben, zie ook https://github.com/inspire-eu-validation/community/issues/84 -->
         <gmd:keyword>
             <gmx:Anchor xlink:href="{{spatial_dataservice_category_uri}}">{{spatial_dataservice_category}}</gmx:Anchor>
         </gmd:keyword>
@@ -102,5 +113,44 @@
             <gco:CharacterString>{{ keyword }}</gco:CharacterString>
         </gmd:keyword>
         {%- endfor %}
+        <!-- Als er een HVD categorie gekoppeld is moet dit duidelijk worden a.d.v. een keyword -> zie https://docs.geostandaarden.nl/eu/handreiking-hvd/#409368F9   -->
+        {% if hvd_categories is not none and hvd_categories|length > 0 -%}
+        <gmd:keyword>
+            <gmx:Anchor xlink:href="http://data.europa.eu/eli/reg_impl/2023/138/oj">HVD</gmx:Anchor>
+        </gmd:keyword>
+        {%- endif %}
     </gmd:MD_Keywords>
 </gmd:descriptiveKeywords>
+{% if hvd_categories is not none and hvd_categories|length > 0 -%}
+<gmd:descriptiveKeywords>
+    <gmd:MD_Keywords>
+        {% for hvd in hvd_categories -%}
+        <gmd:keyword>
+            <gmx:Anchor xlink:href="{{hvd['uri']}}">{{hvd['label']}}</gmx:Anchor>
+        </gmd:keyword>
+        {%- endfor %}
+        <!-- referentie naar de waardelijst voor HVD thema's en subthema's -->
+        <gmd:thesaurusName>
+            <gmd:CI_Citation>
+                <gmd:title>
+                    <gmx:Anchor xlink:href="http://publications.europa.eu/resource/dataset/high-value-dataset-category">
+                        High-value dataset categories
+                    </gmx:Anchor>
+                </gmd:title>
+                <gmd:date>
+                    <gmd:CI_Date>
+                        <gmd:date>
+                            <gco:Date>2023-09-27</gco:Date>
+                        </gmd:date>
+                        <gmd:dateType>
+                            <gmd:CI_DateTypeCode
+                                    codeList="http://standards.iso.org/iso/19139/resources/gmxCodelists.xml#CI_DateTypeCode"
+                                    codeListValue="publication"/>
+                        </gmd:dateType>
+                    </gmd:CI_Date>
+                </gmd:date>
+            </gmd:CI_Citation>
+        </gmd:thesaurusName>
+    </gmd:MD_Keywords>
+</gmd:descriptiveKeywords>
+{%- endif %}

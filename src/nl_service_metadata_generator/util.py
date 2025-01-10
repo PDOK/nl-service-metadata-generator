@@ -48,11 +48,8 @@ def replace_keys(dictionary: dict, fun) -> dict:
 
 
 def get_schema(schema_type: SchemaType):
-    json_schema_path = f"data/json_schema/{schema_type.value}.schema.json"
-    json_schema_path = pkg_resources.resource_filename(
-        get_pkg_string(),
-        json_schema_path,
-    )
+    json_schema_path = Path(f"data/json_schema/{schema_type.value}.schema.json")
+    json_schema_path = resolve_resource_path(json_schema_path)
     with open(json_schema_path, "r") as f:
         parsed = json.load(f)
         return parsed
@@ -62,6 +59,12 @@ def get_pkg_string():
     module_name = "." + __name__.replace(Path(__file__).name.replace(".py", ""), "")
     return __name__.replace(module_name, "")
 
+def resolve_resource_path(resource_path: Path):
+    absolute_resource_path = pkg_resources.resource_filename(
+        get_pkg_string(),
+        str(resource_path),
+    )
+    return absolute_resource_path
 
 def validate_input_json(contact_config, schema_type: SchemaType):
     json_schema = get_schema(schema_type)
@@ -112,10 +115,7 @@ def validate_service_metadata(xml_string):
     result = validate_xml_form(xml_string)
     if result:
         return result
-    schema_path = pkg_resources.resource_filename(
-        get_pkg_string(),
-        SERVICE_METADATA_SCHEMA,
-    )
+    schema_path = resolve_resource_path(SERVICE_METADATA_SCHEMA)
     with open(schema_path, "rb") as xml_schema_file:
         schema_doc = etree.XML(xml_schema_file.read(), base_url=schema_path)
         schema = etree.XMLSchema(schema_doc)

@@ -107,3 +107,6 @@ venv.bak/
 .vscode/
 output/
 input/
+
+# pycharm
+.idea
