@@ -80,9 +80,15 @@ class TestNLServiceMetadataGeneratorCLI(unittest.TestCase):
             ]
         )
 
-        print('hellao')
+        print('input')
+        print(str(CONSTANTS_CONFIG_FILE))
+        print(str(test_path.input))
+        print(str(test_path.output))
+
+        print('CWD')
         print(os.getcwd())
 
+        print('Test dir')
         test = os.getcwd() + '/test'
         # test = Path('../../').resolve()
         # print(test)
