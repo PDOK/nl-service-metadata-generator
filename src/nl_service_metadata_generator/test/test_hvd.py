@@ -31,7 +31,6 @@ class TestNLServiceMetadataGeneratorCLI(unittest.TestCase):
         script_dir = os.path.dirname(os.path.abspath(__file__))
         module_root = os.path.dirname(script_dir)
         os.chdir(module_root)
-        print(f"Working directory: {os.getcwd()}")
 
         os.makedirs(OUTPUT_PATH, exist_ok=True)
         self.runner = CliRunner(mix_stderr=False)
@@ -80,169 +79,143 @@ class TestNLServiceMetadataGeneratorCLI(unittest.TestCase):
             ]
         )
 
-        print('input')
-        print(str(CONSTANTS_CONFIG_FILE))
-        print(str(test_path.input))
-        print(str(test_path.output))
+        self.assertCLIOutput(result, test_path)
 
-        print('CWD')
-        print(os.getcwd())
+    def test_hvd_complex(self):
+        test_path = UnitTestDataPath('hvd_complex', ServiceType.WMS)
 
-        print('Test dir')
-        test = os.getcwd() + '/test'
-        # test = Path('../../').resolve()
-        # print(test)
-        #
-        # test = Path('test').resolve()
-        # print(test)
-
-        print(test)
-        print('walkdir')
-        for root, dirs, files in os.walk(test):
-            level = root.replace(str(test), '').count(os.sep)
-            indent = ' ' * 4 * (level)
-            print(f'{indent}{os.path.basename(root)}/')
-            subindent = ' ' * 4 * (level + 1)
-            for f in files:
-                print(f'{subindent}{f}')
+        result = self.runner.invoke(
+            cli,
+            [
+                'generate',
+                ServiceType.WMS.value,
+                InspireType.NONE.value,
+                str(CONSTANTS_CONFIG_FILE),
+                str(test_path.input),
+                str(test_path.output),
+            ]
+        )
 
         self.assertCLIOutput(result, test_path)
 
-    # def test_hvd_complex(self):
-    #     test_path = UnitTestDataPath('hvd_complex', ServiceType.WMS)
-    #
-    #     result = self.runner.invoke(
-    #         cli,
-    #         [
-    #             'generate',
-    #             ServiceType.WMS.value,
-    #             InspireType.NONE.value,
-    #             str(CONSTANTS_CONFIG_FILE),
-    #             str(test_path.input),
-    #             str(test_path.output),
-    #         ]
-    #     )
-    #
-    #     self.assertCLIOutput(result, test_path)
-    #
-    # def test_inspire_wms(self):
-    #     test_path = UnitTestDataPath('inspire', ServiceType.WMS)
-    #
-    #     result = self.runner.invoke(
-    #         cli,
-    #         [
-    #             'generate',
-    #             ServiceType.WMS.value,
-    #             InspireType.NETWORK.value,
-    #             str(CONSTANTS_CONFIG_FILE),
-    #             str(test_path.input),
-    #             str(test_path.output),
-    #         ]
-    #     )
-    #
-    #     self.assertCLIOutput(result, test_path)
-    #
-    # def test_inspire_wfs(self):
-    #     test_path = UnitTestDataPath('inspire', ServiceType.WFS)
-    #
-    #     result = self.runner.invoke(
-    #         cli,
-    #         [
-    #             'generate',
-    #             ServiceType.WFS.value,
-    #             InspireType.NETWORK.value,
-    #             str(CONSTANTS_CONFIG_FILE),
-    #             str(test_path.input),
-    #             str(test_path.output),
-    #         ]
-    #     )
-    #
-    #     self.assertCLIOutput(result, test_path)
-    #
-    # def test_inspire_atom(self):
-    #     test_path = UnitTestDataPath('inspire', ServiceType.ATOM)
-    #
-    #     result = self.runner.invoke(
-    #         cli,
-    #         [
-    #             'generate',
-    #             ServiceType.ATOM.value,
-    #             InspireType.NETWORK.value,
-    #             str(CONSTANTS_CONFIG_FILE),
-    #             str(test_path.input),
-    #             str(test_path.output),
-    #         ]
-    #     )
-    #
-    #     self.assertCLIOutput(result, test_path)
-    #
-    # def test_oaf(self):
-    #     test_path = UnitTestDataPath('oaf', ServiceType.OAF)
-    #
-    #     result = self.runner.invoke(
-    #         cli,
-    #         [
-    #             'generate',
-    #             ServiceType.OAF.value,
-    #             InspireType.NONE.value,
-    #             str(CONSTANTS_CONFIG_FILE),
-    #             str(test_path.input),
-    #             str(test_path.output),
-    #         ]
-    #     )
-    #
-    #     self.assertCLIOutput(result, test_path)
-    #
-    # def test_oat(self):
-    #     test_path = UnitTestDataPath('oat', ServiceType.OAT)
-    #
-    #     result = self.runner.invoke(
-    #         cli,
-    #         [
-    #             'generate',
-    #             ServiceType.OAT.value,
-    #             InspireType.NONE.value,
-    #             str(CONSTANTS_CONFIG_FILE),
-    #             str(test_path.input),
-    #             str(test_path.output),
-    #         ]
-    #     )
-    #
-    #     self.assertCLIOutput(result, test_path)
-    #
-    # def test_regular_wms(self):
-    #     test_path = UnitTestDataPath('regular', ServiceType.WMS)
-    #
-    #     result = self.runner.invoke(
-    #         cli,
-    #         [
-    #             'generate',
-    #             ServiceType.WMS.value,
-    #             InspireType.NONE.value,
-    #             str(CONSTANTS_CONFIG_FILE),
-    #             str(test_path.input),
-    #             str(test_path.output),
-    #         ]
-    #     )
-    #
-    #     self.assertCLIOutput(result, test_path)
-    #
-    # def test_regular_wfs(self):
-    #     test_path = UnitTestDataPath('regular', ServiceType.WFS)
-    #
-    #     result = self.runner.invoke(
-    #         cli,
-    #         [
-    #             'generate',
-    #             ServiceType.WFS.value,
-    #             InspireType.NONE.value,
-    #             str(CONSTANTS_CONFIG_FILE),
-    #             str(test_path.input),
-    #             str(test_path.output),
-    #         ]
-    #     )
-    #
-    #     self.assertCLIOutput(result, test_path)
+    def test_inspire_wms(self):
+        test_path = UnitTestDataPath('inspire', ServiceType.WMS)
+
+        result = self.runner.invoke(
+            cli,
+            [
+                'generate',
+                ServiceType.WMS.value,
+                InspireType.NETWORK.value,
+                str(CONSTANTS_CONFIG_FILE),
+                str(test_path.input),
+                str(test_path.output),
+            ]
+        )
+
+        self.assertCLIOutput(result, test_path)
+
+    def test_inspire_wfs(self):
+        test_path = UnitTestDataPath('inspire', ServiceType.WFS)
+
+        result = self.runner.invoke(
+            cli,
+            [
+                'generate',
+                ServiceType.WFS.value,
+                InspireType.NETWORK.value,
+                str(CONSTANTS_CONFIG_FILE),
+                str(test_path.input),
+                str(test_path.output),
+            ]
+        )
+
+        self.assertCLIOutput(result, test_path)
+
+    def test_inspire_atom(self):
+        test_path = UnitTestDataPath('inspire', ServiceType.ATOM)
+
+        result = self.runner.invoke(
+            cli,
+            [
+                'generate',
+                ServiceType.ATOM.value,
+                InspireType.NETWORK.value,
+                str(CONSTANTS_CONFIG_FILE),
+                str(test_path.input),
+                str(test_path.output),
+            ]
+        )
+
+        self.assertCLIOutput(result, test_path)
+
+    def test_oaf(self):
+        test_path = UnitTestDataPath('oaf', ServiceType.OAF)
+
+        result = self.runner.invoke(
+            cli,
+            [
+                'generate',
+                ServiceType.OAF.value,
+                InspireType.NONE.value,
+                str(CONSTANTS_CONFIG_FILE),
+                str(test_path.input),
+                str(test_path.output),
+            ]
+        )
+
+        self.assertCLIOutput(result, test_path)
+
+    def test_oat(self):
+        test_path = UnitTestDataPath('oat', ServiceType.OAT)
+
+        result = self.runner.invoke(
+            cli,
+            [
+                'generate',
+                ServiceType.OAT.value,
+                InspireType.NONE.value,
+                str(CONSTANTS_CONFIG_FILE),
+                str(test_path.input),
+                str(test_path.output),
+            ]
+        )
+
+        self.assertCLIOutput(result, test_path)
+
+    def test_regular_wms(self):
+        test_path = UnitTestDataPath('regular', ServiceType.WMS)
+
+        result = self.runner.invoke(
+            cli,
+            [
+                'generate',
+                ServiceType.WMS.value,
+                InspireType.NONE.value,
+                str(CONSTANTS_CONFIG_FILE),
+                str(test_path.input),
+                str(test_path.output),
+            ]
+        )
+
+        self.assertCLIOutput(result, test_path)
+
+    def test_regular_wfs(self):
+        test_path = UnitTestDataPath('regular', ServiceType.WFS)
+
+        result = self.runner.invoke(
+            cli,
+            [
+                'generate',
+                ServiceType.WFS.value,
+                InspireType.NONE.value,
+                str(CONSTANTS_CONFIG_FILE),
+                str(test_path.input),
+                str(test_path.output),
+            ]
+        )
+
+        self.assertCLIOutput(result, test_path)
 
 if __name__ == '__main__':
     unittest.main()
