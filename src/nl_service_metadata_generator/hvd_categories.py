@@ -1,6 +1,7 @@
 import os
 import urllib
 
+from datetime import datetime, timedelta
 from lxml import etree
 
 from nl_service_metadata_generator.constants import HVD_CATEGORIES_XML_LOCAL, HVD_CATEGORIES_XML_REMOTE
@@ -22,29 +23,38 @@ def get_full_nsmap(root):
     nsmap.update({prefix: uri for prefix, uri in required_namespaces.items() if prefix not in nsmap})
     return nsmap
 
-def get_rdf():
-    hvd_rdf_path = resolve_resource_path(HVD_CATEGORIES_XML_LOCAL)
-    hvd_downloaded_path = os.path.join(os.path.dirname(hvd_rdf_path),
-                                       os.path.basename(hvd_rdf_path).split('.')[0] + "_downloaded.rdf")
+hvd_rdf_path = resolve_resource_path(HVD_CATEGORIES_XML_LOCAL)
+hvd_downloaded_path = os.path.join(os.path.dirname(hvd_rdf_path), os.path.basename(hvd_rdf_path).split('.')[0] + "_downloaded.rdf")
 
+def download_rdf():
+
+    with urllib.request.urlopen(HVD_CATEGORIES_XML_REMOTE) as response:
+        xml_content = response.read().decode('utf-8')
+
+    with open(hvd_downloaded_path, "w", encoding="utf-8") as file:
+        file.write(xml_content)
+
+    return etree.XML(xml_content.encode("utf-8"))
+
+def open_rdf(rdf_path):
+    with open(rdf_path, "r", encoding="utf-8") as file:
+        return etree.XML(file.read().encode("utf-8"))
+
+def get_rdf():
     if os.path.exists(hvd_downloaded_path):
-        # Use the downloaded version if it exists
-        with open(hvd_downloaded_path, "r", encoding="utf-8") as file:
-            return etree.XML(file.read().encode("utf-8"))
-    else:
-        try:
-            # Attempt to download the remote file
-            with urllib.request.urlopen(HVD_CATEGORIES_XML_REMOTE) as response:
-                xml_content = response.read().decode('utf-8')
-                # Save the downloaded content
-                with open(hvd_downloaded_path, "w", encoding="utf-8") as file:
-                    file.write(xml_content)
-                return etree.XML(xml_content.encode("utf-8"))
-        except urllib.error.URLError:
-            # If download fails, use the local file
-            print("Failed to download remote XML. Using local file.")
-            with open(hvd_rdf_path, "r", encoding="utf-8") as file:
-                return etree.XML(file.read().encode("utf-8"))
+        file_time = datetime.fromtimestamp(os.path.getmtime(hvd_downloaded_path))
+        if datetime.now() - file_time < timedelta(days=3):
+            print("Use cached version of high-value-dataset-category.rdf")
+            return open_rdf(hvd_downloaded_path)
+
+    print("Try downloading high-value-dataset-category.rdf")
+    try:
+        return download_rdf()
+    except urllib.error.URLError:
+        print("Failed to download RDF from: "+HVD_CATEGORIES_XML_REMOTE)
+
+    print("Revert to local copy!")
+    return open_rdf(hvd_rdf_path)
 
 def init_hvd_category_list():
 

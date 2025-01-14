@@ -74,6 +74,17 @@ Merk op:
 
 JSON schema voor de `CONSTANTS_CONFIG_FILE` en `METADATA_CONFIG_FILE` kunnen worden opgevraagd middels het `show-schema` command, zie `nl-service-metadata-generator show-schema --help` voor help.
 
+### HVD verordening
+High Value Datasets (HVD) zijn datasets die door de Europese Unie zijn aangewezen als bijzonder waardevol voor sociaaleconomische doeleinden, 
+met een verplichting tot kosteloze beschikbaarstelling voor hergebruik. 
+Voor service metadata is het mogelijk middels het `hvdCategories` veld de HVD-categorieën te genereren en als keywords zoals omschreven in de [handrijking](https://docs.geostandaarden.nl/eu/handreiking-hvd/#409368F9) van Geonovum toe te voegen.
+
+Zie [high-value-dataset-category.rdf](https://op.europa.eu/o/opportal-service/euvoc-download-handler?cellarURI=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fdistribution%2Fhigh-value-dataset-category%2F20241002-0%2Frdf%2Fskos_core%2Fhigh-value-dataset-category.rdf&fileName=high-value-dataset-category.rdf) voor een lijst van alle mogelijke HVD-categorieën.
+De HVD is zo opgezet dat er een hiërarchie van 3 levels bestaat.
+Wanneer een lagere categorie wordt gekozen worden automatisch de bovenliggende categorieën ook toegevoegd.
+De RDF wordt automatisch gedownload en gecached voor 3 dagen.
+Mocht je op zoek zijn naar een nieuwe recentelijke categorie verwijder dan `/src/nl_service_metadata_generator/data/xml/high-value-dataset-category_downloaded.rdf` zodat deze opnieuw wordt gedownload.
+
 ### Template variabelen
 
 In de velden

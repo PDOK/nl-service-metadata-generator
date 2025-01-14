@@ -1,15 +1,16 @@
 import os
 import traceback
 import unittest
+from lxml import etree
 from click.testing import CliRunner
 from nl_service_metadata_generator.cli import cli
 from nl_service_metadata_generator.enums import ServiceType, InspireType
 from pathlib import Path
 
-CONSTANTS_CONFIG_FILE = Path('../../../example_json/constants.json')
-EXPECTED_PATH: Path = Path('data/expected')
-INPUT_PATH: Path = Path('data/input')
-OUTPUT_PATH: Path = Path('data/output')
+CONSTANTS_CONFIG_FILE = Path('../../example_json/constants.json')
+EXPECTED_PATH: Path = Path('test/data/expected')
+INPUT_PATH: Path = Path('test/data/input')
+OUTPUT_PATH: Path = Path('test/data/output')
 
 class UnitTestDataPath:
 
@@ -26,13 +27,43 @@ def format_exception(e):
 class TestNLServiceMetadataGeneratorCLI(unittest.TestCase):
 
     def setUp(self):
+
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        module_root = os.path.dirname(script_dir)
+        os.chdir(module_root)
+        print(f"Working directory: {os.getcwd()}")
+
         os.makedirs(OUTPUT_PATH, exist_ok=True)
         self.runner = CliRunner(mix_stderr=False)
 
+    @staticmethod
+    def remove_variable_dates(metadata_path):
+
+        tree = etree.parse(str(metadata_path))
+        root = tree.getroot()
+
+        # Remove revision dates
+        for date in root.xpath('.//gmd:date/gmd:CI_Date', namespaces={'gmd': 'http://www.isotc211.org/2005/gmd'}):
+            type_code = date.find('gmd:dateType/gmd:CI_DateTypeCode',
+                                  namespaces={'gmd': 'http://www.isotc211.org/2005/gmd'})
+            if type_code is not None and type_code.get('codeListValue') == 'revision':
+                date.getparent().remove(date)
+
+        # Remove date stamps
+        for date_stamp in root.xpath('.//gmd:dateStamp', namespaces={'gmd': 'http://www.isotc211.org/2005/gmd'}):
+            date_stamp.getparent().remove(date_stamp)
+
+        return etree.tostring(tree.getroot(), encoding='utf-8', xml_declaration=True)
+
     def assertCLIOutput(self, result, test_path):
+
+        # Remove revision dates because these may change every generation
+        expected_xml = self.remove_variable_dates(test_path.expected)
+        output_xml = self.remove_variable_dates(test_path.output)
+
         self.assertEqual(0, result.exit_code, f"Command Should execute without exceptions:\n " + format_exception(result.exc_info))
         self.assertTrue(test_path.output.exists(), "Output file should be created")
-        self.assertEqual(test_path.expected.read_text(), test_path.output.read_text(),f'Generated metadata in {test_path.output} should be equal to expected metadata in {test_path.expected}')
+        self.assertEqual(expected_xml, output_xml,f'Generated metadata in {test_path.output} should be equal to expected metadata in {test_path.expected}')
 
     def test_hvd_simple(self):
         test_path = UnitTestDataPath('hvd_simple', ServiceType.WMS)
@@ -51,13 +82,19 @@ class TestNLServiceMetadataGeneratorCLI(unittest.TestCase):
 
         print('hellao')
         print(os.getcwd())
-        for root, dirs, files in os.walk(os.getcwd()):
-            level = root.replace(os.getcwd(), '').count(os.sep)
-            indent = ' ' * 4 * (level)
-            print(f'{indent}{os.path.basename(root)}/')
-            subindent = ' ' * 4 * (level + 1)
-            for f in files:
-                print(f'{subindent}{f}')
+
+        test = os.getcwd()
+        test = Path('../../').resolve()
+        print(test)
+
+        print('walkdir')
+        # for root, dirs, files in os.walk(test):
+        #     level = root.replace(str(test), '').count(os.sep)
+        #     indent = ' ' * 4 * (level)
+        #     print(f'{indent}{os.path.basename(root)}/')
+        #     subindent = ' ' * 4 * (level + 1)
+        #     for f in files:
+        #         print(f'{subindent}{f}')
 
         self.assertCLIOutput(result, test_path)
 
