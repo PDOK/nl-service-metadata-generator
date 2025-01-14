@@ -4,8 +4,6 @@
 name: Python unit test and linting
 
 on:
-  push:
-    branches: [ "master", "botenvouwer-patch-1" ]
   pull_request:
     branches: [ "master" ]
 
