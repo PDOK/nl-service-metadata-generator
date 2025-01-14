@@ -83,7 +83,7 @@ class TestNLServiceMetadataGeneratorCLI(unittest.TestCase):
         print('hellao')
         print(os.getcwd())
 
-        test = os.getcwd()
+        test = os.getcwd() + '/test'
         # test = Path('../../').resolve()
         # print(test)
         #
