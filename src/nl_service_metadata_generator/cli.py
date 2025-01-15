@@ -9,6 +9,7 @@ import click
 
 from nl_service_metadata_generator.constants import DEFAULT_CSW_ENDPOINT
 from nl_service_metadata_generator.enums import InspireType, SchemaType, SdsType, ServiceType
+from nl_service_metadata_generator.hvd_categories import HVDCategory, download_rdf
 from nl_service_metadata_generator.metadata_generator import generate_service_metadata
 from nl_service_metadata_generator.util import get_schema, validate_service_metadata
 
@@ -19,6 +20,7 @@ log = logging.getLogger(__name__)
 @click.group()
 def cli():
     pass
+
 
 @cli.command(name="show-schema")
 @click.argument("schema-type", type=click.Choice(SchemaType, case_sensitive=True))
@@ -96,6 +98,26 @@ def generate_command(
         if validation_result:
             exit(1)
         print(md_record)
+
+
+@cli.command(name="show-hvd")
+def inspect_schema_command():
+    """
+    Show Options for hvdCategories field
+    """
+
+    hvd = HVDCategory()
+    for h in hvd.categories:
+        print(f"{h['id']} - {h['order']:<6} {h['label']}")
+
+
+@cli.command(name="download-hvd")
+def inspect_schema_command():
+    """
+    Refresh the cache containing the high-value-dataset-category.rdf
+    """
+
+    download_rdf()
 
 
 if __name__ == "__main__":
