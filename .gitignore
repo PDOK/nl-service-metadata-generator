@@ -1,3 +1,6 @@
+# Project specific
+nl-service-metadata-generator/src/nl_service_metadata_generator/data/xml/high-value-dataset-category_downloaded.rdf
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
