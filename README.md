@@ -84,7 +84,7 @@ De HVD is zo opgezet dat er een hiërarchie van 3 levels bestaat.
 Wanneer een lagere categorie wordt gekozen worden automatisch de bovenliggende categorieën ook toegevoegd.
 De RDF wordt automatisch gedownload en gecached voor 3 dagen.
 Mocht je op zoek zijn naar een nieuwe recentelijke categorie verwijder dan `/src/nl_service_metadata_generator/data/xml/high-value-dataset-category_downloaded.rdf` zodat deze opnieuw wordt gedownload.
-
+ 
 ### Template variabelen
 
 In de velden
