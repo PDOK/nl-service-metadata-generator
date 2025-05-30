@@ -188,7 +188,8 @@
         "EPSG:3035",
         "EPSG:3034",
         "EPSG:2213",
-        "EPSG:4258"
+        "EPSG:4258",
+        "EPSG:4326"
       ],
       "description": "optional field, only required when generating SDS interoperable service metadata record"
     },

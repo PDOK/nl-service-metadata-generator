@@ -86,6 +86,7 @@ def replace_servicetype_var(data_json, service_type, key):
     value = data_json[key]
     value = value.replace("$SERVICE_TYPE_UPPER", service_type.upper())
     value = value.replace("$SERVICE_TYPE_LOWER", service_type.lower())
+    value = value.replace("$OAF", "OGC API Features")
     return value
 
 
