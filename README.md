@@ -69,10 +69,26 @@ nl-service-metadata-generator generate atom network example_json/constants.json 
 
 Merk op:
 - `network` is voor INSPIRE WMS
-- `other` is voor INSPIRE WFS
+- `other` is voor INSPIRE WFS en OGC API Feature
+  - default = invocable
+  - `--sds-type=INTEROPERABLE` 
 - `none` is voor niet-INSPIRE services
 
-JSON schema voor de `CONSTANTS_CONFIG_FILE` en `METADATA_CONFIG_FILE` kunnen worden opgevraagd middels het `show-schema` command, zie `nl-service-metadata-generator show-schema --help` voor help.
+Verschil van het generen van een service record voor inspire AS-IS of geharmoniseerde
+
+- AS IS dataset voor INSPIRE voor de WFS en OGC API Feature een metadata inrichting krijgt met service type other en SDS invocable metadata
+- geharmoniseerde dataset voor INSPIRE voor de WFS en OGC API Feature een metadata inrichting krijgt met service type other en SDS interoperable metadata
+
+- Voor het genereren van een NGR record voor OGC API Features als other (as-is)
+```bash
+nl-service-metadata-generator generate OAF OTHER example_json/constants.json /data/oaf.json /data/oaf.xml
+```
+
+Voor het genereren van een NGR record voor OGC API Features als other (geharmoniseerde)
+```bash
+nl-service-metadata-generator generate OTHER --sds-type=INTEROPERABLE example_json/constants.json /data/oaf.json /data/oaf.xml
+```
+
 
 ### HVD verordening
 High Value Datasets (HVD) zijn datasets die door de Europese Unie zijn aangewezen als bijzonder waardevol voor sociaaleconomische doeleinden, 
@@ -96,6 +112,7 @@ Kunnen de volgende template variabelen worden opgenomen:
 
 - `$SERVICE_TYPE_UPPER` - wordt vervangen door uppercase service type (korte variant)
 - `$SERVICE_TYPE_LOWER` - wordt vervangen door lowercase service type (korte variant)
+- `$OAF`                - wordt vervangen door OGC API Features
 
 Bijvoorbeeld:
 

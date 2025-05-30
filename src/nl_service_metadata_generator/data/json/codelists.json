@@ -19,6 +19,10 @@
     "EPSG:4258": {
       "name": "ETRS89",
       "uri": "http://www.opengis.net/def/crs/EPSG/0/4258"
+    },
+     "EPSG:4326": {
+      "name": "WGS84",
+      "uri": "https://www.opengis.net/def/crs/EPSG/0/4326"
     }
   },
   "inspire_themes": {
