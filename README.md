@@ -1,3 +1,7 @@
+Nieuwe repo https://github.com/PDOK/pdok-metadata-tool
+
+
+
 # nl-service-metadata-generator
 
 [![PyPI version](https://badge.fury.io/py/nl-service-metadata-generator.svg)](https://pypi.org/project/nl-service-metadata-generator/)
